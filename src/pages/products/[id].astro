@@ -1,0 +1,212 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import products from '../../data/products.json';
+
+export function getStaticPaths() {
+  return products.map(product => ({
+    params: { id: product.id },
+    props: { product }
+  }));
+}
+
+const { product } = Astro.props;
+---
+
+<Layout title={product.name}>
+
+  <!-- Breadcrumb -->
+  <div class="bg-roam-light border-b">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <nav class="text-sm text-gray-500">
+        <a href="/" class="hover:text-roam-orange">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/products" class="hover:text-roam-orange">All Furniture</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-800">{product.name}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Product Detail -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        <!-- Image Gallery -->
+        <div>
+          <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 mb-4">
+            <img
+              id="main-image"
+              src={product.images[0]}
+              alt={product.name}
+              class="w-full h-full object-cover"
+            />
+          </div>
+          {product.images.length > 1 && (
+            <div class="grid grid-cols-4 gap-3">
+              {product.images.map((img: string, i: number) => (
+                <button
+                  class="thumb-btn aspect-square rounded-lg overflow-hidden border-2 border-transparent hover:border-roam-orange transition-colors focus:border-roam-orange"
+                  data-image={img}
+                >
+                  <img src={img} alt={`${product.name} ${i + 1}`} class="w-full h-full object-cover" loading="lazy" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <!-- Product Info -->
+        <div>
+          <h1 class="font-heading text-3xl md:text-4xl font-bold mb-4">{product.name}</h1>
+
+          <div class="flex items-center gap-4 mb-6">
+            <span class="text-roam-orange font-heading font-bold text-3xl">£{product.price.toFixed(2)}</span>
+            {product.compareAtPrice && (
+              <span class="text-gray-400 line-through text-xl">£{product.compareAtPrice.toFixed(2)}</span>
+            )}
+            {product.compareAtPrice && (
+              <span class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">SAVE £{(product.compareAtPrice - product.price).toFixed(2)}</span>
+            )}
+          </div>
+
+          <p class="text-gray-600 text-lg mb-6">{product.description}</p>
+
+          {/* Registered Design Badge for Frame products */}
+          {product.category === 'Frames' && (
+            <div class="mb-8 bg-gradient-to-r from-roam-dark to-gray-800 rounded-xl p-4 flex items-center gap-4 text-white">
+              <div class="w-12 h-12 bg-roam-orange rounded-lg flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+              </div>
+              <div>
+                <p class="font-heading font-bold text-sm">EU Registered Design</p>
+                <p class="text-gray-300 text-xs">RCD No. 015033319 &bull; EUIPO &bull; Registered 06/09/2023</p>
+              </div>
+            </div>
+          )}
+
+          <!-- Variant Selector -->
+          {product.variants.length > 1 && (
+            <div class="mb-6">
+              <label for="variant-select" class="block font-heading font-semibold mb-2">Option:</label>
+              <select id="variant-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none">
+                {product.variants.map((v: any) => (
+                  <option value={v.title} data-price={v.price}>{v.title} - £{v.price.toFixed(2)}</option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <!-- Add to Basket -->
+          <button
+            id="add-to-cart"
+            class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-4 px-8 rounded-lg transition-colors text-xl mb-4"
+            data-product-id={product.id}
+            data-product-name={product.name}
+            data-product-price={product.price}
+            data-product-image={product.images[0]}
+            data-product-variant={product.variants[0].title}
+          >
+            Add to Basket
+          </button>
+          <p class="text-sm text-gray-500 text-center mb-8">We'll contact you to arrange payment and delivery</p>
+
+          <!-- Features -->
+          {product.features.length > 0 && (
+            <div class="mb-8">
+              <h2 class="font-heading text-xl font-bold mb-4">Key Features</h2>
+              <ul class="space-y-3">
+                {product.features.map((feature: string) => (
+                  <li class="flex items-start gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-roam-orange flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Specifications -->
+          {Object.keys(product.specs).length > 0 && (
+            <div>
+              <h2 class="font-heading text-xl font-bold mb-4">Specifications</h2>
+              <div class="bg-roam-light rounded-xl p-6">
+                <dl class="space-y-3">
+                  {Object.entries(product.specs).map(([key, value]) => (
+                    <div class="flex justify-between">
+                      <dt class="font-semibold text-gray-700">{key}</dt>
+                      <dd class="text-gray-600">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="py-16 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-heading text-2xl font-bold mb-8">You May Also Like</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {products.filter(p => p.id !== product.id).slice(0, 4).map(p => (
+          <a href={`/products/${p.id}`} class="group bg-white rounded-xl shadow-md hover:shadow-lg transition-all overflow-hidden">
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src={p.images[0]} alt={p.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-heading font-semibold text-sm mb-1 group-hover:text-roam-orange transition-colors">{p.name}</h3>
+              <span class="text-roam-orange font-bold">£{p.price.toFixed(2)}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // Image gallery
+  document.querySelectorAll('.thumb-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mainImg = document.getElementById('main-image') as HTMLImageElement;
+      const newSrc = (btn as HTMLElement).dataset.image;
+      if (mainImg && newSrc) {
+        mainImg.src = newSrc;
+      }
+      // Update active thumbnail
+      document.querySelectorAll('.thumb-btn').forEach(t => t.classList.remove('border-roam-orange'));
+      btn.classList.add('border-roam-orange');
+    });
+  });
+
+  // Variant selector
+  const variantSelect = document.getElementById('variant-select') as HTMLSelectElement;
+  const addToCartBtn = document.getElementById('add-to-cart') as HTMLElement;
+
+  variantSelect?.addEventListener('change', () => {
+    const selectedOption = variantSelect.options[variantSelect.selectedIndex];
+    const price = selectedOption.dataset.price;
+    if (addToCartBtn && price) {
+      addToCartBtn.dataset.productPrice = price;
+      addToCartBtn.dataset.productVariant = variantSelect.value;
+    }
+  });
+
+  // Add to cart
+  addToCartBtn?.addEventListener('click', () => {
+    (window as any).roamCart.add({
+      id: addToCartBtn.dataset.productId,
+      name: addToCartBtn.dataset.productName,
+      price: parseFloat(addToCartBtn.dataset.productPrice || '0'),
+      variant: addToCartBtn.dataset.productVariant,
+      image: addToCartBtn.dataset.productImage
+    });
+  });
+</script>

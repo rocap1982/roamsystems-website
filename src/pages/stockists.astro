@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const stockists = [
+  {
+    name: "ROAM Systems",
+    region: "Essex",
+    address: "Essex, United Kingdom",
+    phone: "",
+    email: "sales@roamsystems.co.uk",
+    website: "https://roamsystems.co.uk",
+    installs: true
+  },
+  {
+    name: "JESCA MotorHomes",
+    region: "Essex",
+    address: "Essex, United Kingdom",
+    phone: "",
+    email: "",
+    website: "",
+    installs: true
+  },
+  {
+    name: "MTB Vans",
+    region: "Cheshire",
+    address: "Cheshire, United Kingdom",
+    phone: "",
+    email: "",
+    website: "",
+    installs: true
+  },
+  {
+    name: "Knight's Custom Conversions Ltd",
+    region: "Lincolnshire",
+    address: "Lincolnshire, United Kingdom",
+    phone: "",
+    email: "",
+    website: "",
+    installs: true
+  },
+  {
+    name: "Tamworth Transporters",
+    region: "Birmingham",
+    address: "Birmingham, United Kingdom",
+    phone: "",
+    email: "",
+    website: "",
+    installs: true
+  },
+  {
+    name: "Rock Out Campers Ltd",
+    region: "Wales",
+    address: "Wales, United Kingdom",
+    phone: "",
+    email: "",
+    website: "",
+    installs: true
+  },
+  {
+    name: "Van Vibes",
+    region: "Scotland",
+    address: "Scotland, United Kingdom",
+    phone: "",
+    email: "",
+    website: "",
+    installs: false
+  }
+];
+---
+
+<Layout title="Stockists & Installers">
+
+  <!-- Header -->
+  <section class="bg-roam-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Stockists & Installers</h1>
+      <p class="text-gray-300 max-w-2xl mx-auto">Find your nearest ROAM Systems stockist or approved installer. Our partners are hand-picked for their commitment to quality and reliability.</p>
+    </div>
+  </section>
+
+  <!-- Stockists Grid -->
+  <section class="py-16 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {stockists.map(stockist => (
+          <div class="bg-white rounded-2xl shadow-md p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-heading text-xl font-bold">{stockist.name}</h3>
+                <span class="text-roam-orange text-sm font-semibold">{stockist.region}</span>
+              </div>
+              {stockist.installs && (
+                <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">Installation Available</span>
+              )}
+            </div>
+            <div class="space-y-3 text-sm text-gray-600">
+              <p class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                {stockist.address}
+              </p>
+              {stockist.email && (
+                <p class="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  <a href={`mailto:${stockist.email}`} class="text-roam-orange hover:underline">{stockist.email}</a>
+                </p>
+              )}
+              {stockist.website && (
+                <p class="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                  <a href={stockist.website} target="_blank" rel="noopener" class="text-roam-orange hover:underline">Visit Website</a>
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="font-heading text-3xl font-bold mb-4">Want to Become a Stockist?</h2>
+      <p class="text-gray-600 mb-8">We're always looking for quality partners to join our network. Get in touch to discuss becoming an approved ROAM Systems stockist or installer.</p>
+      <a href="/contact" class="inline-block bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-8 rounded-lg transition-colors text-lg">
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+</Layout>

@@ -1,0 +1,305 @@
+[
+  {
+    "id": "m1-certified-u-shape-seating-frame",
+    "name": "M1 Certified U-Shape Seating Frame",
+    "price": 1849.00,
+    "compareAtPrice": 1999.00,
+    "category": ["Frames"],
+    "tags": ["Frame", "Frames"],
+    "description": "Transform your campervan interior with our exclusive M1 Certified U-Shape Seating Frame, designed for safety, comfort, and versatility. The only M1 certified U-shape frame on the market, engineered for both Short Wheelbase and Long Wheelbase campervans.",
+    "features": [
+      "ECE 14.09 M1 certified safety",
+      "Integrated 3-point seatbelts and ISOFIX points",
+      "Laser-cut, precision-engineered steel construction",
+      "Textured black powder-coated finish",
+      "Quick conversion from seating to sleeping",
+      "2 cup holders and 2 USB points included",
+      "Compatible with storage units, cushion boards, and aluminium panels"
+    ],
+    "specs": {
+      "Max Frame Width": "158 cm",
+      "Inner Arch Width": "123 cm",
+      "Max Frame Length": "193.5 cm",
+      "Sleeping Length": "170 cm",
+      "Max Rear Height": "107 cm",
+      "Seating Height": "41 cm"
+    },
+    "variants": [
+      { "title": "Black / Long Wheel Base", "price": 1849.00 },
+      { "title": "Black / Short Wheel Base", "price": 1849.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-shaped-frame-m1-certified-1.jpg",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-shaped-frame-m1-certified-3.jpg",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-shaped-frame-m1-certified-2.jpg"
+    ]
+  },
+  {
+    "id": "aluminium-overhead-locker",
+    "name": "Aluminium Overhead Locker",
+    "price": 399.00,
+    "compareAtPrice": null,
+    "category": ["Kitchens"],
+    "tags": ["Kitchens", "Lockers"],
+    "description": "Add valuable storage space to your campervan with our Aluminium Overhead Locker, designed specifically for use above kitchen pods. Crafted from lightweight, high-quality aluminium, laser-cut and folded for precision and strength, finished with a durable textured black powder coat.",
+    "features": [
+      "High-quality laser-cut and folded aluminium construction",
+      "Blum soft-close hinges for smooth, quiet operation",
+      "Secure latch keeps door shut during travel",
+      "LED water-resistant under-lighting",
+      "Textured black powder-coated finish",
+      "Available in Short and Long Wheel Base"
+    ],
+    "specs": {
+      "Material": "Laser-cut and folded aluminium",
+      "Finish": "Textured black powder coat",
+      "Length (SWB)": "105 cm",
+      "Length (LWB)": "133 cm",
+      "Depth": "17.5 cm",
+      "Height": "12.5 cm",
+      "LED Lighting": "Integrated water-resistant"
+    },
+    "variants": [
+      { "title": "Short Wheel Base", "price": 399.00 },
+      { "title": "Long Wheel Base", "price": 399.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-overhead-lockers-1_375c00dd-d2ec-4522-a904-21c7396ea0fb.jpg?v=1727788846",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-overhead-lockers-2.jpg?v=1727788846",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-overhead-lockers-3.jpg?v=1727788846",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-overhead-lockers-4.jpg?v=1727788846"
+    ]
+  },
+  {
+    "id": "kitchen-pod-campervan-package",
+    "name": "Kitchen Pod Campervan Package",
+    "price": 1249.00,
+    "compareAtPrice": null,
+    "category": ["Kitchens"],
+    "tags": ["Kitchen Pod", "Kitchens"],
+    "description": "Experience the ultimate campervan kitchen setup with our Kitchen Pod Package, available in both SWB and LWB versions. Includes a fully equipped kitchen pod, overhead storage locker, and the innovative Sequoia table leg system with 18mm solid oak worktop and integrated LED lighting.",
+    "features": [
+      "Comprehensive kitchen solution with pod, overhead locker, and table system",
+      "CNC-cut poplar plywood construction",
+      "Blum soft-close hinges and Legrabox drawer systems with push-to-open",
+      "18mm solid oak worktop with integrated LED lighting",
+      "Sequoia oak table leg system with matching solid oak table",
+      "Space for twin burner hob",
+      "Available in SWB and LWB versions"
+    ],
+    "specs": {
+      "Material": "CNC-cut poplar plywood",
+      "Worktop": "18mm solid oak",
+      "Hinges": "Blum soft-close",
+      "Drawers": "Blum Legrabox, push-to-open",
+      "Table": "Sequoia system with solid oak"
+    },
+    "variants": [
+      { "title": "Default Title", "price": 1249.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-kitchen-pods-swb-lwb-1_d928b3c7-28ce-4383-b4c4-39bdd874f1c4.jpg?v=1728465270",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-kitchen-pods-swb-lwb-3.jpg?v=1727788010",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-kitchen-pods-swb-lwb-4.jpg?v=1727788010",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-kitchen-pods-swb-lwb-5.jpg?v=1727788010",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-kitchen-pods-swb-lwb-6.jpg?v=1727788010",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-kitchen-pods-swb-lwb-7.jpg?v=1727788010",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/campervan-kitchen-pods-swb-lwb-8.jpg?v=1727788010"
+    ]
+  },
+  {
+    "id": "central-under-bed-pull-out-drawer-storage",
+    "name": "Central Under Bed Pull-Out Drawer Storage",
+    "price": 399.00,
+    "compareAtPrice": null,
+    "category": ["Frames"],
+    "tags": ["Drawer Storage", "Frames"],
+    "description": "Optimise your campervan's storage with our Central Under Bed Pull-Out Drawer Storage. Built from high-quality laser-cut and folded aluminium with a large storage capacity of over 200 litres. Front panel crafted from 12mm CNC-cut phenolic plywood.",
+    "features": [
+      "High-quality laser-cut and folded aluminium construction",
+      "Over 200 litres of storage capacity",
+      "Heavy-duty lockable runners",
+      "Textured black powder-coated finish",
+      "CNC-cut 12mm phenolic plywood front panel",
+      "Supports up to 220kg"
+    ],
+    "specs": {
+      "Material": "Laser-cut and folded aluminium",
+      "Finish": "Textured black powder coat",
+      "Front Panel": "CNC-cut 12mm phenolic plywood",
+      "Storage Capacity": "200+ litres",
+      "Runner Load": "220 kg maximum"
+    },
+    "variants": [
+      { "title": "Textured Black Powder Coat", "price": 399.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-frame-underbed-storage-1_6a712a1b-fba7-4823-bf75-2a329449a43f.jpg?v=1727787261",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-frame-underbed-storage-2.jpg?v=1727787261",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-frame-underbed-storage-4.jpg?v=1727787261",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-frame-underbed-storage-3.jpg?v=1727787261"
+    ]
+  },
+  {
+    "id": "rear-pull-out-drawer-storage-system",
+    "name": "Rear Pull-Out Drawer Storage System",
+    "price": 449.00,
+    "compareAtPrice": null,
+    "category": ["Frames"],
+    "tags": ["Drawer Storage", "Frames"],
+    "description": "Keep your campervan organised and clutter-free with our Rear Pull-Out Drawer Storage System. Over 330 litres of space, featuring high-quality laser-cut aluminium construction with heavy-duty runners supporting up to 220kg.",
+    "features": [
+      "Over 330 litres of storage space",
+      "Ultra heavy-duty runners supporting up to 220kg",
+      "Laser-cut and folded aluminium construction",
+      "Textured black powder-coated finish",
+      "CNC-cut 12mm phenolic plywood front panel and lid",
+      "Smooth gliding drawer action"
+    ],
+    "specs": {
+      "Material": "Laser-cut and folded aluminium",
+      "Finish": "Textured black powder coat",
+      "Front Panel": "CNC-cut 12mm phenolic plywood",
+      "Storage Capacity": "330+ litres",
+      "Runner Load": "220 kg maximum"
+    },
+    "variants": [
+      { "title": "Textured Black Powder Coat", "price": 449.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/capervan-rear-pull-out-drawer-1.jpg?v=1727779333",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/capervan-rear-pull-out-drawer-2.jpg?v=1727786336",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/capervan-rear-pull-out-drawer-3.jpg?v=1727786336",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/read-drawer-kitchen-panel-pod-pullout-3_8e6119ca-725e-49d4-bc44-e5bf6b2d41a7.jpg?v=1727786336"
+    ]
+  },
+  {
+    "id": "rear-pull-out-kitchen-pod",
+    "name": "Rear Pull-Out Kitchen Pod",
+    "price": 649.00,
+    "compareAtPrice": null,
+    "category": ["Frames", "Kitchens"],
+    "tags": ["Frames", "Kitchen Pod", "Kitchens"],
+    "description": "Create the perfect compact kitchen setup with our Rear Pull-Out Kitchen Pod, designed to accommodate a twin burner hob (not included). Made from high-quality laser-cut aluminium with over 300 litres of storage and smooth heavy-duty runners supporting up to 220kg.",
+    "features": [
+      "Over 300 litres of storage capacity",
+      "Heavy-duty runners supporting up to 220kg",
+      "Custom-fit for twin burner hob (not included)",
+      "Laser-cut and folded aluminium construction",
+      "Textured black powder-coated finish",
+      "Easy pull-out access design"
+    ],
+    "specs": {
+      "Material": "Laser-cut and folded aluminium",
+      "Finish": "Textured black powder coat",
+      "Storage Capacity": "300+ litres",
+      "Runner Load": "220 kg maximum",
+      "Hob Compatibility": "Twin burner (not included)"
+    },
+    "variants": [
+      { "title": "Textured Black Powder Coat", "price": 649.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/read-drawer-kitchen-panel-pod-pullout-1_cedbe867-9802-4843-a04f-3e91019df038.jpg?v=1727785593",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/read-drawer-kitchen-panel-pod-pullout-2.jpg?v=1727785593",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/read-drawer-kitchen-panel-pod-pullout-3.jpg?v=1727785593"
+    ]
+  },
+  {
+    "id": "powder-coated-aluminium-front-facing-panels",
+    "name": "Powder Coated Aluminium Front Facing Panels",
+    "price": 299.00,
+    "compareAtPrice": null,
+    "category": ["Frames"],
+    "tags": ["Aluminium Panels", "Frames"],
+    "description": "Add a sleek, modern finish to your campervan's interior with our Powder Coated Aluminium Front Facing Panels. Designed to perfectly fit the front face of our M1 Certified U-Shape Seating Frame, providing a seamless and professional look with additional protection and durability.",
+    "features": [
+      "Laser-cut and folded aluminium for precision and strength",
+      "Textured black powder-coated finish resists scratches and wear",
+      "Seamless integration with M1 Certified U-Shape Seating Frame",
+      "Lightweight yet robust construction",
+      "Professional, stylish finish"
+    ],
+    "specs": {
+      "Material": "Laser-cut and folded aluminium",
+      "Finish": "Textured black powder coat",
+      "Compatibility": "M1 Certified U-Shape Seating Frame"
+    },
+    "variants": [
+      { "title": "Textured Black Powder Coat", "price": 299.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/aluminium-panels-1_34f907dd-9eb3-48ee-abd8-20efaf79da66.jpg?v=1727784822",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/aluminium-panels-2_dfe525cd-e4c5-4a46-ac54-95f59a819d5a.jpg?v=1727784822",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/aluminium-panels-3_a21c369a-ecb9-4859-9beb-5a74a260ec80.jpg?v=1727784822",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/aluminium-panels-4_3c7251bf-ba08-468f-82a5-23cb2ec67363.jpg?v=1727784823"
+    ]
+  },
+  {
+    "id": "full-upholstery-kit-rear-seating-only",
+    "name": "Full Upholstery Kit \u2013 Rear Seating Only",
+    "price": 1099.00,
+    "compareAtPrice": null,
+    "category": ["Upholstery"],
+    "tags": ["Upholstery", "Upholstery Kit"],
+    "description": "Transform your campervan's rear seating area with our Full Upholstery Kit, offering exceptional comfort, style, and durability. Includes CNC-cut 12mm birch plywood boards, dual density shaped foam, and professionally trimmed fabric covers with over 100 colour and pattern choices.",
+    "features": [
+      "Complete upholstery solution: boards, foam, and fabric covers",
+      "CNC-cut 12mm birch plywood baseboards",
+      "Dual density foam: 25mm soft blue + 25mm firm chip foam",
+      "Over 100 colour and pattern choices",
+      "Professionally trimmed fabric covers",
+      "Custom fit for M1 Certified U-Shape Seating Frame",
+      "Made to order for a bespoke solution"
+    ],
+    "specs": {
+      "Board": "12mm birch plywood, CNC-cut",
+      "Foam": "Dual density (25mm soft + 25mm firm)",
+      "Fabrics": "100+ colours and patterns",
+      "Compatibility": "M1 Certified U-Shape Seating Frame",
+      "Made To Order": "Yes"
+    },
+    "variants": [
+      { "title": "Black", "price": 1099.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/upholstery-kits-campervan-furniture-1_703402f9-dfdc-4e6f-999e-9de3e847d172.jpg?v=1727783633",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/cushion-boards-cnc-12mm-4_da03f20e-c7e7-4120-87f9-74cdfaacecdc.jpg?v=1727783633",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/upholstery-kits-campervan-furniture-3.jpg?v=1727783633",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-shaped-frame-m1-certified-2_c096dad3-6a65-4297-872c-a1998747a079.jpg?v=1727783633"
+    ]
+  },
+  {
+    "id": "cushion-boards-dual-density-foam",
+    "name": "Cushion Boards & Dual Density Foam",
+    "price": 299.00,
+    "compareAtPrice": null,
+    "category": ["Upholstery"],
+    "tags": ["Cushion Boards", "Upholstery"],
+    "description": "Upgrade your campervan's seating comfort with our 12mm CNC Cushion Boards and Dual Density Shaped Foam. Each cushion board is made from high-quality 12mm birch plywood, CNC-cut for a precise fit. Available in premium fabrics including the Christina Marrone range and genuine VW fabrics.",
+    "features": [
+      "Precision-cut 12mm birch plywood cushion boards",
+      "25mm soft blue foam for initial comfort",
+      "25mm firm chip foam for structural support",
+      "Professionally upholstered in premium fabrics",
+      "Available in Christina Marrone range and genuine VW fabrics",
+      "Custom fit for M1 Certified U-Shape Seating Frame"
+    ],
+    "specs": {
+      "Board Thickness": "12mm birch plywood",
+      "Foam Layer 1": "25mm soft blue foam",
+      "Foam Layer 2": "25mm firm chip foam",
+      "Overall Cushion Depth": "65mm",
+      "Compatibility": "M1 Certified U-Shape Seating Frame",
+      "Fabric Options": "Christina Marrone, VW fabrics, others"
+    },
+    "variants": [
+      { "title": "Black", "price": 299.00 }
+    ],
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/cushion-boards-cnc-12mm-1.jpg?v=1727779334",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/cushion-boards-cnc-12mm-2.jpg?v=1727782372",
+      "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/cushion-boards-cnc-12mm-3.jpg?v=1727782371"
+    ]
+  }
+]

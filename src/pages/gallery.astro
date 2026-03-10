@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { promises as fs } from 'fs';
+import path from 'path';
+
+// Load gallery images from the public/images/gallery folder
+// Just drop new images into this folder and they'll appear automatically!
+let galleryImages: string[] = [];
+
+try {
+  const galleryDir = path.join(process.cwd(), 'public/images/gallery');
+  const files = await fs.readdir(galleryDir);
+  galleryImages = files
+    .filter(f => /\.(jpg|jpeg|png|webp|gif|avif)$/i.test(f))
+    .sort()
+    .map(f => `/images/gallery/${f}`);
+} catch {
+  // Gallery folder may not exist yet or be empty
+}
+
+// Also pull product images as gallery content if no gallery images exist
+import products from '../data/products.json';
+const productImages = products.flatMap(p => p.images);
+const allImages = galleryImages.length > 0 ? galleryImages : productImages;
+---
+
+<Layout title="Photo Gallery">
+
+  <!-- Header -->
+  <section class="bg-roam-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Photo Gallery</h1>
+      <p class="text-gray-300 max-w-2xl mx-auto">Browse our gallery of campervan builds, product installations, and customer conversions.</p>
+      <p class="text-roam-orange font-heading font-semibold mt-4">{allImages.length} Photos</p>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="py-16 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      {galleryImages.length === 0 && (
+        <div class="text-center text-gray-500 mb-8 bg-white rounded-xl p-4 border border-gray-200">
+          <p class="text-sm">Gallery images showing from product catalogue. Add your own photos to <code class="bg-gray-100 px-2 py-1 rounded text-xs">public/images/gallery/</code> folder.</p>
+        </div>
+      )}
+
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        {allImages.map((img, i) => (
+          <div class="break-inside-avoid">
+            <button
+              class="gallery-item w-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer group"
+              data-image={img}
+              data-index={i}
+            >
+              <img
+                src={img}
+                alt={`Gallery image ${i + 1}`}
+                class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[300] hidden bg-black/90 flex items-center justify-center">
+    <button id="lightbox-close" class="absolute top-4 right-4 text-white hover:text-roam-orange z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+    </button>
+    <button id="lightbox-prev" class="absolute left-4 text-white hover:text-roam-orange z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+    </button>
+    <button id="lightbox-next" class="absolute right-4 text-white hover:text-roam-orange z-10">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+    </button>
+    <img id="lightbox-image" src="" alt="Gallery preview" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg" />
+    <div id="lightbox-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/70 text-sm font-heading"></div>
+  </div>
+
+</Layout>
+
+<script>
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+  const images = Array.from(galleryItems).map(item => (item as HTMLElement).dataset.image || '');
+  let currentIndex = 0;
+
+  const lightboxCounter = document.getElementById('lightbox-counter');
+
+  function showImage(index: number) {
+    currentIndex = ((index % images.length) + images.length) % images.length;
+    if (lightboxImage) lightboxImage.src = images[currentIndex];
+    if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+  }
+
+  function openLightbox(index: number) {
+    showImage(index);
+    lightbox?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox?.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  galleryItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const index = parseInt((item as HTMLElement).dataset.index || '0');
+      openLightbox(index);
+    });
+  });
+
+  document.getElementById('lightbox-close')?.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev')?.addEventListener('click', () => showImage(currentIndex - 1));
+  document.getElementById('lightbox-next')?.addEventListener('click', () => showImage(currentIndex + 1));
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (lightbox?.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+  });
+</script>

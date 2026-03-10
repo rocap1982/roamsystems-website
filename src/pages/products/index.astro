@@ -1,0 +1,186 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import products from '../../data/products.json';
+
+const categories = ['All', 'Frames', 'Upholstery', 'Kitchens'];
+---
+
+<Layout title="All Furniture">
+
+  <!-- Page Header -->
+  <section class="bg-roam-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Our Furniture</h1>
+      <p class="text-gray-300 max-w-2xl mx-auto">Browse our complete range of premium campervan furniture. Add items to your basket and send us an enquiry.</p>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="bg-white border-b sticky top-[72px] z-40">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div class="flex flex-wrap items-center gap-3">
+        <span class="text-sm font-semibold text-gray-500 uppercase tracking-wider">Filter:</span>
+        {categories.map(cat => (
+          <button
+            class="filter-btn px-4 py-2 rounded-full text-sm font-semibold border border-gray-300 hover:border-roam-orange hover:text-roam-orange transition-colors data-[active]:bg-roam-orange data-[active]:text-white data-[active]:border-roam-orange"
+            data-category={cat}
+          >
+            {cat}
+          </button>
+        ))}
+        <div class="ml-auto flex items-center gap-2">
+          <label for="sort" class="text-sm text-gray-500">Sort:</label>
+          <select id="sort" class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name">Name: A-Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="py-12 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {products.map((product) => (
+          <div
+            class="product-card group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+            data-categories={JSON.stringify(product.category)}
+            data-price={product.price}
+            data-name={product.name}
+          >
+            <a href={`/products/${product.id}`} class="block">
+              <div class="aspect-[4/3] overflow-hidden relative">
+                <img
+                  src={product.images[0]}
+                  alt={product.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                {product.compareAtPrice && (
+                  <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">SALE</span>
+                )}
+              </div>
+              <div class="p-6">
+                <h3 class="font-heading font-bold text-lg mb-2 group-hover:text-roam-orange transition-colors">{product.name}</h3>
+                <p class="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
+                <div class="flex items-center gap-3">
+                  <span class="text-roam-orange font-heading font-bold text-xl">£{product.price.toFixed(2)}</span>
+                  {product.compareAtPrice && (
+                    <span class="text-gray-400 line-through text-sm">£{product.compareAtPrice.toFixed(2)}</span>
+                  )}
+                </div>
+              </div>
+            </a>
+            <div class="px-6 pb-6">
+              <button
+                class="add-to-cart-btn w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors"
+                data-product-id={product.id}
+                data-product-name={product.name}
+                data-product-price={product.price}
+                data-product-image={product.images[0]}
+                data-product-variant={product.variants[0].title}
+              >
+                Add to Basket
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p id="no-results" class="hidden text-center text-gray-500 py-12 text-lg">No products found in this category.</p>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productCards = document.querySelectorAll('.product-card');
+  const noResults = document.getElementById('no-results');
+  const sortSelect = document.getElementById('sort') as HTMLSelectElement;
+  const grid = document.getElementById('products-grid');
+
+  let activeCategory = 'All';
+
+  // Check URL params for initial category
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlCategory = urlParams.get('category');
+  if (urlCategory && ['Frames', 'Upholstery', 'Kitchens'].includes(urlCategory)) {
+    activeCategory = urlCategory;
+  }
+
+  function setActiveFilter(cat: string) {
+    activeCategory = cat;
+    filterBtns.forEach(btn => {
+      if (btn.getAttribute('data-category') === cat) {
+        btn.setAttribute('data-active', '');
+      } else {
+        btn.removeAttribute('data-active');
+      }
+    });
+    applyFilters();
+  }
+
+  function applyFilters() {
+    let visibleCount = 0;
+    productCards.forEach(card => {
+      const categories = JSON.parse(card.getAttribute('data-categories') || '[]');
+      const show = activeCategory === 'All' || categories.includes(activeCategory);
+      (card as HTMLElement).style.display = show ? '' : 'none';
+      if (show) visibleCount++;
+    });
+    if (noResults) {
+      noResults.classList.toggle('hidden', visibleCount > 0);
+    }
+  }
+
+  function sortProducts() {
+    if (!grid) return;
+    const cards = Array.from(productCards);
+    const sortVal = sortSelect?.value || 'featured';
+
+    cards.sort((a, b) => {
+      const priceA = parseFloat(a.getAttribute('data-price') || '0');
+      const priceB = parseFloat(b.getAttribute('data-price') || '0');
+      const nameA = a.getAttribute('data-name') || '';
+      const nameB = b.getAttribute('data-name') || '';
+
+      switch (sortVal) {
+        case 'price-low': return priceA - priceB;
+        case 'price-high': return priceB - priceA;
+        case 'name': return nameA.localeCompare(nameB);
+        default: return 0;
+      }
+    });
+
+    cards.forEach(card => grid.appendChild(card));
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => setActiveFilter(btn.getAttribute('data-category') || 'All'));
+  });
+
+  sortSelect?.addEventListener('change', sortProducts);
+
+  // Add to cart buttons
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const el = btn as HTMLElement;
+      (window as any).roamCart.add({
+        id: el.dataset.productId,
+        name: el.dataset.productName,
+        price: parseFloat(el.dataset.productPrice || '0'),
+        variant: el.dataset.productVariant,
+        image: el.dataset.productImage
+      });
+    });
+  });
+
+  // Set initial state
+  setActiveFilter(activeCategory);
+</script>
