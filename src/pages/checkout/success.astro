@@ -1,18 +1,127 @@
 ---
+export const prerender = false;
+
 import Layout from '../../layouts/Layout.astro';
+import Stripe from 'stripe';
+
+const sessionId = Astro.url.searchParams.get('session_id');
+let session: Stripe.Checkout.Session | null = null;
+let lineItems: Stripe.LineItem[] = [];
+
+if (sessionId && process.env.STRIPE_SECRET_KEY) {
+  try {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+    session = await stripe.checkout.sessions.retrieve(sessionId, {
+      expand: ['line_items', 'shipping_cost'],
+    });
+    lineItems = session.line_items?.data ?? [];
+  } catch (err) {
+    console.error('Failed to retrieve checkout session:', err);
+  }
+}
+
+const hasOrder = session && session.payment_status === 'paid';
+const shipping = session?.shipping_details;
+const customerEmail = session?.customer_details?.email;
+const orderRef = session?.payment_intent
+  ? String(session.payment_intent).slice(-8).toUpperCase()
+  : session?.id?.slice(-8).toUpperCase();
+
+function formatCurrency(amount: number | null | undefined): string {
+  if (amount == null) return '—';
+  return `£${(amount / 100).toFixed(2)}`;
+}
 ---
 
 <Layout title="Order Confirmed">
   <section class="py-20">
-    <div class="max-w-2xl mx-auto px-4 text-center">
-      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-        </svg>
+    <div class="max-w-2xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h1 class="font-heading text-3xl md:text-4xl font-bold mb-4">Thank You for Your Order!</h1>
+        {hasOrder ? (
+          <p class="text-gray-600 text-lg">Your payment has been received. A confirmation email will be sent to <strong>{customerEmail}</strong>.</p>
+        ) : (
+          <p class="text-gray-600 text-lg">Your payment has been received. We'll send you a confirmation email shortly with your order details and delivery information.</p>
+        )}
       </div>
-      <h1 class="font-heading text-3xl md:text-4xl font-bold mb-4">Thank You for Your Order!</h1>
-      <p class="text-gray-600 text-lg mb-8">Your payment has been received. We'll send you a confirmation email shortly with your order details and delivery information.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+
+      {hasOrder && (
+        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-8">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="font-heading text-xl font-bold">Order Details</h2>
+            <span class="text-sm text-gray-500">Ref: {orderRef}</span>
+          </div>
+
+          {/* Line items */}
+          <div class="border-b border-gray-100 pb-4 mb-4">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-left text-gray-500 border-b border-gray-100">
+                  <th class="pb-2 font-medium">Item</th>
+                  <th class="pb-2 font-medium text-center">Qty</th>
+                  <th class="pb-2 font-medium text-right">Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {lineItems.map((item) => (
+                  <tr class="border-b border-gray-50">
+                    <td class="py-2">{item.description}</td>
+                    <td class="py-2 text-center">{item.quantity}</td>
+                    <td class="py-2 text-right">{formatCurrency(item.amount_total)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Totals */}
+          <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-600">Subtotal</span>
+              <span>{formatCurrency(session!.amount_subtotal)}</span>
+            </div>
+            {session!.total_details?.amount_tax != null && session!.total_details.amount_tax > 0 && (
+              <div class="flex justify-between">
+                <span class="text-gray-600">VAT (20%)</span>
+                <span>{formatCurrency(session!.total_details.amount_tax)}</span>
+              </div>
+            )}
+            {session!.shipping_cost && (
+              <div class="flex justify-between">
+                <span class="text-gray-600">Shipping</span>
+                <span>{formatCurrency(session!.shipping_cost.amount_total)}</span>
+              </div>
+            )}
+            <div class="flex justify-between font-bold text-base pt-2 border-t border-gray-200">
+              <span>Total</span>
+              <span>{formatCurrency(session!.amount_total)}</span>
+            </div>
+          </div>
+
+          {/* Shipping address */}
+          {shipping?.address && (
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <h3 class="font-heading font-semibold text-sm text-gray-500 mb-2">Shipping Address</h3>
+              <p class="text-sm leading-relaxed">
+                {shipping.name && <span class="block">{shipping.name}</span>}
+                {shipping.address.line1 && <span class="block">{shipping.address.line1}</span>}
+                {shipping.address.line2 && <span class="block">{shipping.address.line2}</span>}
+                {shipping.address.city && <span class="block">{shipping.address.city}</span>}
+                {shipping.address.state && <span class="block">{shipping.address.state}</span>}
+                {shipping.address.postal_code && <span class="block">{shipping.address.postal_code}</span>}
+                {shipping.address.country && <span class="block">{shipping.address.country}</span>}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center text-center">
         <a href="/products" class="bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-8 rounded-lg transition-colors text-lg">
           Continue Shopping
         </a>

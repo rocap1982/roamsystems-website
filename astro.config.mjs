@@ -8,8 +8,10 @@ export default defineConfig({
   adapter: node({ mode: 'standalone' }),
   vite: {
     plugins: [tailwindcss()],
-    ssr: {
-      noExternal: ['resend']
+    build: {
+      rollupOptions: {
+        external: ['resend']
+      }
     }
   }
 });

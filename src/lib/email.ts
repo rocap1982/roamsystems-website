@@ -1,7 +1,13 @@
-import { Resend } from 'resend';
 import type Stripe from 'stripe';
 
-const resendApiKey = import.meta.env.RESEND_API_KEY;
+async function getResend() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error('RESEND_API_KEY is not set');
+  }
+  const { Resend } = await import('resend');
+  return new Resend(apiKey);
+}
 
 function formatCurrency(amount: number | null | undefined): string {
   if (amount == null) return '£0.00';
@@ -123,11 +129,6 @@ export async function sendConfirmationEmail(
   session: Stripe.Checkout.Session,
   eventId: string
 ): Promise<void> {
-  if (!resendApiKey) {
-    console.error('RESEND_API_KEY is not set — skipping confirmation email');
-    return;
-  }
-
   const customerEmail = session.customer_details?.email;
   if (!customerEmail) {
     console.error('No customer email found on session — skipping confirmation email');
@@ -138,7 +139,7 @@ export async function sendConfirmationEmail(
     ? String(session.payment_intent).slice(-8).toUpperCase()
     : session.id?.slice(-8).toUpperCase() ?? 'N/A';
 
-  const resend = new Resend(resendApiKey);
+  const resend = await getResend();
 
   await resend.emails.send({
     from: 'Roam Systems <orders@roamsystems.co.uk>',
@@ -224,16 +225,12 @@ function buildFormEmailHtml(data: FormEmailData): string {
 }
 
 export async function sendFormEmail(data: FormEmailData): Promise<void> {
-  if (!resendApiKey) {
-    throw new Error('RESEND_API_KEY is not set');
-  }
-
   const isEnquiry = data.type === 'enquiry';
   const subject = isEnquiry
     ? 'New Basket Enquiry from ROAM Systems Website'
     : `New Contact from ROAM Systems Website — ${data.subject ?? 'General'}`;
 
-  const resend = new Resend(resendApiKey);
+  const resend = await getResend();
 
   await resend.emails.send({
     from: 'Roam Systems <website@roamsystems.co.uk>',
