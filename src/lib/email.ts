@@ -1,12 +1,47 @@
 import type Stripe from 'stripe';
 
-async function getResend() {
+const RESEND_API_URL = 'https://api.resend.com/emails';
+
+interface ResendPayload {
+  from: string;
+  to: string | string[];
+  subject: string;
+  html: string;
+  reply_to?: string;
+  bcc?: string | string[];
+  headers?: Record<string, string>;
+  tags?: Array<{ name: string; value: string }>;
+}
+
+interface ResendResponse {
+  id?: string;
+  statusCode?: number;
+  message?: string;
+  name?: string;
+}
+
+async function sendViaResend(payload: ResendPayload): Promise<string> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     throw new Error('RESEND_API_KEY is not set');
   }
-  const { Resend } = await import('resend');
-  return new Resend(apiKey);
+
+  const res = await fetch(RESEND_API_URL, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const data: ResendResponse = await res.json();
+
+  if (!res.ok) {
+    throw new Error(`Resend API ${res.status}: ${data.message ?? JSON.stringify(data)}`);
+  }
+
+  return data.id ?? 'unknown';
 }
 
 function formatCurrency(amount: number | null | undefined): string {
@@ -139,24 +174,18 @@ export async function sendConfirmationEmail(
     ? String(session.payment_intent).slice(-8).toUpperCase()
     : session.id?.slice(-8).toUpperCase() ?? 'N/A';
 
-  const resend = await getResend();
-
-  await resend.emails.send({
+  const emailId = await sendViaResend({
     from: 'Roam Systems <orders@roamsystems.co.uk>',
-    replyTo: 'sales@roamsystems.co.uk',
+    reply_to: 'sales@roamsystems.co.uk',
     to: customerEmail,
     bcc: 'rob@romarkengineering.com',
     subject: `Order Confirmed — Roam Systems ${orderRef}`,
     html: buildEmailHtml(session),
-    headers: {
-      'X-Entity-Ref-ID': eventId,
-    },
-    tags: [
-      { name: 'category', value: 'order-confirmation' },
-    ],
+    headers: { 'X-Entity-Ref-ID': eventId },
+    tags: [{ name: 'category', value: 'order-confirmation' }],
   });
 
-  console.log(`Confirmation email sent for session ${session.id} (event: ${eventId})`);
+  console.log(`Confirmation email sent for session ${session.id} (event: ${eventId}, id: ${emailId})`);
 }
 
 // --- Form submission emails ---
@@ -232,23 +261,14 @@ export async function sendFormEmail(data: FormEmailData): Promise<void> {
 
   console.log(`[contact] Sending ${data.type} email from ${data.email}`);
 
-  const resend = await getResend();
-
-  const result = await resend.emails.send({
+  const emailId = await sendViaResend({
     from: 'Roam Systems <website@roamsystems.co.uk>',
-    replyTo: data.email,
+    reply_to: data.email,
     to: 'sales@roamsystems.co.uk',
     subject,
     html: buildFormEmailHtml(data),
-    tags: [
-      { name: 'category', value: isEnquiry ? 'basket-enquiry' : 'contact-form' },
-    ],
+    tags: [{ name: 'category', value: isEnquiry ? 'basket-enquiry' : 'contact-form' }],
   });
 
-  if (result.error) {
-    console.error('[contact] Resend API error:', JSON.stringify(result.error));
-    throw new Error(`Resend API error: ${result.error.message}`);
-  }
-
-  console.log(`[contact] Email sent successfully, id: ${result.data?.id}`);
+  console.log(`[contact] Email sent successfully, id: ${emailId}`);
 }
