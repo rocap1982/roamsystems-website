@@ -50,7 +50,10 @@ export const POST: APIRoute = async ({ request }) => {
     });
   } catch (err) {
     const msg = err instanceof Error ? err.message : 'Unknown error';
+    const stack = err instanceof Error ? err.stack : '';
     console.error('Failed to send form email:', msg);
+    console.error('Stack:', stack);
+    console.error('RESEND_API_KEY set:', !!process.env.RESEND_API_KEY);
     return new Response(JSON.stringify({ error: 'Failed to send message' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },

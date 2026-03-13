@@ -230,9 +230,11 @@ export async function sendFormEmail(data: FormEmailData): Promise<void> {
     ? 'New Basket Enquiry from ROAM Systems Website'
     : `New Contact from ROAM Systems Website — ${data.subject ?? 'General'}`;
 
+  console.log(`[contact] Sending ${data.type} email from ${data.email}`);
+
   const resend = await getResend();
 
-  await resend.emails.send({
+  const result = await resend.emails.send({
     from: 'Roam Systems <website@roamsystems.co.uk>',
     replyTo: data.email,
     to: 'sales@roamsystems.co.uk',
@@ -243,5 +245,10 @@ export async function sendFormEmail(data: FormEmailData): Promise<void> {
     ],
   });
 
-  console.log(`Form email sent (${data.type}) from ${data.email}`);
+  if (result.error) {
+    console.error('[contact] Resend API error:', JSON.stringify(result.error));
+    throw new Error(`Resend API error: ${result.error.message}`);
+  }
+
+  console.log(`[contact] Email sent successfully, id: ${result.data?.id}`);
 }
