@@ -99,10 +99,21 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
             <span>Total:</span>
             <span id="cart-total">£0.00</span>
           </div>
-          <button id="cart-send-enquiry" class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors text-lg">
-            Send Enquiry
-          </button>
-          <p class="text-xs text-gray-500 text-center mt-2">We'll contact you to arrange payment</p>
+          <div id="cart-checkout-section">
+            <button id="cart-checkout-btn" class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors text-lg mb-2">
+              Checkout &mdash; Pay Now
+            </button>
+            <p class="text-xs text-gray-500 text-center mb-3">Secure checkout powered by Stripe</p>
+            <button id="cart-send-enquiry" class="w-full border border-gray-300 text-gray-700 hover:border-roam-orange hover:text-roam-orange font-heading font-semibold py-2 px-6 rounded-lg transition-colors text-sm">
+              Or Send Enquiry Instead
+            </button>
+          </div>
+          <div id="cart-enquiry-section" class="hidden">
+            <button id="cart-send-enquiry-primary" class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors text-lg">
+              Send Enquiry
+            </button>
+            <p id="cart-enquiry-hint" class="text-xs text-gray-500 text-center mt-2">Your basket contains made-to-order items &mdash; we'll contact you to arrange details and payment</p>
+          </div>
         </div>
       </div>
     </div>
@@ -121,7 +132,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
                 </svg>
               </button>
             </div>
-            <p class="text-gray-600 mb-6">Enter your details below and we'll get back to you to arrange payment and delivery.</p>
+            <p class="text-gray-600 mb-6">Enter your details below and we'll get back to you to discuss your requirements, arrange payment, and organise delivery.</p>
             <form id="enquiry-form" action="https://formsubmit.co/sales@roamsystems.co.uk" method="POST">
               <input type="hidden" name="_subject" value="New Basket Enquiry from ROAM Systems Website" />
               <input type="hidden" name="_captcha" value="false" />
@@ -240,7 +251,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
           this.updateUI();
         },
 
-        add(product: {id: string, name: string, price: number, variant: string, image: string}) {
+        add(product: {id: string, name: string, price: number, variant: string, image: string, stripePriceId?: string | null}) {
           const existing = this.items.find((item: any) => item.id === product.id && item.variant === product.variant);
           if (existing) {
             existing.qty += 1;
@@ -249,6 +260,13 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
           }
           this.save();
           this.openSidebar();
+        },
+
+        // Checkout is only available when every item has a real Stripe Price ID.
+        // Rejects null (made-to-order), undefined (stale cart items), and
+        // 'price_PLACEHOLDER' (products not yet configured in Stripe).
+        canCheckout() {
+          return this.items.length > 0 && this.items.every((item: any) => item.stripePriceId && item.stripePriceId !== 'price_PLACEHOLDER');
         },
 
         remove(index: number) {
@@ -294,6 +312,29 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
             } else {
               footerEl.classList.remove('hidden');
               totalEl.textContent = `£${this.getTotal().toFixed(2)}`;
+
+              // Toggle checkout vs enquiry sections
+              const checkoutSection = document.getElementById('cart-checkout-section');
+              const enquirySection = document.getElementById('cart-enquiry-section');
+              const enquiryHint = document.getElementById('cart-enquiry-hint');
+              if (checkoutSection && enquirySection) {
+                const canPay = this.canCheckout();
+                checkoutSection.classList.toggle('hidden', !canPay);
+                enquirySection.classList.toggle('hidden', canPay);
+
+                // Show contextual hint when checkout isn't available
+                if (!canPay && enquiryHint) {
+                  const hasStale = this.items.some((item: any) => !('stripePriceId' in item));
+                  const hasMadeToOrder = this.items.some((item: any) => 'stripePriceId' in item && !item.stripePriceId);
+                  if (hasStale && hasMadeToOrder) {
+                    enquiryHint.textContent = 'Your basket contains made-to-order items and items that need to be re-added for checkout';
+                  } else if (hasStale) {
+                    enquiryHint.textContent = 'Some items in your basket were added before checkout was available \u2014 please re-add them to pay online';
+                  } else {
+                    enquiryHint.textContent = "Your basket contains made-to-order items \u2014 we'll contact you to arrange details and payment";
+                  }
+                }
+              }
 
               itemsEl.innerHTML = this.items.map((item: any, i: number) => `
                 <div class="flex gap-4 py-4 border-b">
@@ -342,8 +383,41 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
         document.getElementById('mobile-menu')?.classList.toggle('hidden');
       });
 
-      // Send enquiry button
-      document.getElementById('cart-send-enquiry')?.addEventListener('click', () => {
+      // Checkout button — POST to /api/checkout and redirect to Stripe
+      document.getElementById('cart-checkout-btn')?.addEventListener('click', async () => {
+        const btn = document.getElementById('cart-checkout-btn') as HTMLButtonElement;
+        btn.disabled = true;
+        btn.textContent = 'Processing...';
+
+        try {
+          const res = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              items: cart.items.map((item: any) => ({
+                stripePriceId: item.stripePriceId,
+                qty: item.qty,
+              })),
+            }),
+          });
+
+          const data = await res.json();
+          if (data.url) {
+            window.location.href = data.url;
+          } else {
+            alert(data.error || 'Something went wrong. Please try again.');
+            btn.disabled = false;
+            btn.innerHTML = 'Checkout &mdash; Pay Now';
+          }
+        } catch {
+          alert('Could not connect to checkout. Please try again.');
+          btn.disabled = false;
+          btn.innerHTML = 'Checkout &mdash; Pay Now';
+        }
+      });
+
+      // Send enquiry buttons (secondary in checkout view + primary in enquiry view)
+      function openEnquiryModal() {
         cart.closeSidebar();
         const modal = document.getElementById('enquiry-modal');
         modal?.classList.remove('hidden');
@@ -358,7 +432,10 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
         const formTotal = document.getElementById('form-basket-total') as HTMLInputElement;
         if (formItems) formItems.value = basketSummary;
         if (formTotal) formTotal.value = `£${cart.getTotal().toFixed(2)}`;
-      });
+      }
+
+      document.getElementById('cart-send-enquiry')?.addEventListener('click', openEnquiryModal);
+      document.getElementById('cart-send-enquiry-primary')?.addEventListener('click', openEnquiryModal);
 
       // Close enquiry modal
       document.getElementById('enquiry-close')?.addEventListener('click', () => {

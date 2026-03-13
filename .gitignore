@@ -12,13 +12,24 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
-# environment variables
-.env
-.env.production
-
-# macOS-specific files
+# OS
 .DS_Store
+Thumbs.db
 
-# jetbrains setting folder
+# Editor
+*.swp
+*.swo
+*~
 .idea/
+.vscode/
+
+# environment / secrets
+.env
+.env.*
+!.env.example
+credentials.json
+service-account.json
+
+# Claude Code local overrides (not shared)
+.claude/settings.local.json
+CLAUDE.local.md

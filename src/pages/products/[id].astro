@@ -73,7 +73,7 @@ const { product } = Astro.props;
           <p class="text-gray-600 text-lg mb-6">{product.description}</p>
 
           {/* Registered Design Badge for Frame products */}
-          {product.category === 'Frames' && (
+          {product.category.includes('Frames') && (
             <div class="mb-8 bg-gradient-to-r from-roam-dark to-gray-800 rounded-xl p-4 flex items-center gap-4 text-white">
               <div class="w-12 h-12 bg-roam-orange rounded-lg flex items-center justify-center flex-shrink-0">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
@@ -91,25 +91,39 @@ const { product } = Astro.props;
               <label for="variant-select" class="block font-heading font-semibold mb-2">Option:</label>
               <select id="variant-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none">
                 {product.variants.map((v: any) => (
-                  <option value={v.title} data-price={v.price}>{v.title} - £{v.price.toFixed(2)}</option>
+                  <option value={v.title} data-price={v.price} data-stripe-price-id={v.stripePriceId || ''}>{v.title} - £{v.price.toFixed(2)}</option>
                 ))}
               </select>
             </div>
           )}
 
-          <!-- Add to Basket -->
-          <button
-            id="add-to-cart"
-            class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-4 px-8 rounded-lg transition-colors text-xl mb-4"
-            data-product-id={product.id}
-            data-product-name={product.name}
-            data-product-price={product.price}
-            data-product-image={product.images[0]}
-            data-product-variant={product.variants[0].title}
-          >
-            Add to Basket
-          </button>
-          <p class="text-sm text-gray-500 text-center mb-8">We'll contact you to arrange payment and delivery</p>
+          <!-- Add to Basket / Enquiry -->
+          {product.madeToOrder ? (
+            <button
+              id="enquiry-direct-btn"
+              class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-4 px-8 rounded-lg transition-colors text-xl mb-4"
+              data-product-name={product.name}
+              data-product-variant={product.variants[0].title}
+              data-product-price={product.price}
+            >
+              Send Enquiry
+            </button>
+            <p class="text-sm text-gray-500 text-center mb-8">This is a made-to-order product &mdash; send us an enquiry and we'll discuss your requirements</p>
+          ) : (
+            <button
+              id="add-to-cart"
+              class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-4 px-8 rounded-lg transition-colors text-xl mb-4"
+              data-product-id={product.id}
+              data-product-name={product.name}
+              data-product-price={product.price}
+              data-product-image={product.images[0]}
+              data-product-variant={product.variants[0].title}
+              data-product-stripe-price-id={product.variants[0].stripePriceId || ''}
+            >
+              Add to Basket
+            </button>
+            <p class="text-sm text-gray-500 text-center mb-8">Secure checkout powered by Stripe</p>
+          )}
 
           <!-- Features -->
           {product.features.length > 0 && (
@@ -193,9 +207,11 @@ const { product } = Astro.props;
   variantSelect?.addEventListener('change', () => {
     const selectedOption = variantSelect.options[variantSelect.selectedIndex];
     const price = selectedOption.dataset.price;
+    const stripePriceId = selectedOption.dataset.stripePriceId;
     if (addToCartBtn && price) {
       addToCartBtn.dataset.productPrice = price;
       addToCartBtn.dataset.productVariant = variantSelect.value;
+      addToCartBtn.dataset.productStripePriceId = stripePriceId || '';
     }
   });
 
@@ -206,7 +222,26 @@ const { product } = Astro.props;
       name: addToCartBtn.dataset.productName,
       price: parseFloat(addToCartBtn.dataset.productPrice || '0'),
       variant: addToCartBtn.dataset.productVariant,
-      image: addToCartBtn.dataset.productImage
+      image: addToCartBtn.dataset.productImage,
+      stripePriceId: addToCartBtn.dataset.productStripePriceId || null
     });
+  });
+
+  // Made-to-order enquiry button — opens enquiry modal with product pre-filled
+  const enquiryBtn = document.getElementById('enquiry-direct-btn') as HTMLElement;
+  enquiryBtn?.addEventListener('click', () => {
+    const name = enquiryBtn.dataset.productName || '';
+    const variant = enquiryBtn.dataset.productVariant || '';
+    const price = enquiryBtn.dataset.productPrice || '0';
+    const label = variant !== 'Default Title' ? `${name} (${variant})` : name;
+
+    const formItems = document.getElementById('form-basket-items') as HTMLInputElement;
+    const formTotal = document.getElementById('form-basket-total') as HTMLInputElement;
+    if (formItems) formItems.value = `${label} — Made-to-order enquiry`;
+    if (formTotal) formTotal.value = `From £${parseFloat(price).toFixed(2)}`;
+
+    const modal = document.getElementById('enquiry-modal');
+    modal?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
   });
 </script>

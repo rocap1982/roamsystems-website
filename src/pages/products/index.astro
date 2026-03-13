@@ -11,7 +11,7 @@ const categories = ['All', 'Frames', 'Upholstery', 'Kitchens'];
   <section class="bg-roam-dark text-white py-16">
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Our Furniture</h1>
-      <p class="text-gray-300 max-w-2xl mx-auto">Browse our complete range of premium campervan furniture. Add items to your basket and send us an enquiry.</p>
+      <p class="text-gray-300 max-w-2xl mx-auto">Browse our complete range of premium campervan furniture. Add items to your basket and checkout securely with Stripe.</p>
     </div>
   </section>
 
@@ -76,16 +76,26 @@ const categories = ['All', 'Frames', 'Upholstery', 'Kitchens'];
               </div>
             </a>
             <div class="px-6 pb-6">
-              <button
-                class="add-to-cart-btn w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors"
-                data-product-id={product.id}
-                data-product-name={product.name}
-                data-product-price={product.price}
-                data-product-image={product.images[0]}
-                data-product-variant={product.variants[0].title}
-              >
-                Add to Basket
-              </button>
+              {product.madeToOrder ? (
+                <a
+                  href={`/products/${product.id}`}
+                  class="enquiry-link block w-full text-center bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors"
+                >
+                  Send Enquiry
+                </a>
+              ) : (
+                <button
+                  class="add-to-cart-btn w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors"
+                  data-product-id={product.id}
+                  data-product-name={product.name}
+                  data-product-price={product.price}
+                  data-product-image={product.images[0]}
+                  data-product-variant={product.variants[0].title}
+                  data-product-stripe-price-id={product.variants[0].stripePriceId || ''}
+                >
+                  Add to Basket
+                </button>
+              )}
             </div>
           </div>
         ))}
@@ -176,7 +186,8 @@ const categories = ['All', 'Frames', 'Upholstery', 'Kitchens'];
         name: el.dataset.productName,
         price: parseFloat(el.dataset.productPrice || '0'),
         variant: el.dataset.productVariant,
-        image: el.dataset.productImage
+        image: el.dataset.productImage,
+        stripePriceId: el.dataset.productStripePriceId || null
       });
     });
   });
