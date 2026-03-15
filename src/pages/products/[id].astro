@@ -12,7 +12,7 @@ export function getStaticPaths() {
 const { product } = Astro.props;
 ---
 
-<Layout title={product.name}>
+<Layout title={product.name} description={product.description.slice(0, 155)}>
 
   <!-- Breadcrumb -->
   <div class="bg-roam-light border-b">

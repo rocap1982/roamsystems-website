@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://roamsystems.co.uk/sitemap-index.xml
