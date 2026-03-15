@@ -1,7 +1,11 @@
 import fs from "fs";
 import path from "path";
 
-const API_KEY = "***REMOVED***";
+const API_KEY = process.env.GOOGLE_API_KEY;
+if (!API_KEY) {
+  console.error("Error: GOOGLE_API_KEY environment variable is not set.");
+  process.exit(1);
+}
 
 const dateStamp = new Date().toISOString().slice(0, 10);
 const batchNum = (() => {
