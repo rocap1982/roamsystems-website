@@ -2,7 +2,7 @@
 doc_type: canonical_global_terminology_index
 status: canonical
 created: 2026-03-12
-last_updated: 2026-03-12
+last_updated: 2026-03-13
 ---
 
 # Global Terminology Index (Canonical)
@@ -34,7 +34,11 @@ This document defines the authoritative set of terms and definitions used across
 - **Product ID**: A kebab-case slug uniquely identifying a product (e.g. `m1-certified-u-shape-seating-frame`). Used as URL path and data key.
 - **Category**: A product classification — one of `Frames`, `Kitchens`, or `Upholstery`.
 - **Variant**: A selectable product configuration (e.g. SWB/LWB, colour).
-- **FormSubmit.co**: Third-party form-to-email service used for enquiry and contact form processing.
+- **Resend**: Transactional email API used for order confirmation emails and form submission notifications. Replaces FormSubmit.co.
+- **Stripe Checkout**: Hosted payment page for processing card payments. Sessions created server-side via `POST /api/checkout`.
+- **Stripe Tax**: Automatic tax calculation service. Enabled on checkout sessions to calculate UK VAT (20%).
+- **Stripe Webhook**: Server endpoint (`POST /api/webhook`) that receives Stripe event notifications (e.g. `checkout.session.completed`) for reliable post-payment processing.
+- **Idempotency key**: A unique identifier (Stripe event ID) passed via `X-Entity-Ref-ID` header to Resend to prevent duplicate email sends on webhook retries.
 - **Shopify CDN**: Content delivery network hosting product images (`cdn.shopify.com`).
 
 ## EU Design Registration

@@ -85,11 +85,14 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
       <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
         <div class="flex items-center justify-between p-6 border-b">
           <h2 class="font-heading text-xl font-bold">Your Basket</h2>
-          <button id="cart-close" class="text-gray-500 hover:text-gray-800">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+          <div class="flex items-center gap-3">
+            <button id="cart-clear" class="text-xs text-gray-400 hover:text-red-500 transition-colors hidden">Empty Basket</button>
+            <button id="cart-close" class="text-gray-500 hover:text-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
         </div>
         <div id="cart-items" class="flex-1 overflow-y-auto p-6">
           <p id="cart-empty" class="text-gray-500 text-center py-8">Your basket is empty</p>
@@ -114,6 +117,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
             </button>
             <p id="cart-enquiry-hint" class="text-xs text-gray-500 text-center mt-2">Your basket contains made-to-order items &mdash; we'll contact you to arrange details and payment</p>
           </div>
+          <a href="/basket" id="cart-view-full" class="block text-center text-sm text-gray-500 hover:text-roam-orange transition-colors mt-4 underline underline-offset-2">View Full Basket</a>
         </div>
       </div>
     </div>
@@ -269,6 +273,13 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
           this.save();
         },
 
+        clear() {
+          if (this.items.length === 0) return;
+          if (!confirm('Are you sure you want to empty your basket?')) return;
+          this.items = [];
+          this.save();
+        },
+
         updateQty(index: number, qty: number) {
           if (qty <= 0) {
             this.remove(index);
@@ -298,6 +309,9 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
             countEl.textContent = count.toString();
             countEl.classList.toggle('hidden', count === 0);
           }
+
+          const clearBtn = document.getElementById('cart-clear');
+          if (clearBtn) clearBtn.classList.toggle('hidden', this.items.length === 0);
 
           if (itemsEl && emptyEl && footerEl && totalEl) {
             if (this.items.length === 0) {
@@ -372,6 +386,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
       document.getElementById('cart-toggle')?.addEventListener('click', () => cart.openSidebar());
       document.getElementById('cart-close')?.addEventListener('click', () => cart.closeSidebar());
       document.getElementById('cart-overlay')?.addEventListener('click', () => cart.closeSidebar());
+      document.getElementById('cart-clear')?.addEventListener('click', () => cart.clear());
 
       // Mobile menu toggle
       document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {

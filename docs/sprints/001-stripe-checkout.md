@@ -37,7 +37,7 @@ sprint_goal: "Add Stripe Checkout payment flow with server-side sessions, preser
 ## Contracts / Governance
 
 - Contract-impacting changes expected: **Yes**
-- Plans: `docs/plans/2026-03-13-stripe-checkout-integration.md` (Rev 3, approved)
+- Plans: `docs/plans/001-stripe-checkout-integration.md` (Rev 3, approved)
 
 ## Work Plan
 

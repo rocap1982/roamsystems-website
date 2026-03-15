@@ -393,7 +393,7 @@ On product listing page (`index.astro`):
 
 ## Traceability
 
-- **Idea doc**: `docs/ideas/2026-03-13-stripe-checkout-integration.md`
+- **Idea doc**: `docs/ideas/002-stripe-checkout-integration.md`
 - **Canonical docs**: No existing canonical docs for payment integration (first implementation)
 - **Implementation files**: `astro.config.mjs`, `package.json`, `src/layouts/Layout.astro`, `src/pages/products/[id].astro`, `src/pages/products/index.astro`, `src/data/products.json`
 - **New files**: `src/pages/api/checkout.ts`, `src/pages/checkout/success.astro`, `src/pages/checkout/cancel.astro`, `.env.example`

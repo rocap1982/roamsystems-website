@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Your Basket">
+  <section class="py-12 bg-roam-light min-h-[60vh]">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="font-heading text-3xl md:text-4xl font-bold mb-8">Your Basket</h1>
+
+      <!-- Empty state -->
+      <div id="basket-empty" class="text-center py-16">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-300 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" />
+        </svg>
+        <p class="text-gray-500 text-lg mb-6">Your basket is empty</p>
+        <a href="/products" class="inline-block bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-8 rounded-lg transition-colors">
+          Browse Products
+        </a>
+      </div>
+
+      <!-- Basket items -->
+      <div id="basket-content" class="hidden">
+        <div class="flex items-center justify-between mb-6">
+          <p id="basket-count" class="text-gray-500"></p>
+          <button id="basket-clear" class="text-sm text-gray-400 hover:text-red-500 transition-colors">Empty Basket</button>
+        </div>
+
+        <div id="basket-items" class="space-y-4 mb-8"></div>
+
+        <!-- Totals & Actions -->
+        <div class="bg-white rounded-2xl shadow-md p-6 md:p-8">
+          <div class="flex justify-between items-center font-heading font-bold text-xl mb-6">
+            <span>Total:</span>
+            <span id="basket-total" class="text-roam-orange">£0.00</span>
+          </div>
+
+          <div id="basket-checkout-section">
+            <button id="basket-checkout-btn" class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-4 px-6 rounded-lg transition-colors text-lg mb-3">
+              Checkout &mdash; Pay Now
+            </button>
+            <p class="text-xs text-gray-500 text-center mb-3">Secure checkout powered by Stripe</p>
+            <button id="basket-send-enquiry" class="w-full border border-gray-300 text-gray-700 hover:border-roam-orange hover:text-roam-orange font-heading font-semibold py-3 px-6 rounded-lg transition-colors text-sm">
+              Or Send Enquiry Instead
+            </button>
+          </div>
+
+          <div id="basket-enquiry-section" class="hidden">
+            <button id="basket-send-enquiry-primary" class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-4 px-6 rounded-lg transition-colors text-lg">
+              Send Enquiry
+            </button>
+            <p id="basket-enquiry-hint" class="text-xs text-gray-500 text-center mt-2"></p>
+          </div>
+
+          <a href="/products" class="block text-center text-sm text-gray-500 hover:text-roam-orange transition-colors mt-4 underline underline-offset-2">
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  function renderBasketPage() {
+    const cart = (window as any).roamCart;
+    if (!cart) return;
+
+    const emptyEl = document.getElementById('basket-empty');
+    const contentEl = document.getElementById('basket-content');
+    const itemsEl = document.getElementById('basket-items');
+    const totalEl = document.getElementById('basket-total');
+    const countEl = document.getElementById('basket-count');
+
+    if (!emptyEl || !contentEl || !itemsEl || !totalEl || !countEl) return;
+
+    if (cart.items.length === 0) {
+      emptyEl.classList.remove('hidden');
+      contentEl.classList.add('hidden');
+      return;
+    }
+
+    emptyEl.classList.add('hidden');
+    contentEl.classList.remove('hidden');
+
+    const count = cart.getCount();
+    countEl.textContent = `${count} item${count !== 1 ? 's' : ''} in your basket`;
+
+    totalEl.innerHTML = `£${cart.getTotal().toFixed(2)} <span class="text-sm font-normal text-gray-500">+ VAT</span>`;
+
+    // Toggle checkout vs enquiry
+    const checkoutSection = document.getElementById('basket-checkout-section');
+    const enquirySection = document.getElementById('basket-enquiry-section');
+    const enquiryHint = document.getElementById('basket-enquiry-hint');
+    if (checkoutSection && enquirySection) {
+      const canPay = cart.canCheckout();
+      checkoutSection.classList.toggle('hidden', !canPay);
+      enquirySection.classList.toggle('hidden', canPay);
+
+      if (!canPay && enquiryHint) {
+        const hasStale = cart.items.some((item: any) => !('stripePriceId' in item));
+        const hasMadeToOrder = cart.items.some((item: any) => 'stripePriceId' in item && !item.stripePriceId);
+        if (hasStale && hasMadeToOrder) {
+          enquiryHint.textContent = 'Your basket contains made-to-order items and items that need to be re-added for checkout';
+        } else if (hasStale) {
+          enquiryHint.textContent = 'Some items in your basket were added before checkout was available — please re-add them to pay online';
+        } else {
+          enquiryHint.textContent = "Your basket contains made-to-order items — we'll contact you to arrange details and payment";
+        }
+      }
+    }
+
+    // Render items
+    itemsEl.innerHTML = cart.items.map((item: any, i: number) => `
+      <div class="bg-white rounded-2xl shadow-md p-4 md:p-6 flex gap-4 md:gap-6">
+        <img src="${item.image}" alt="${item.name}" class="w-24 h-24 md:w-32 md:h-32 object-cover rounded-xl flex-shrink-0" />
+        <div class="flex-1 min-w-0">
+          <h3 class="font-heading font-bold text-lg mb-1">${item.name}</h3>
+          ${item.variant !== 'Default Title' ? `<p class="text-sm text-gray-500 mb-2">${item.variant}</p>` : ''}
+          <p class="text-roam-orange font-heading font-bold text-xl mb-3">£${item.price.toFixed(2)} <span class="text-sm font-normal text-gray-500">+ VAT</span></p>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center border rounded-lg">
+              <button onclick="window.roamCart.updateQty(${i}, ${item.qty - 1}); renderBasketPage();" class="w-9 h-9 flex items-center justify-center hover:bg-gray-100 text-lg rounded-l-lg">-</button>
+              <span class="w-10 h-9 flex items-center justify-center font-semibold border-x">${item.qty}</span>
+              <button onclick="window.roamCart.updateQty(${i}, ${item.qty + 1}); renderBasketPage();" class="w-9 h-9 flex items-center justify-center hover:bg-gray-100 text-lg rounded-r-lg">+</button>
+            </div>
+            <span class="text-gray-400 text-sm ml-auto hidden md:inline">Subtotal: <strong class="text-roam-dark">£${(item.price * item.qty).toFixed(2)}</strong> + VAT</span>
+            <button onclick="window.roamCart.remove(${i}); renderBasketPage();" class="text-red-500 hover:text-red-700 text-sm font-semibold ml-auto md:ml-4">Remove</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Make renderBasketPage available globally for inline onclick handlers
+  (window as any).renderBasketPage = renderBasketPage;
+
+  // Initial render
+  renderBasketPage();
+
+  // Empty basket button
+  document.getElementById('basket-clear')?.addEventListener('click', () => {
+    const cart = (window as any).roamCart;
+    if (!cart || cart.items.length === 0) return;
+    if (!confirm('Are you sure you want to empty your basket?')) return;
+    cart.items = [];
+    cart.save();
+    renderBasketPage();
+  });
+
+  // Checkout button
+  document.getElementById('basket-checkout-btn')?.addEventListener('click', async () => {
+    const cart = (window as any).roamCart;
+    const btn = document.getElementById('basket-checkout-btn') as HTMLButtonElement;
+    btn.disabled = true;
+    btn.textContent = 'Processing...';
+
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: cart.items.map((item: any) => ({
+            stripePriceId: item.stripePriceId,
+            qty: item.qty,
+          })),
+        }),
+      });
+
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert(data.error || 'Something went wrong. Please try again.');
+        btn.disabled = false;
+        btn.innerHTML = 'Checkout &mdash; Pay Now';
+      }
+    } catch {
+      alert('Could not connect to checkout. Please try again.');
+      btn.disabled = false;
+      btn.innerHTML = 'Checkout &mdash; Pay Now';
+    }
+  });
+
+  // Enquiry buttons — open the enquiry modal from Layout
+  function openEnquiryFromBasket() {
+    const cart = (window as any).roamCart;
+    const modal = document.getElementById('enquiry-modal');
+    modal?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    const basketSummary = cart.items.map((item: any) =>
+      `${item.name}${item.variant !== 'Default Title' ? ' (' + item.variant + ')' : ''} x${item.qty} - £${(item.price * item.qty).toFixed(2)}`
+    ).join('\n');
+
+    (window as any).__basketSummary = basketSummary;
+    (window as any).__basketTotal = `£${cart.getTotal().toFixed(2)}`;
+  }
+
+  document.getElementById('basket-send-enquiry')?.addEventListener('click', openEnquiryFromBasket);
+  document.getElementById('basket-send-enquiry-primary')?.addEventListener('click', openEnquiryFromBasket);
+</script>

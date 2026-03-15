@@ -1,7 +1,7 @@
 ---
 doc_type: mini-audit
 created: 2026-03-13
-sprint: "docs/sprints/2026-03-sprint-1-stripe-checkout.md"
+sprint: "docs/sprints/001-stripe-checkout.md"
 status: pass
 ---
 

@@ -2,7 +2,7 @@
 doc_type: canonical_schema_contracts
 status: canonical
 created: 2026-03-12
-last_updated: 2026-03-12
+last_updated: 2026-03-13
 ---
 
 # Schema & Contracts (Canonical)
@@ -44,19 +44,51 @@ The product catalogue is a JSON array. Each product object:
 | `Kitchens` | Kitchen pods, overhead lockers, packages |
 | `Upholstery` | Upholstery kits, cushion boards, foam |
 
+## API contracts
+
+### `POST /api/checkout`
+
+Creates a Stripe Checkout session for standard products.
+
+- **Request body**: `{ items: [{ stripePriceId: string, qty: number }] }`
+- **Response (200)**: `{ url: string }` — Stripe hosted checkout URL
+- **Response (4xx/5xx)**: `{ error: string }`
+- **Session params**: `shipping_address_collection` (GB only), `automatic_tax` (enabled), `customer_creation` (always), `shipping_options` (from `STRIPE_SHIPPING_RATE_ID` env var)
+- **Success redirect**: `/checkout/success?session_id={CHECKOUT_SESSION_ID}`
+- **Cancel redirect**: `/checkout/cancel`
+
+### `POST /api/webhook`
+
+Stripe webhook endpoint for post-payment processing.
+
+- **Request body**: Raw Stripe event payload (signature verified via `STRIPE_WEBHOOK_SECRET`)
+- **Response (200)**: `{ received: true }`
+- **Handled events**: `checkout.session.completed` — retrieves full session (with line_items, shipping_cost expanded), sends confirmation email via Resend
+- **Idempotency**: Stripe event ID passed as `X-Entity-Ref-ID` header to Resend for deduplication
+- **Error handling**: Email failures return 200 (prevents Stripe retries for transient errors)
+
+### `POST /api/contact`
+
+Server-side form submission endpoint (replaces FormSubmit.co).
+
+- **Request body**: `{ type: "contact" | "enquiry", name: string, email: string, phone?: string, subject?: string, message?: string, basketItems?: string, basketTotal?: string }`
+- **Response (200)**: `{ success: true }`
+- **Response (4xx/5xx)**: `{ error: string }`
+- **Email**: Sent via Resend to `sales@roamsystems.co.uk` with reply-to set to submitter's email
+
 ## Form contracts
 
 ### Enquiry submission (basket)
 
-- **Endpoint**: FormSubmit.co
-- **Method**: POST
-- **Fields**: customer name, email, phone, basket contents (product names, quantities, variants)
+- **Endpoint**: `POST /api/contact` (type: `"enquiry"`)
+- **Method**: POST (JSON via fetch)
+- **Fields**: name, email, phone, message, basketItems (text summary), basketTotal
 
 ### Contact form
 
-- **Endpoint**: FormSubmit.co
-- **Method**: POST
-- **Fields**: name, email, subject, message
+- **Endpoint**: `POST /api/contact` (type: `"contact"`)
+- **Method**: POST (JSON via fetch)
+- **Fields**: name, email, phone, subject, message
 
 ## Cart contract (localStorage)
 

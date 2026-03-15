@@ -200,6 +200,7 @@ const stats = [
                 data-product-price={product.price}
                 data-product-image={product.images[0]}
                 data-product-variant={product.variants[0].title}
+                data-product-stripe-price-id={product.variants[0].stripePriceId || ''}
               >
                 Add to Basket
               </button>
@@ -391,7 +392,8 @@ const stats = [
         name: el.dataset.productName,
         price: parseFloat(el.dataset.productPrice || '0'),
         variant: el.dataset.productVariant,
-        image: el.dataset.productImage
+        image: el.dataset.productImage,
+        stripePriceId: el.dataset.productStripePriceId || null
       });
       // Button feedback
       el.textContent = 'Added!';
