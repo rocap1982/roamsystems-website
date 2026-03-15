@@ -17,7 +17,7 @@ None — between sprints.
 ## This Week's Priorities
 
 - [x] Sprint 004: SEO Phase 2 — OG tags, Twitter Cards, JSON-LD (done)
-- [ ] Deploy Sprint 004 and validate with Google Rich Results Test
+- [x] Deploy Sprint 004 and validate with Google Rich Results Test
 - [ ] Complete Phase 1 external setup (Stripe VAT, shipping rate, Resend domain verification)
 - [ ] Complete Phase 5 post-deploy config (Stripe webhook endpoint, env vars)
 - [ ] Manual testing of full checkout + email flow
@@ -40,4 +40,4 @@ None.
 
 - Plan `docs/plans/004-seo-phase2-social-rich-results.md` (implemented)
 - SEO Phase 1 deployed as small fix — sitemap live and submitted to GSC
-- Post-deploy: validate JSON-LD via Google Rich Results Test + OG via Facebook Sharing Debugger
+- Post-deploy validation complete: JSON-LD valid (Google Rich Results Test), OG tags valid (Facebook Sharing Debugger)

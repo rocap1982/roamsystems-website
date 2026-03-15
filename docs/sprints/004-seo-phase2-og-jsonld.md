@@ -112,15 +112,15 @@ Build must succeed. No automated test suite exists beyond the build check.
 - [x] View source on product page → verify Product JSON-LD has correct price/name/availability
 - [x] View source on product page → verify BreadcrumbList JSON-LD has 3 items
 - [x] Check a made-to-order product (upholstery) → verify availability is "MadeToOrder"
-- [ ] After deploy: paste a product URL into Google Rich Results Test → confirm valid
-- [ ] After deploy: paste home page URL into Facebook Sharing Debugger → confirm preview renders
+- [x] After deploy: paste a product URL into Google Rich Results Test → confirm valid (2 valid items: Product snippets + Breadcrumbs, 2 non-critical optional warnings: missing review/aggregateRating)
+- [x] After deploy: paste home page URL into Facebook Sharing Debugger → confirm preview renders (all OG + Twitter Card tags detected, product image renders correctly)
 
 ## Review Gate
 
 - [x] All acceptance criteria met
 - [x] `npm run build` passes
-- [x] Manual test checklist complete (6/8 — 2 deferred to post-deploy)
-- [ ] JSON-LD validated via Google Rich Results Test (post-deploy)
+- [x] Manual test checklist complete (8/8)
+- [x] JSON-LD validated via Google Rich Results Test (post-deploy)
 
 ## Documentation DoD
 
