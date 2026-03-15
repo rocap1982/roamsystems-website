@@ -5,7 +5,7 @@ last_updated: 2026-03-15
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
-active_work: "Between sprints — Sprint 3 complete, deploy pending"
+active_work: "Between sprints — Sprint 4 complete, deploy pending"
 latest_session_log: ""
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: ""
@@ -39,7 +39,7 @@ This file is the **fastest way to resume work** with minimal context.
 - FBS governance framework installed (2026-03-12)
 - **Stripe Checkout** integrated — server-side sessions, shipping, VAT, SSR success page, webhook, confirmation email (Sprint 2 complete)
 - **Forms** migrated from FormSubmit.co to Resend via `/api/contact` server endpoint
-- **Last sprint**: Sprint 2 — `docs/sprints/002-checkout-enhancements.md` (stage: done)
+- **Last sprint**: Sprint 4 — `docs/sprints/004-seo-phase2-og-jsonld.md` (stage: done)
 
 ## Key decisions
 

@@ -1,6 +1,6 @@
 ---
 doc_type: idea
-status: draft
+status: accepted
 created: 2026-03-15
 last_updated: 2026-03-15
 owner: "Robert DiCapite"

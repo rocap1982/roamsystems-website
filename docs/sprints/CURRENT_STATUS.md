@@ -12,11 +12,12 @@ None — between sprints.
 
 ## Stage
 
-**idle** — Sprint 003 completed.
+**idle** — Sprint 004 completed.
 
 ## This Week's Priorities
 
-- [x] Sprint 003: YouTube video embed on home page + Instagram social links (done)
+- [x] Sprint 004: SEO Phase 2 — OG tags, Twitter Cards, JSON-LD (done)
+- [ ] Deploy Sprint 004 and validate with Google Rich Results Test
 - [ ] Complete Phase 1 external setup (Stripe VAT, shipping rate, Resend domain verification)
 - [ ] Complete Phase 5 post-deploy config (Stripe webhook endpoint, env vars)
 - [ ] Manual testing of full checkout + email flow
@@ -29,16 +30,14 @@ None.
 
 | Work | Date | Notes |
 |------|------|-------|
-| Sprint 3: Video Embed + Social Links | 2026-03-15 | YouTube video on home page, Instagram added to footer + contact. All gates pass. |
+| Sprint 4: SEO Phase 2 — OG + JSON-LD | 2026-03-15 | OG tags, Twitter Cards, Organization/Product/BreadcrumbList/LocalBusiness JSON-LD. All gates pass. |
+| SEO Phase 1 (small fix) | 2026-03-15 | Sitemap, robots.txt, canonical URLs, meta descriptions deployed. Sitemap submitted to Google Search Console. |
+| Sprint 3: Video Embed + Social Links | 2026-03-15 | YouTube video on home page, Instagram added to footer + contact. |
 | Sprint 2: Checkout Enhancements | 2026-03-13 | Shipping, VAT, SSR success page, webhook, email, form migration to Resend. |
 | Sprint 1: Stripe Checkout | 2026-03-13 | Server-side sessions, enquiry fallback, checkout pages. |
-| Railway deployment | 2026-03 | Static Astro site deployed successfully |
-| FBS installation | 2026-03-12 | Governance framework populated with project data |
 
 ## Notes / Decisions
 
-- Plan `docs/plans/2026-03-15-video-embed-social-links.md` (implemented)
-- Plan `docs/plans/002-checkout-enhancements.md` (implemented)
-- Forms migrated from FormSubmit.co to Resend via `/api/contact` endpoint
-- `stripePriceId` values are placeholders until Stripe account is configured
-- Site uses `@astrojs/node` adapter (hybrid mode) for server routes
+- Plan `docs/plans/004-seo-phase2-social-rich-results.md` (implemented)
+- SEO Phase 1 deployed as small fix — sitemap live and submitted to GSC
+- Post-deploy: validate JSON-LD via Google Rich Results Test + OG via Facebook Sharing Debugger

@@ -10,9 +10,50 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+
+const productJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": product.name,
+  "description": product.description,
+  "image": product.images,
+  "brand": { "@type": "Brand", "name": "ROAM Systems" },
+  "manufacturer": { "@type": "Organization", "name": "Romark Engineering Ltd" },
+  "offers": product.variants.length > 1 && product.variants[0].price !== product.variants[product.variants.length - 1].price
+    ? {
+        "@type": "AggregateOffer",
+        "lowPrice": Math.min(...product.variants.map((v: any) => v.price)),
+        "highPrice": Math.max(...product.variants.map((v: any) => v.price)),
+        "priceCurrency": "GBP",
+        "availability": product.madeToOrder ? "https://schema.org/MadeToOrder" : "https://schema.org/InStock",
+        "offerCount": product.variants.length
+      }
+    : {
+        "@type": "Offer",
+        "price": product.price,
+        "priceCurrency": "GBP",
+        "availability": product.madeToOrder ? "https://schema.org/MadeToOrder" : "https://schema.org/InStock",
+        "url": `https://roamsystems.co.uk/products/${product.id}`
+      }
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://roamsystems.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "All Furniture", "item": "https://roamsystems.co.uk/products" },
+    { "@type": "ListItem", "position": 3, "name": product.name }
+  ]
+};
 ---
 
-<Layout title={product.name} description={product.description.slice(0, 155)}>
+<Layout title={product.name} description={product.description.slice(0, 155)} image={product.images[0]} type="product">
+
+  <!-- Product JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
+  <!-- BreadcrumbList JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 
   <!-- Breadcrumb -->
   <div class="bg-roam-light border-b">

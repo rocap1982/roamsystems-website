@@ -1,8 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Romark Engineering Ltd",
+  "brand": { "@type": "Brand", "name": "ROAM Systems" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Essex",
+    "addressCountry": "GB"
+  },
+  "email": "sales@roamsystems.co.uk",
+  "url": "https://roamsystems.co.uk"
+};
 ---
 
 <Layout title="Contact Us" description="Get in touch with ROAM Systems for campervan furniture enquiries, custom orders, and trade pricing. Based in Essex, UK.">
+
+  <!-- LocalBusiness JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
 
   <!-- Header -->
   <section class="bg-roam-dark text-white py-16">

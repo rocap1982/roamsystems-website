@@ -4,11 +4,27 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: string;
 }
 
-const { title, description = 'Premium M1 certified campervan furniture — seating frames, kitchen pods, storage & upholstery. UK made by Romark Engineering.' } = Astro.props;
+const { title, description = 'Premium M1 certified campervan furniture — seating frames, kitchen pods, storage & upholstery. UK made by Romark Engineering.', image, type = 'website' } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = image || new URL('/images/roam-systems-og.png', Astro.site).href;
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ROAM Systems",
+  "url": "https://roamsystems.co.uk",
+  "logo": "https://roamsystems.co.uk/images/roam-systems-logo.png",
+  "sameAs": [
+    "https://www.facebook.com/roamsystems",
+    "https://www.youtube.com/@roamsystems",
+    "https://www.instagram.com/roamsystems_m1ushape"
+  ]
+};
 ---
 
 <!doctype html>
@@ -19,6 +35,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL.href} />
     <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={`${title} — ROAM Systems`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:site_name" content="ROAM Systems" />
+    <meta property="og:type" content={type} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_GB" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} — ROAM Systems`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Organization JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" />
