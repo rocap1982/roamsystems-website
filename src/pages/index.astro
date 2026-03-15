@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import products from '../data/products.json';
+import vehicles from '../data/vehicles.json';
 
 const findProduct = (id: string) => products.find(p => p.id === id);
 const frameProduct = findProduct('m1-certified-u-shape-seating-frame');
@@ -36,9 +37,17 @@ const stats = [
           Your Van.<br/>
           <span class="text-roam-orange">Your Way.</span>
         </h1>
-        <p class="text-lg md:text-xl text-gray-300 max-w-xl mb-10 animate-fade-in-up-delay">
+        <p class="text-lg md:text-xl text-gray-300 max-w-xl mb-6 animate-fade-in-up-delay">
           The UK's only M1 certified U-shape seating system. Premium frames, kitchens, storage and upholstery — precision-engineered for your campervan.
         </p>
+        <div class="flex flex-wrap gap-2 mb-8 animate-fade-in-up-delay">
+          <span class="bg-white/10 border border-white/20 text-white text-xs font-heading font-semibold px-3 py-1.5 rounded-md text-center leading-tight">VW Transporter<br/>T5</span>
+          <span class="bg-white/10 border border-white/20 text-white text-xs font-heading font-semibold px-3 py-1.5 rounded-md text-center leading-tight">VW Transporter<br/>T6</span>
+          <span class="bg-white/10 border border-white/20 text-white text-xs font-heading font-semibold px-3 py-1.5 rounded-md text-center leading-tight">VW Transporter<br/>T6.1</span>
+          <span class="bg-white/10 border border-white/20 text-white text-xs font-heading font-semibold px-3 py-1.5 rounded-md text-center leading-tight">Ford<br/>Transit Custom</span>
+          <span class="bg-white/10 border border-white/20 text-white text-xs font-heading font-semibold px-3 py-1.5 rounded-md text-center leading-tight">Renault<br/>Trafic</span>
+          <span class="bg-white/10 border border-white/20 text-white text-xs font-heading font-semibold px-3 py-1.5 rounded-md text-center leading-tight">Nissan<br/>Primastar</span>
+        </div>
         <div class="flex flex-wrap gap-4 animate-fade-in-up-delay-2">
           <a href="/products" class="bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-4 px-10 rounded-lg transition-all text-lg hover:scale-105 shadow-lg shadow-roam-orange/25">
             Shop Now
@@ -339,7 +348,7 @@ const stats = [
       <div class="space-y-4" id="faq-container">
         {[
           { q: "What is M1 Certification?", a: "M1 certification (ECE Regulation 14.09) is the safety standard for seats and anchorages in motor vehicles. Our U-Shape Seating Frame has been tested and certified to meet these rigorous safety requirements, including integrated 3-point seatbelts and ISOFIX points." },
-          { q: "Will ROAM furniture fit my campervan?", a: "Our furniture is designed for popular campervan models. We offer both Short Wheel Base (SWB) and Long Wheel Base (LWB) configurations. If you're unsure about compatibility, please contact us with your vehicle details." },
+          { q: "Will ROAM furniture fit my campervan?", a: "Our furniture is designed to directly fit the VW Transporter T5, T6, and T6.1, Ford Transit Custom (2012 onwards), Renault Trafic, and Nissan Primastar. We offer both Short Wheel Base (SWB) and Long Wheel Base (LWB) configurations. If you're unsure about compatibility, please contact us with your vehicle details." },
           { q: "Can I customise my order?", a: "Yes! We offer over 100 colour and pattern choices for upholstery, and various configuration options across our product range. Contact us to discuss your specific requirements." },
           { q: "Do I need professional installation?", a: "While our products are designed for straightforward installation, we recommend professional fitting for the M1 Certified Seating Frame. Our network of approved installers can help." },
           { q: "How long does delivery take?", a: "Build time is typically 2-4 weeks depending on order complexity and current demand. After dispatch, delivery takes 3-5 working days within the UK." },

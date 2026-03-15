@@ -1,0 +1,116 @@
+[
+  {
+    "id": "vw-transporter-t5",
+    "name": "VW Transporter T5",
+    "shortName": "T5",
+    "years": "2003–2015",
+    "description": "The Volkswagen Transporter T5 is one of the most popular bases for campervan conversions in the UK. Its spacious interior, reliable engine options, and strong aftermarket support make it an ideal platform for ROAM Systems furniture. All of our seating frames, kitchen pods, storage drawers, and upholstery kits are designed to fit the T5 perfectly.",
+    "image": "/images/vehicles/vw-t5.jpg",
+    "compatibleProducts": [
+      "m1-certified-u-shape-seating-frame",
+      "aluminium-overhead-locker",
+      "kitchen-pod-campervan-package",
+      "central-under-bed-pull-out-drawer-storage",
+      "rear-pull-out-drawer-storage-system",
+      "rear-pull-out-kitchen-pod",
+      "powder-coated-aluminium-front-facing-panels",
+      "full-upholstery-kit-rear-seating-only",
+      "cushion-boards-dual-density-foam"
+    ]
+  },
+  {
+    "id": "vw-transporter-t6",
+    "name": "VW Transporter T6",
+    "shortName": "T6",
+    "years": "2015–2019",
+    "description": "The Volkswagen Transporter T6 builds on the T5's legacy with updated styling, improved fuel efficiency, and enhanced safety features. Its dimensions are virtually identical to the T5, making all ROAM Systems furniture a direct fit. The T6 remains one of the most converted vans in the UK campervan scene.",
+    "image": "/images/vehicles/vw-t6.jpg",
+    "compatibleProducts": [
+      "m1-certified-u-shape-seating-frame",
+      "aluminium-overhead-locker",
+      "kitchen-pod-campervan-package",
+      "central-under-bed-pull-out-drawer-storage",
+      "rear-pull-out-drawer-storage-system",
+      "rear-pull-out-kitchen-pod",
+      "powder-coated-aluminium-front-facing-panels",
+      "full-upholstery-kit-rear-seating-only",
+      "cushion-boards-dual-density-foam"
+    ]
+  },
+  {
+    "id": "vw-transporter-t6-1",
+    "name": "VW Transporter T6.1",
+    "shortName": "T6.1",
+    "years": "2019–present",
+    "description": "The Volkswagen Transporter T6.1 is the latest evolution of the iconic Transporter range, featuring a refreshed front end, digital cockpit, and improved driver assistance systems. The cargo area dimensions remain the same as the T5 and T6, ensuring full compatibility with all ROAM Systems furniture.",
+    "image": "/images/vehicles/vw-t6-1.jpg",
+    "compatibleProducts": [
+      "m1-certified-u-shape-seating-frame",
+      "aluminium-overhead-locker",
+      "kitchen-pod-campervan-package",
+      "central-under-bed-pull-out-drawer-storage",
+      "rear-pull-out-drawer-storage-system",
+      "rear-pull-out-kitchen-pod",
+      "powder-coated-aluminium-front-facing-panels",
+      "full-upholstery-kit-rear-seating-only",
+      "cushion-boards-dual-density-foam"
+    ]
+  },
+  {
+    "id": "ford-transit-custom",
+    "name": "Ford Transit Custom",
+    "shortName": "Transit Custom",
+    "years": "2012–present",
+    "description": "The Ford Transit Custom is a hugely popular choice for campervan conversions, offering excellent value, a comfortable driving experience, and a well-proportioned cargo area. All ROAM Systems seating frames, kitchen pods, storage systems, and upholstery kits fit the Transit Custom from 2012 onwards.",
+    "image": "/images/vehicles/ford-transit-custom.jpg",
+    "compatibleProducts": [
+      "m1-certified-u-shape-seating-frame",
+      "aluminium-overhead-locker",
+      "kitchen-pod-campervan-package",
+      "central-under-bed-pull-out-drawer-storage",
+      "rear-pull-out-drawer-storage-system",
+      "rear-pull-out-kitchen-pod",
+      "powder-coated-aluminium-front-facing-panels",
+      "full-upholstery-kit-rear-seating-only",
+      "cushion-boards-dual-density-foam"
+    ]
+  },
+  {
+    "id": "renault-trafic",
+    "name": "Renault Trafic",
+    "shortName": "Renault Trafic",
+    "years": "2014–present",
+    "description": "The Renault Trafic is an excellent base for campervan conversions, sharing its platform with the Nissan Primastar. Its well-designed cargo area makes it fully compatible with all ROAM Systems furniture including seating frames, kitchen pods, storage systems, and upholstery kits.",
+    "image": "/images/vehicles/renault-trafic.jpg",
+    "compatibleProducts": [
+      "m1-certified-u-shape-seating-frame",
+      "aluminium-overhead-locker",
+      "kitchen-pod-campervan-package",
+      "central-under-bed-pull-out-drawer-storage",
+      "rear-pull-out-drawer-storage-system",
+      "rear-pull-out-kitchen-pod",
+      "powder-coated-aluminium-front-facing-panels",
+      "full-upholstery-kit-rear-seating-only",
+      "cushion-boards-dual-density-foam"
+    ]
+  },
+  {
+    "id": "nissan-primastar",
+    "name": "Nissan Primastar",
+    "shortName": "Nissan Primastar",
+    "years": "2002–present",
+    "description": "The Nissan Primastar shares its platform with the Renault Trafic, making it a great choice for campervan conversions. All ROAM Systems furniture fits the Primastar directly, including seating frames, kitchen pods, storage systems, and upholstery kits.",
+    "image": "/images/vehicles/nissan-primastar.jpg",
+    "compatibleProducts": [
+      "m1-certified-u-shape-seating-frame",
+      "aluminium-overhead-locker",
+      "kitchen-pod-campervan-package",
+      "central-under-bed-pull-out-drawer-storage",
+      "rear-pull-out-drawer-storage-system",
+      "rear-pull-out-kitchen-pod",
+      "powder-coated-aluminium-front-facing-panels",
+      "full-upholstery-kit-rear-seating-only",
+      "cushion-boards-dual-density-foam"
+    ]
+  }
+]
