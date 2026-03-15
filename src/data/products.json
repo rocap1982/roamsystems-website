@@ -2,8 +2,8 @@
   {
     "id": "m1-certified-u-shape-seating-frame",
     "name": "M1 Certified U-Shape Seating Frame",
-    "price": 1849,
-    "compareAtPrice": 1999,
+    "price": 1850,
+    "compareAtPrice": null,
     "category": [
       "Frames"
     ],
@@ -12,7 +12,7 @@
       "Frames"
     ],
     "madeToOrder": false,
-    "description": "Transform your campervan interior with our exclusive M1 Certified U-Shape Seating Frame, designed for safety, comfort, and versatility. The only M1 certified U-shape frame on the market, engineered for both Short Wheelbase and Long Wheelbase campervans.",
+    "description": "Transform your campervan interior with our exclusive M1 Certified U-Shape Seating Frame, designed for safety, comfort, and versatility. The only M1 certified U-shape frame on the market. Available in Standard and Full Width configurations.",
     "features": [
       "ECE 14.09 M1 certified safety",
       "Integrated 3-point seatbelts and ISOFIX points",
@@ -32,14 +32,14 @@
     },
     "variants": [
       {
-        "title": "Black / Long Wheel Base",
-        "price": 1849,
-        "stripePriceId": "price_1TAWR3P8jCOedj2eega1wJBa"
+        "title": "Standard",
+        "price": 1850,
+        "stripePriceId": "price_1TBB5DP8jCOedj2ejkiTxnUv"
       },
       {
-        "title": "Black / Short Wheel Base",
-        "price": 1849,
-        "stripePriceId": "price_1TAWR3P8jCOedj2en4HL8mqR"
+        "title": "Full Width",
+        "price": 1995,
+        "stripePriceId": "price_1TBB5FP8jCOedj2eBKMao7iD"
       }
     ],
     "images": [

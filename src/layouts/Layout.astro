@@ -37,7 +37,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
             <a href="/products?category=Frames" class="hover:text-roam-orange transition-colors">Frames</a>
             <a href="/products?category=Upholstery" class="hover:text-roam-orange transition-colors">Upholstery</a>
             <a href="/products?category=Kitchens" class="hover:text-roam-orange transition-colors">Kitchens</a>
-            <a href="/stockists" class="hover:text-roam-orange transition-colors">Stockists</a>
+            <a href="/installers" class="hover:text-roam-orange transition-colors">Installers</a>
             <a href="/delivery" class="hover:text-roam-orange transition-colors">Delivery</a>
             <a href="/gallery" class="hover:text-roam-orange transition-colors">Gallery</a>
             <a href="/certifications" class="hover:text-roam-orange transition-colors">Certifications</a>
@@ -69,7 +69,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
             <a href="/products?category=Frames" class="hover:text-roam-orange transition-colors py-1">Frames</a>
             <a href="/products?category=Upholstery" class="hover:text-roam-orange transition-colors py-1">Upholstery</a>
             <a href="/products?category=Kitchens" class="hover:text-roam-orange transition-colors py-1">Kitchens</a>
-            <a href="/stockists" class="hover:text-roam-orange transition-colors py-1">Stockists</a>
+            <a href="/installers" class="hover:text-roam-orange transition-colors py-1">Installers</a>
             <a href="/delivery" class="hover:text-roam-orange transition-colors py-1">Delivery</a>
             <a href="/gallery" class="hover:text-roam-orange transition-colors py-1">Gallery</a>
             <a href="/certifications" class="hover:text-roam-orange transition-colors py-1">Certifications</a>
@@ -194,7 +194,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
           <div>
             <h3 class="font-heading font-bold text-lg mb-4">Information</h3>
             <ul class="space-y-2 text-sm text-gray-400">
-              <li><a href="/stockists" class="hover:text-roam-orange transition-colors">Stockists</a></li>
+              <li><a href="/installers" class="hover:text-roam-orange transition-colors">Installers</a></li>
               <li><a href="/delivery" class="hover:text-roam-orange transition-colors">Delivery</a></li>
               <li><a href="/certifications" class="hover:text-roam-orange transition-colors">Certifications</a></li>
               <li><a href="/contact" class="hover:text-roam-orange transition-colors">Contact Us</a></li>
@@ -306,7 +306,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
               itemsEl.innerHTML = '<p id="cart-empty" class="text-gray-500 text-center py-8">Your basket is empty</p>';
             } else {
               footerEl.classList.remove('hidden');
-              totalEl.textContent = `£${this.getTotal().toFixed(2)}`;
+              totalEl.innerHTML = `£${this.getTotal().toFixed(2)} <span class="text-sm font-normal text-gray-500">+ VAT</span>`;
 
               // Toggle checkout vs enquiry sections
               const checkoutSection = document.getElementById('cart-checkout-section');
@@ -337,7 +337,7 @@ const { title, description = 'ROAM Systems - Campervan Furniture Specialists. Pr
                   <div class="flex-1">
                     <h3 class="font-heading font-semibold text-sm">${item.name}</h3>
                     ${item.variant !== 'Default Title' ? `<p class="text-xs text-gray-500">${item.variant}</p>` : ''}
-                    <p class="text-roam-orange font-bold mt-1">£${item.price.toFixed(2)}</p>
+                    <p class="text-roam-orange font-bold mt-1">£${item.price.toFixed(2)} <span class="text-xs font-normal text-gray-500">+ VAT</span></p>
                     <div class="flex items-center gap-2 mt-2">
                       <button onclick="window.roamCart.updateQty(${i}, ${item.qty - 1})" class="w-7 h-7 rounded border text-center hover:bg-gray-100 text-sm">-</button>
                       <span class="text-sm font-semibold">${item.qty}</span>

@@ -61,13 +61,7 @@ const { product } = Astro.props;
           <h1 class="font-heading text-3xl md:text-4xl font-bold mb-4">{product.name}</h1>
 
           <div class="flex items-center gap-4 mb-6">
-            <span class="text-roam-orange font-heading font-bold text-3xl">£{product.price.toFixed(2)}</span>
-            {product.compareAtPrice && (
-              <span class="text-gray-400 line-through text-xl">£{product.compareAtPrice.toFixed(2)}</span>
-            )}
-            {product.compareAtPrice && (
-              <span class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full">SAVE £{(product.compareAtPrice - product.price).toFixed(2)}</span>
-            )}
+            <span class="text-roam-orange font-heading font-bold text-3xl">£{product.price.toFixed(2)} <span class="text-lg font-normal text-gray-500">+ VAT</span></span>
           </div>
 
           <p class="text-gray-600 text-lg mb-6">{product.description}</p>
@@ -91,7 +85,7 @@ const { product } = Astro.props;
               <label for="variant-select" class="block font-heading font-semibold mb-2">Option:</label>
               <select id="variant-select" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-lg focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none">
                 {product.variants.map((v: any) => (
-                  <option value={v.title} data-price={v.price} data-stripe-price-id={v.stripePriceId || ''}>{v.title} - £{v.price.toFixed(2)}</option>
+                  <option value={v.title} data-price={v.price} data-stripe-price-id={v.stripePriceId || ''}>{v.title} - £{v.price.toFixed(2)} + VAT</option>
                 ))}
               </select>
             </div>
@@ -175,7 +169,7 @@ const { product } = Astro.props;
             </div>
             <div class="p-4">
               <h3 class="font-heading font-semibold text-sm mb-1 group-hover:text-roam-orange transition-colors">{p.name}</h3>
-              <span class="text-roam-orange font-bold">£{p.price.toFixed(2)}</span>
+              <span class="text-roam-orange font-bold">£{p.price.toFixed(2)} <span class="text-xs font-normal text-gray-500">+ VAT</span></span>
             </div>
           </a>
         ))}
@@ -238,7 +232,7 @@ const { product } = Astro.props;
     const formItems = document.getElementById('form-basket-items') as HTMLInputElement;
     const formTotal = document.getElementById('form-basket-total') as HTMLInputElement;
     if (formItems) formItems.value = `${label} — Made-to-order enquiry`;
-    if (formTotal) formTotal.value = `From £${parseFloat(price).toFixed(2)}`;
+    if (formTotal) formTotal.value = `From £${parseFloat(price).toFixed(2)} + VAT`;
 
     const modal = document.getElementById('enquiry-modal');
     modal?.classList.remove('hidden');
