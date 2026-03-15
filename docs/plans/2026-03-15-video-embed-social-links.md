@@ -1,6 +1,6 @@
 ---
 doc_type: plan
-status: approved
+status: implemented
 created: 2026-03-15
 author: AI
 approver: "Robert Di Capite"
@@ -175,7 +175,7 @@ Not in scope for this plan, but noted for future work:
 
 ## Implementation Record
 
-- **Implemented by**:
-- **Date**:
-- **Sprint**:
-- **Deviations from plan**:
+- **Implemented by**: AI
+- **Date**: 2026-03-15
+- **Sprint**: `docs/sprints/003-video-embed-social-links.md`
+- **Deviations from plan**: None
