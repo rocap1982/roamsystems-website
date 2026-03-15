@@ -5,7 +5,7 @@ last_updated: 2026-03-15
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
-active_work: "Between sprints — Sprint 2 complete, manual testing + Stripe/Resend dashboard setup pending"
+active_work: "Sprint 003 — Video Embed + Instagram Social Links (verification)"
 latest_session_log: ""
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: ""

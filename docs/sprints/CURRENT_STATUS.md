@@ -1,22 +1,22 @@
 ---
-last_updated: 2026-03-13
-active_sprint: ""
-stage: idle
+last_updated: 2026-03-15
+active_sprint: docs/sprints/003-video-embed-social-links.md
+stage: verification
 ---
 
 # Current Status
 
 ## Active Sprint
 
-None — between sprints.
+Sprint 003: Video Embed + Social Links — `docs/sprints/003-video-embed-social-links.md`
 
 ## Stage
 
-**idle** — Sprint 2 completed. No active sprint.
+**verification** — Implementation complete, awaiting code review and verification.
 
 ## This Week's Priorities
 
-- [x] Sprint 2: Checkout Enhancements (done)
+- [ ] Sprint 003: YouTube video embed on home page + Instagram social links
 - [ ] Complete Phase 1 external setup (Stripe VAT, shipping rate, Resend domain verification)
 - [ ] Complete Phase 5 post-deploy config (Stripe webhook endpoint, env vars)
 - [ ] Manual testing of full checkout + email flow
@@ -36,6 +36,7 @@ None.
 
 ## Notes / Decisions
 
+- Plan `docs/plans/2026-03-15-video-embed-social-links.md` (approved)
 - Plan `docs/plans/002-checkout-enhancements.md` (implemented)
 - Forms migrated from FormSubmit.co to Resend via `/api/contact` endpoint
 - `stripePriceId` values are placeholders until Stripe account is configured
