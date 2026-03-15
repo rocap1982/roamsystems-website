@@ -1,0 +1,275 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const installers = [
+  {
+    name: "Macvanlife Campers",
+    region: "Liverpool",
+    address: "Unit B, Lloyd Street, Whitworth, Rochdale, OL12 8AA",
+    phone: "07900 061901",
+    email: "macvanlifecampers@gmail.com",
+    website: "https://www.macvanlifecampers.co.uk",
+    lat: 53.66,
+    lng: -2.18,
+  },
+  {
+    name: "Vanguard Camper Conversions",
+    region: "Scotland",
+    address: "19 Ben Nevis Industrial Estate, Fort William, PH33 6PR",
+    phone: "01397 708444",
+    email: "vanguardconversions@gmail.com",
+    website: "https://www.vanguard-conversions.co.uk",
+    lat: 56.82,
+    lng: -5.11,
+  },
+  {
+    name: "Rock Out Campers",
+    region: "Llanelli",
+    address: "Llwynawel, Heol Y Capel, Foelgastell, Llanelli, SA14 7EW",
+    phone: "07773 356348",
+    email: "info@rockoutcampers.co.uk",
+    website: "https://www.rockoutcampers.co.uk",
+    lat: 51.79,
+    lng: -4.08,
+  },
+  {
+    name: "MTB Vans",
+    region: "Macclesfield",
+    address: "Unit 2, Gandysbrook Farm, Highlane, Gawsworth, Macclesfield, SK11 9RR",
+    phone: "07805 193511",
+    email: "sales@mtbvans.com",
+    website: "https://mtbvans.co.uk",
+    lat: 53.24,
+    lng: -2.13,
+  },
+  {
+    name: "Knights Custom Conversions",
+    region: "Spalding",
+    address: "Units 3-5, Seas End Road, Moulton Seas End, Spalding, PE12 6LD",
+    phone: "01406 370298",
+    email: "info@knightscustom.co.uk",
+    website: "https://knightscustomconversions.co.uk",
+    lat: 52.79,
+    lng: -0.15,
+  },
+  {
+    name: "Bearwood Campers",
+    region: "Leicester",
+    address: "Unit 16 Enderby Road Industrial Estate, Whetstone, Leicestershire, LE8 6HZ",
+    phone: "07741 577402",
+    email: "tom@bearwoodcampers.co.uk",
+    website: "https://www.bearwoodcampers.co.uk",
+    lat: 52.55,
+    lng: -1.18,
+  },
+  {
+    name: "Empire Campers",
+    region: "Stourbridge",
+    address: "Stourbridge, West Midlands",
+    phone: "",
+    email: "",
+    website: "https://www.empirecampers.com",
+    lat: 52.46,
+    lng: -2.15,
+  },
+  {
+    name: "Spartan Campers",
+    region: "Coventry",
+    address: "4 Arches Industrial Estate, Spon End, Coventry, CV1 3JQ",
+    phone: "02477 052910",
+    email: "sales@spartancampers.uk",
+    website: "https://www.spartancampers.uk",
+    lat: 52.41,
+    lng: -1.52,
+  },
+  {
+    name: "Cymru Camper Furniture",
+    region: "Ammanford",
+    address: "Unit A2, Capel Hendre Industrial Estate, Ammanford, SA18 3SJ",
+    phone: "07981 111628",
+    email: "sales@cymrucamperfurniture.co.uk",
+    website: "https://cymrucamperfurniture.co.uk",
+    lat: 51.80,
+    lng: -3.99,
+  },
+  {
+    name: "Key Camper Conversions",
+    region: "Beverley",
+    address: "Unit 7 Annie Reed Road, Beverley, HU17 0LF",
+    phone: "01482 228225",
+    email: "info@keycampers.co.uk",
+    website: "https://www.keycampers.co.uk",
+    lat: 53.84,
+    lng: -0.43,
+  },
+  {
+    name: "Unit 4 Campers",
+    region: "Leigh-on-Sea",
+    address: "Leigh-on-Sea, Essex",
+    phone: "",
+    email: "",
+    website: "https://www.unit4campers.co.uk",
+    lat: 51.54,
+    lng: 0.65,
+  },
+  {
+    name: "Chelmer Valley Campers",
+    region: "Chelmsford",
+    address: "Moulsham Mill, Parkway, Chelmsford, Essex, CM2 7PX",
+    phone: "07917 686463",
+    email: "chelmervalleycampers@gmail.com",
+    website: "https://www.chelmervalleycampers.co.uk",
+    lat: 51.73,
+    lng: 0.47,
+  },
+  {
+    name: "Grizzly Custom Vans",
+    region: "Evesham",
+    address: "Evesham, Worcestershire",
+    phone: "",
+    email: "",
+    website: "https://www.grizzlycustomvans.co.uk",
+    lat: 52.09,
+    lng: -1.95,
+  },
+  {
+    name: "Kent Poptops",
+    region: "Canterbury",
+    address: "Intex House, Aylesham Industrial Estate, Aylesham, Canterbury, CT3 3EP",
+    phone: "07900 273073",
+    email: "kentpoptops@hotmail.com",
+    website: "https://www.kentpoptops.co.uk",
+    lat: 51.23,
+    lng: 1.20,
+  },
+  {
+    name: "Beardy Man Van Conversions",
+    region: "Fareham",
+    address: "Unit 3c, Sharlands Road, Newgate Lane Industrial Estate, Fareham, PO14 1RD",
+    phone: "07919 466884",
+    email: "",
+    website: "https://beardymanvan.co.uk",
+    lat: 50.85,
+    lng: -1.20,
+  },
+];
+---
+
+<Layout title="Approved Installers">
+
+  <!-- Header -->
+  <section class="bg-roam-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Approved Installers</h1>
+      <p class="text-gray-300 max-w-2xl mx-auto">Find your nearest ROAM Systems approved installer. Our partners are hand-picked for their commitment to quality and reliability.</p>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl md:text-3xl font-bold">Our Installer Network</h2>
+        <p class="text-gray-600 mt-2">Hover over a pin to see installer details</p>
+      </div>
+      <div id="map" class="mx-auto rounded-2xl shadow-lg border border-gray-200 overflow-hidden" style="height: 600px; max-width: 700px;"></div>
+    </div>
+  </section>
+
+  <!-- Installers Grid -->
+  <section class="py-16 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {installers.map(installer => (
+          <div class="bg-white rounded-2xl shadow-md p-8 border border-gray-100 hover:shadow-lg transition-shadow">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h3 class="font-heading text-xl font-bold">{installer.name}</h3>
+                <span class="text-roam-orange text-sm font-semibold">{installer.region}</span>
+              </div>
+            </div>
+            <div class="space-y-3 text-sm text-gray-600">
+              <p class="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                {installer.address}
+              </p>
+              {installer.phone && (
+                <p class="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  <a href={`tel:${installer.phone}`} class="text-roam-orange hover:underline">{installer.phone}</a>
+                </p>
+              )}
+              {installer.email && (
+                <p class="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                  <a href={`mailto:${installer.email}`} class="text-roam-orange hover:underline">{installer.email}</a>
+                </p>
+              )}
+              {installer.website && (
+                <p class="flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" /></svg>
+                  <a href={installer.website} target="_blank" rel="noopener" class="text-roam-orange hover:underline">Visit Website</a>
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="font-heading text-3xl font-bold mb-4">Want to Become an Approved Installer?</h2>
+      <p class="text-gray-600 mb-8">We're always looking for quality partners to join our network. Get in touch to discuss becoming an approved ROAM Systems installer.</p>
+      <a href="/contact" class="inline-block bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-8 rounded-lg transition-colors text-lg">
+        Contact Us
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script is:inline define:vars={{ installers }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = () => {
+      const map = L.map('map', {
+        scrollWheelZoom: false,
+        zoomControl: true,
+      }).setView([53.5, -2.0], 6);
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19,
+      }).addTo(map);
+
+      const pinIcon = L.divIcon({
+        className: 'custom-pin',
+        html: '<div style="width:24px;height:24px;background:#F97316;border:3px solid #fff;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;"><div style="width:8px;height:8px;background:#fff;border-radius:50%;"></div></div>',
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+      });
+
+      installers.forEach(installer => {
+        const lines = [`<strong style="font-size:14px;">${installer.name}</strong>`,
+          `<span style="color:#F97316;font-size:12px;font-weight:600;">${installer.region}</span>`,
+          `<span style="font-size:12px;color:#666;">${installer.address}</span>`];
+        if (installer.phone) lines.push(`<span style="font-size:12px;">📞 <a href="tel:${installer.phone}" style="color:#F97316;">${installer.phone}</a></span>`);
+        if (installer.email) lines.push(`<span style="font-size:12px;">✉ <a href="mailto:${installer.email}" style="color:#F97316;">${installer.email}</a></span>`);
+        if (installer.website) lines.push(`<span style="font-size:12px;">🌐 <a href="${installer.website}" target="_blank" style="color:#F97316;">Visit Website</a></span>`);
+
+        const marker = L.marker([installer.lat, installer.lng], { icon: pinIcon })
+          .addTo(map)
+          .bindPopup(lines.join('<br>'), { maxWidth: 260 });
+        marker.on('mouseover', function() { this.openPopup(); });
+        marker.on('mouseout', function() { this.closePopup(); });
+      });
+    };
+    document.head.appendChild(script);
+  });
+</script>
