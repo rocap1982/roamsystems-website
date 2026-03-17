@@ -1,0 +1,71 @@
+---
+import { getCollection, render } from 'astro:content';
+import BlogPost from '../../layouts/BlogPost.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => data.draft !== true);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": post.data.publishedDate.toISOString(),
+  "dateModified": (post.data.updatedDate || post.data.publishedDate).toISOString(),
+  "author": {
+    "@type": "Organization",
+    "name": post.data.author,
+    "url": "https://roamsystems.co.uk"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ROAM Systems",
+    "url": "https://roamsystems.co.uk",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://roamsystems.co.uk/images/roam-systems-logo.png"
+    }
+  },
+  ...(post.data.image && { "image": post.data.image }),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://roamsystems.co.uk/blog/${post.id}`
+  }
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://roamsystems.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://roamsystems.co.uk/blog" },
+    { "@type": "ListItem", "position": 3, "name": post.data.title }
+  ]
+};
+---
+
+<BlogPost
+  title={post.data.title}
+  description={post.data.description}
+  publishedDate={post.data.publishedDate}
+  updatedDate={post.data.updatedDate}
+  author={post.data.author}
+  category={post.data.category}
+  image={post.data.image}
+  keywords={post.data.keywords}
+>
+  <!-- Article JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(articleJsonLd)} />
+  <!-- BreadcrumbList JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <Content />
+</BlogPost>

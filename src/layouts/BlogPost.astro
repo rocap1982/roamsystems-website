@@ -1,0 +1,123 @@
+---
+import Layout from './Layout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  publishedDate: Date;
+  updatedDate?: Date;
+  author: string;
+  category: string;
+  image?: string;
+  keywords?: string[];
+}
+
+const { title, description, publishedDate, updatedDate, author, category, image, keywords = [] } = Astro.props;
+
+const formattedDate = publishedDate.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const formattedUpdatedDate = updatedDate?.toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+// Estimate reading time from the slot content
+const content = await Astro.slots.render('default');
+const wordCount = content.replace(/<[^>]*>/g, '').split(/\s+/).length;
+const readingTime = Math.max(1, Math.ceil(wordCount / 230));
+
+const categoryColors: Record<string, string> = {
+  guides: 'bg-blue-100 text-blue-800',
+  products: 'bg-green-100 text-green-800',
+  lifestyle: 'bg-purple-100 text-purple-800',
+  certification: 'bg-roam-orange/10 text-roam-orange',
+  news: 'bg-gray-100 text-gray-800',
+};
+
+const categoryLabel = category.charAt(0).toUpperCase() + category.slice(1);
+const badgeClass = categoryColors[category] || 'bg-gray-100 text-gray-800';
+---
+
+<Layout title={title} description={description} image={image} type="article">
+
+  <!-- Breadcrumb -->
+  <div class="bg-roam-light border-b">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <nav class="text-sm text-gray-500">
+        <a href="/" class="hover:text-roam-orange">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/blog" class="hover:text-roam-orange">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-800">{title}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Article Header -->
+  <section class="bg-white border-b">
+    <div class="max-w-3xl mx-auto px-4 pt-12 pb-8">
+      <div class="flex items-center gap-3 mb-4">
+        <span class={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider ${badgeClass}`}>{categoryLabel}</span>
+        <span class="text-sm text-gray-500">{readingTime} min read</span>
+      </div>
+      <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 leading-tight">{title}</h1>
+      <p class="text-gray-600 text-lg mb-6">{description}</p>
+      <div class="flex items-center gap-4 text-sm text-gray-500">
+        <span>By <strong class="text-gray-700">{author}</strong></span>
+        <span>&bull;</span>
+        <time datetime={publishedDate.toISOString()}>{formattedDate}</time>
+        {formattedUpdatedDate && (
+          <>
+            <span>&bull;</span>
+            <span>Updated {formattedUpdatedDate}</span>
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Image -->
+  {image && (
+    <section class="bg-white">
+      <div class="max-w-4xl mx-auto px-4 pb-8">
+        <img
+          src={image}
+          alt={title}
+          class="w-full rounded-2xl object-cover max-h-[480px]"
+        />
+      </div>
+    </section>
+  )}
+
+  <!-- Article Content -->
+  <article class="bg-white pb-16">
+    <div class="max-w-3xl mx-auto px-4 prose prose-lg
+      prose-headings:font-heading prose-headings:font-bold prose-headings:text-gray-900
+      prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+      prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+      prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-5
+      prose-a:text-roam-orange prose-a:font-semibold prose-a:no-underline hover:prose-a:underline
+      prose-strong:text-gray-800
+      prose-ul:space-y-2 prose-li:text-gray-600
+      prose-img:rounded-xl">
+      <slot />
+    </div>
+  </article>
+
+  <!-- CTA Section -->
+  <section class="bg-roam-light py-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="font-heading text-2xl md:text-3xl font-bold mb-4">Ready to Start Your Conversion?</h2>
+      <p class="text-gray-600 mb-8 max-w-xl mx-auto">Browse our full range of M1 certified campervan furniture — seating frames, kitchen pods, storage, and upholstery.</p>
+      <a href="/products" class="inline-block bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-8 rounded-lg transition-colors text-lg">
+        View Our Furniture
+      </a>
+    </div>
+  </section>
+
+</Layout>

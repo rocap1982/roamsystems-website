@@ -12,6 +12,13 @@
       "Frames"
     ],
     "madeToOrder": false,
+    "mpn": "m1-certified-u-shape-seating-frame",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Transform your campervan interior with our exclusive M1 Certified U-Shape Seating Frame, designed for safety, comfort, and versatility. The only M1 certified U-shape frame on the market. Available in Standard and Full Width configurations.",
     "features": [
       "ECE 14.09 M1 certified safety",
@@ -61,6 +68,13 @@
       "Lockers"
     ],
     "madeToOrder": false,
+    "mpn": "aluminium-overhead-locker",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Add valuable storage space to your campervan with our Aluminium Overhead Locker, designed specifically for use above kitchen pods. Crafted from lightweight, high-quality aluminium, laser-cut and folded for precision and strength, finished with a durable textured black powder coat.",
     "features": [
       "High-quality laser-cut and folded aluminium construction",
@@ -111,6 +125,13 @@
       "Kitchens"
     ],
     "madeToOrder": false,
+    "mpn": "kitchen-pod-campervan-package",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Experience the ultimate campervan kitchen setup with our Kitchen Pod Package, available in both SWB and LWB versions. Includes a fully equipped kitchen pod, overhead storage locker, and the innovative Sequoia table leg system with 18mm solid oak worktop and integrated LED lighting.",
     "features": [
       "Comprehensive kitchen solution with pod, overhead locker, and table system",
@@ -158,6 +179,13 @@
       "Frames"
     ],
     "madeToOrder": false,
+    "mpn": "central-under-bed-pull-out-drawer-storage",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Optimise your campervan's storage with our Central Under Bed Pull-Out Drawer Storage. Built from high-quality laser-cut and folded aluminium with a large storage capacity of over 200 litres. Front panel crafted from 12mm CNC-cut phenolic plywood.",
     "features": [
       "High-quality laser-cut and folded aluminium construction",
@@ -201,6 +229,13 @@
       "Frames"
     ],
     "madeToOrder": false,
+    "mpn": "rear-pull-out-drawer-storage-system",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Keep your campervan organised and clutter-free with our Rear Pull-Out Drawer Storage System. Over 330 litres of space, featuring high-quality laser-cut aluminium construction with heavy-duty runners supporting up to 220kg.",
     "features": [
       "Over 330 litres of storage space",
@@ -246,6 +281,13 @@
       "Kitchens"
     ],
     "madeToOrder": false,
+    "mpn": "rear-pull-out-kitchen-pod",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Create the perfect compact kitchen setup with our Rear Pull-Out Kitchen Pod, designed to accommodate a twin burner hob (not included). Made from high-quality laser-cut aluminium with over 300 litres of storage and smooth heavy-duty runners supporting up to 220kg.",
     "features": [
       "Over 300 litres of storage capacity",
@@ -288,6 +330,13 @@
       "Frames"
     ],
     "madeToOrder": false,
+    "mpn": "powder-coated-aluminium-front-facing-panels",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Add a sleek, modern finish to your campervan's interior with our Powder Coated Aluminium Front Facing Panels. Designed to perfectly fit the front face of our M1 Certified U-Shape Seating Frame, providing a seamless and professional look with additional protection and durability.",
     "features": [
       "Laser-cut and folded aluminium for precision and strength",
@@ -328,6 +377,13 @@
       "Upholstery Kit"
     ],
     "madeToOrder": true,
+    "mpn": "full-upholstery-kit-rear-seating-only",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Transform your campervan's rear seating area with our Full Upholstery Kit, offering exceptional comfort, style, and durability. Includes CNC-cut 12mm birch plywood boards, dual density shaped foam, and professionally trimmed fabric covers with over 100 colour and pattern choices.",
     "features": [
       "Complete upholstery solution: boards, foam, and fabric covers",
@@ -372,6 +428,13 @@
       "Upholstery"
     ],
     "madeToOrder": true,
+    "mpn": "cushion-boards-dual-density-foam",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
     "description": "Upgrade your campervan's seating comfort with our 12mm CNC Cushion Boards and Dual Density Shaped Foam. Each cushion board is made from high-quality 12mm birch plywood, CNC-cut for a precise fit. Available in premium fabrics including the Christina Marrone range and genuine VW fabrics.",
     "features": [
       "Precision-cut 12mm birch plywood cushion boards",

@@ -1,0 +1,22 @@
+{
+  "themes": {
+    "monday": {
+      "type": "product-highlight",
+      "description": "Feature a specific product with key benefits, specs, and a link to the product page"
+    },
+    "wednesday": {
+      "type": "education-certification",
+      "description": "Share knowledge about M1 certification, ISOFIX safety, EU Registered Design, or campervan conversion tips"
+    },
+    "friday": {
+      "type": "lifestyle-community",
+      "description": "Van life inspiration, conversion showcases, customer stories, or weekend adventure content"
+    }
+  },
+  "platforms": ["facebook", "instagram"],
+  "hashtagSets": {
+    "product": ["#campervanfurniture", "#campervanseat", "#m1certified", "#roamsystems", "#campervanconversion", "#vanlife", "#campervan", "#vwt6", "#vwt5", "#transitcustom"],
+    "certification": ["#m1certification", "#roadsafety", "#campervansafety", "#ECE14", "#isofix", "#roamsystems", "#campervanconversion", "#ukmanufactured"],
+    "lifestyle": ["#vanlife", "#campervanlife", "#vanlifediaries", "#homeiswhereyouparkit", "#campervan", "#roamsystems", "#weekendadventures", "#vanconversion"]
+  }
+}

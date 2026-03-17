@@ -1,26 +1,25 @@
 ---
 last_updated: 2026-03-15
 active_sprint: ""
-stage: idle
+stage: ""
 ---
 
 # Current Status
 
 ## Active Sprint
 
-None — between sprints.
+None — Sprint 005 completed.
 
 ## Stage
 
-**idle** — Sprint 004 completed.
+No active sprint.
 
 ## This Week's Priorities
 
-- [x] Sprint 004: SEO Phase 2 — OG tags, Twitter Cards, JSON-LD (done)
-- [x] Deploy Sprint 004 and validate with Google Rich Results Test
-- [ ] Complete Phase 1 external setup (Stripe VAT, shipping rate, Resend domain verification)
-- [ ] Complete Phase 5 post-deploy config (Stripe webhook endpoint, env vars)
-- [ ] Manual testing of full checkout + email flow
+- [ ] Deploy Sprint 005 changes to Railway
+- [ ] Set `MARKETING_API_TOKEN` env var on Railway
+- [ ] Submit Google Merchant feed to Google Merchant Center
+- [ ] Verify all new pages on production (vehicles, blog, feed, nav)
 
 ## Blockers
 
@@ -30,6 +29,7 @@ None.
 
 | Work | Date | Notes |
 |------|------|-------|
+| Sprint 005: SEO Marketing System | 2026-03-15 | Vehicle pages, blog, Google Merchant feed, content pipeline, scheduled tasks. All gates pass. |
 | Sprint 4: SEO Phase 2 — OG + JSON-LD | 2026-03-15 | OG tags, Twitter Cards, Organization/Product/BreadcrumbList/LocalBusiness JSON-LD. All gates pass. |
 | SEO Phase 1 (small fix) | 2026-03-15 | Sitemap, robots.txt, canonical URLs, meta descriptions deployed. Sitemap submitted to Google Search Console. |
 | Sprint 3: Video Embed + Social Links | 2026-03-15 | YouTube video on home page, Instagram added to footer + contact. |
@@ -38,6 +38,6 @@ None.
 
 ## Notes / Decisions
 
-- Plan `docs/plans/004-seo-phase2-social-rich-results.md` (implemented)
-- SEO Phase 1 deployed as small fix — sitemap live and submitted to GSC
-- Post-deploy validation complete: JSON-LD valid (Google Rich Results Test), OG tags valid (Facebook Sharing Debugger)
+- Plan `docs/plans/005-automated-seo-marketing.md` (approved + implemented)
+- All 9 products compatible with all 4 vehicles (T5, T6, T6.1, Transit Custom)
+- Marketing API requires `MARKETING_API_TOKEN` Bearer auth (set on Railway before first use)

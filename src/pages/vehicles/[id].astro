@@ -1,0 +1,133 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import vehicles from '../../data/vehicles.json';
+import products from '../../data/products.json';
+
+export function getStaticPaths() {
+  return vehicles.map(vehicle => ({
+    params: { id: vehicle.id },
+    props: { vehicle }
+  }));
+}
+
+const { vehicle } = Astro.props;
+
+// Get compatible products for this vehicle
+const compatibleProducts = products.filter(p => vehicle.compatibleProducts.includes(p.id));
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://roamsystems.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "Vehicles", "item": "https://roamsystems.co.uk/vehicles" },
+    { "@type": "ListItem", "position": 3, "name": vehicle.name }
+  ]
+};
+---
+
+<Layout title={vehicle.name} description={`${vehicle.name} campervan furniture — seating frames, kitchen pods, storage & upholstery. M1 certified, UK made. Shop online.`}>
+
+  <!-- BreadcrumbList JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+
+  <!-- Breadcrumb -->
+  <div class="bg-roam-light border-b">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <nav class="text-sm text-gray-500">
+        <a href="/" class="hover:text-roam-orange">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/vehicles" class="hover:text-roam-orange">Vehicles</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-800">{vehicle.name}</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Vehicle Header -->
+  <section class="bg-roam-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="max-w-3xl">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="bg-roam-orange text-white text-sm font-bold px-3 py-1 rounded-full">{vehicle.years}</span>
+        </div>
+        <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">{vehicle.name}</h1>
+        <p class="text-gray-300 text-lg">{vehicle.description}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compatible Furniture -->
+  <section class="py-12 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="font-heading text-2xl font-bold mb-8">Compatible Furniture ({compatibleProducts.length} products)</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {compatibleProducts.map((product) => (
+          <div class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+            <a href={`/products/${product.id}`} class="block">
+              <div class="aspect-[4/3] overflow-hidden relative">
+                <img
+                  src={product.images[0]}
+                  alt={product.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                {product.compareAtPrice && (
+                  <span class="absolute top-4 left-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">SALE</span>
+                )}
+              </div>
+              <div class="p-6">
+                <h3 class="font-heading font-bold text-lg mb-2 group-hover:text-roam-orange transition-colors">{product.name}</h3>
+                <p class="text-gray-600 text-sm mb-3 line-clamp-2">{product.description}</p>
+                <div class="flex items-center gap-3">
+                  <span class="text-roam-orange font-heading font-bold text-xl">&pound;{product.price.toFixed(2)} <span class="text-sm font-normal text-gray-500">+ VAT</span></span>
+                </div>
+              </div>
+            </a>
+            <div class="px-6 pb-6">
+              {product.madeToOrder ? (
+                <a
+                  href={`/products/${product.id}`}
+                  class="enquiry-link block w-full text-center bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors"
+                >
+                  Send Enquiry
+                </a>
+              ) : (
+                <button
+                  class="add-to-cart-btn w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-6 rounded-lg transition-colors"
+                  data-product-id={product.id}
+                  data-product-name={product.name}
+                  data-product-price={product.price}
+                  data-product-image={product.images[0]}
+                  data-product-variant={product.variants[0].title}
+                  data-product-stripe-price-id={product.variants[0].stripePriceId || ''}
+                >
+                  Add to Basket
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  // Add to cart buttons
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const el = btn as HTMLElement;
+      (window as any).roamCart.add({
+        id: el.dataset.productId,
+        name: el.dataset.productName,
+        price: parseFloat(el.dataset.productPrice || '0'),
+        variant: el.dataset.productVariant,
+        image: el.dataset.productImage,
+        stripePriceId: el.dataset.productStripePriceId || null
+      });
+    });
+  });
+</script>

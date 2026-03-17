@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import vehicles from '../../data/vehicles.json';
+import products from '../../data/products.json';
+
+// Use the first product image as a placeholder for vehicle cards
+const placeholderImage = products[0].images[0];
+---
+
+<Layout title="Compatible Vehicles" description="Our campervan furniture fits VW Transporter T5, T6, T6.1 and Ford Transit Custom. Browse compatible products for your van.">
+
+  <!-- Page Header -->
+  <section class="bg-roam-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Compatible Vehicles</h1>
+      <p class="text-gray-300 max-w-2xl mx-auto">Our campervan furniture fits VW Transporter T5, T6, T6.1 and Ford Transit Custom. Browse compatible products for your van.</p>
+    </div>
+  </section>
+
+  <!-- Vehicles Grid -->
+  <section class="py-12 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {vehicles.map((vehicle) => (
+          <a
+            href={`/vehicles/${vehicle.id}`}
+            class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+          >
+            <div class="aspect-[4/3] overflow-hidden relative">
+              <img
+                src={placeholderImage}
+                alt={vehicle.name}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <span class="absolute top-4 left-4 bg-roam-dark text-white text-xs font-bold px-3 py-1 rounded-full">{vehicle.years}</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading font-bold text-lg mb-2 group-hover:text-roam-orange transition-colors">{vehicle.name}</h3>
+              <p class="text-gray-600 text-sm mb-3 line-clamp-2">{vehicle.description}</p>
+              <div class="flex items-center gap-2 text-roam-orange font-semibold text-sm">
+                <span>{vehicle.compatibleProducts.length} compatible products</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>

@@ -2,6 +2,15 @@ import type Stripe from 'stripe';
 
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 interface ResendPayload {
   from: string;
   to: string | string[];
@@ -205,24 +214,24 @@ function buildFormEmailHtml(data: FormEmailData): string {
   const isEnquiry = data.type === 'enquiry';
 
   const detailRows = [
-    `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;width:140px;">Name</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${data.name}</td></tr>`,
-    `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;">Email</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="mailto:${data.email}" style="color:#f47d23;">${data.email}</a></td></tr>`,
-    data.phone ? `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;">Phone</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${data.phone}</td></tr>` : '',
-    data.subject ? `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;">Subject</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${data.subject}</td></tr>` : '',
+    `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;width:140px;">Name</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${escapeHtml(data.name)}</td></tr>`,
+    `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;">Email</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="mailto:${escapeHtml(data.email)}" style="color:#f47d23;">${escapeHtml(data.email)}</a></td></tr>`,
+    data.phone ? `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;">Phone</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${escapeHtml(data.phone)}</td></tr>` : '',
+    data.subject ? `<tr><td style="padding:8px 12px;font-weight:600;color:#666;border-bottom:1px solid #eee;">Subject</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${escapeHtml(data.subject)}</td></tr>` : '',
   ].filter(Boolean).join('');
 
   const messageSection = data.message
     ? `<div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:24px;">
         <h3 style="margin:0 0 8px;font-size:14px;color:#666;font-weight:600;">Message</h3>
-        <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap;">${data.message}</p>
+        <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(data.message)}</p>
       </div>`
     : '';
 
   const basketSection = isEnquiry && data.basketItems
     ? `<div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:24px;">
         <h3 style="margin:0 0 8px;font-size:14px;color:#666;font-weight:600;">Basket Items</h3>
-        <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap;">${data.basketItems}</p>
-        ${data.basketTotal ? `<p style="margin:12px 0 0;font-size:16px;font-weight:700;">Total: ${data.basketTotal}</p>` : ''}
+        <p style="margin:0;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(data.basketItems)}</p>
+        ${data.basketTotal ? `<p style="margin:12px 0 0;font-size:16px;font-weight:700;">Total: ${escapeHtml(data.basketTotal)}</p>` : ''}
       </div>`
     : '';
 
@@ -271,4 +280,76 @@ export async function sendFormEmail(data: FormEmailData): Promise<void> {
   });
 
   console.log(`[contact] Email sent successfully, id: ${emailId}`);
+}
+
+// --- Marketing draft emails ---
+
+export interface MarketingDraftData {
+  blogDraft: {
+    title: string;
+    markdown: string;
+    keywords: string[];
+  };
+  socialPosts: Array<{
+    day: string;
+    caption: string;
+    hashtags: string[];
+    imageSource: string;
+    link: string;
+  }>;
+}
+
+function buildMarketingDraftHtml(data: MarketingDraftData): string {
+  const socialPostRows = data.socialPosts
+    .map(
+      (post) => `
+      <div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:16px;">
+        <h3 style="margin:0 0 8px;font-size:14px;color:#f47d23;font-weight:600;">${escapeHtml(post.day)}</h3>
+        <p style="margin:0 0 8px;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(post.caption)}</p>
+        <p style="margin:0 0 4px;font-size:12px;color:#666;">Hashtags: ${post.hashtags.map(h => escapeHtml(h)).join(' ')}</p>
+        <p style="margin:0 0 4px;font-size:12px;color:#666;">Image: ${escapeHtml(post.imageSource)}</p>
+        <p style="margin:0;font-size:12px;color:#666;">Link: <a href="${escapeHtml(post.link)}" style="color:#f47d23;">${escapeHtml(post.link)}</a></p>
+      </div>`
+    )
+    .join('');
+
+  return `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <div style="max-width:600px;margin:0 auto;background:#ffffff;">
+    <div style="background:#1a1a1a;padding:24px;text-align:center;">
+      <h1 style="color:#f47d23;margin:0;font-size:24px;letter-spacing:1px;">ROAM SYSTEMS</h1>
+      <p style="color:#999;margin:8px 0 0;font-size:14px;">Weekly Marketing Drafts</p>
+    </div>
+    <div style="padding:32px 24px;">
+      <h2 style="margin:0 0 16px;color:#1a1a1a;font-size:20px;">Blog Draft: ${escapeHtml(data.blogDraft.title)}</h2>
+      <p style="margin:0 0 8px;font-size:12px;color:#666;">Target keywords: ${data.blogDraft.keywords.map(k => escapeHtml(k)).join(', ')}</p>
+      <div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:24px;font-size:14px;line-height:1.6;white-space:pre-wrap;">${escapeHtml(data.blogDraft.markdown)}</div>
+
+      <h2 style="margin:0 0 16px;color:#1a1a1a;font-size:20px;">Social Media Posts</h2>
+      ${socialPostRows}
+    </div>
+    <div style="background:#1a1a1a;padding:24px;text-align:center;">
+      <p style="margin:0;color:#999;font-size:12px;">Reply to approve or request changes. Start a Claude session to publish.</p>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+export async function sendMarketingDrafts(data: MarketingDraftData): Promise<void> {
+  console.log(`[marketing] Sending draft email: ${data.blogDraft.title}`);
+
+  const emailId = await sendViaResend({
+    from: 'Roam Systems <website@roamsystems.co.uk>',
+    reply_to: 'sales@roamsystems.co.uk',
+    to: 'sales@roamsystems.co.uk',
+    bcc: 'rob@romarkengineering.com',
+    subject: `Weekly Marketing Drafts — ${data.blogDraft.title}`,
+    html: buildMarketingDraftHtml(data),
+    tags: [{ name: 'category', value: 'marketing-draft' }],
+  });
+
+  console.log(`[marketing] Draft email sent, id: ${emailId}`);
 }

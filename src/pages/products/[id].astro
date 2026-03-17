@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import products from '../../data/products.json';
+import vehicles from '../../data/vehicles.json';
 
 export function getStaticPaths() {
   return products.map(product => ({
@@ -10,6 +11,8 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+
+const compatibleVehicles = vehicles.filter(v => v.compatibleProducts.includes(product.id));
 
 const productJsonLd = {
   "@context": "https://schema.org",
@@ -197,6 +200,25 @@ const breadcrumbJsonLd = {
       </div>
     </div>
   </section>
+
+  <!-- Compatible Vehicles -->
+  {compatibleVehicles.length > 0 && (
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4">
+        <h2 class="font-heading text-xl font-bold mb-4">Compatible Vehicles</h2>
+        <div class="flex flex-wrap gap-3">
+          {compatibleVehicles.map(v => (
+            <a href={`/vehicles/${v.id}`} class="inline-flex items-center gap-2 px-4 py-2 bg-roam-light border border-gray-200 rounded-lg hover:border-roam-orange hover:text-roam-orange transition-colors text-sm font-semibold">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 17h.01M16 17h.01M3 11l1.5-5A2 2 0 016.4 4.5h11.2a2 2 0 011.9 1.5L21 11M3 11v5a1 1 0 001 1h1a2 2 0 004 0h6a2 2 0 004 0h1a1 1 0 001-1v-5M3 11h18" />
+              </svg>
+              {v.shortName} ({v.years})
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- Related Products -->
   <section class="py-16 bg-roam-light">
