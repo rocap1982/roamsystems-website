@@ -1,0 +1,72 @@
+{
+  "blogTopics": [
+    {
+      "id": "why-m1-certification",
+      "title": "Why M1 Certification Matters for Your Campervan",
+      "keywords": ["M1 certified campervan seat", "M1 certification campervan", "ECE R14.09"],
+      "status": "published",
+      "scheduledWeek": "2026-W12",
+      "category": "certification"
+    },
+    {
+      "id": "vw-transporter-guide",
+      "title": "VW Transporter Campervan Furniture Guide: T5, T6 & T6.1",
+      "keywords": ["VW T6 campervan furniture", "VW T5 campervan seating", "VW Transporter kitchen pod"],
+      "status": "published",
+      "scheduledWeek": "2026-W12",
+      "category": "guides"
+    },
+    {
+      "id": "u-shape-vs-rock-and-roll",
+      "title": "U-Shape Seating vs Rock and Roll Bed: Which Is Right for You?",
+      "keywords": ["rock and roll bed vs U-shape", "campervan seating options", "U-shape seating frame"],
+      "status": "published",
+      "scheduledWeek": "2026-W13",
+      "category": "guides"
+    },
+    {
+      "id": "transit-custom-furniture-guide",
+      "title": "Ford Transit Custom Campervan Furniture Guide",
+      "keywords": ["Transit Custom campervan seat", "Transit Custom kitchen pod", "Transit Custom conversion"],
+      "status": "scheduled",
+      "scheduledWeek": "2026-W14",
+      "category": "guides"
+    },
+    {
+      "id": "isofix-campervan-safety",
+      "title": "ISOFIX Campervan Seating: Safe Travel with Children",
+      "keywords": ["campervan ISOFIX seating", "campervan child seat", "family campervan safety"],
+      "status": "scheduled",
+      "scheduledWeek": "2026-W15",
+      "category": "certification"
+    },
+    {
+      "id": "campervan-kitchen-pod-guide",
+      "title": "Choosing the Right Campervan Kitchen Pod",
+      "keywords": ["campervan kitchen pod UK", "campervan kitchen ideas", "SWB LWB kitchen pod"],
+      "status": "scheduled",
+      "scheduledWeek": "2026-W16",
+      "category": "guides"
+    },
+    {
+      "id": "campervan-storage-solutions",
+      "title": "Smart Storage Solutions for Your Campervan Build",
+      "keywords": ["campervan storage solutions", "campervan drawer storage", "under bed storage campervan"],
+      "status": "scheduled",
+      "scheduledWeek": "2026-W17",
+      "category": "products"
+    },
+    {
+      "id": "campervan-furniture-uk-buying-guide",
+      "title": "UK Campervan Furniture Buying Guide 2026",
+      "keywords": ["campervan furniture UK", "buy campervan furniture", "UK campervan conversion"],
+      "status": "scheduled",
+      "scheduledWeek": "2026-W18",
+      "category": "guides"
+    }
+  ],
+  "cadence": {
+    "blogPostsPerMonth": 2,
+    "socialPostsPerWeek": 3
+  }
+}
