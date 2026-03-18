@@ -47,6 +47,7 @@ export const POST: APIRoute = async ({ request }) => {
     const shippingRateId = process.env.STRIPE_SHIPPING_RATE_ID;
 
     const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card', 'klarna'],
       mode: 'payment',
       line_items: body.items.map((item) => ({
         price: item.stripePriceId,
