@@ -366,7 +366,10 @@ const organizationJsonLd = {
               itemsEl.innerHTML = '<p id="cart-empty" class="text-gray-500 text-center py-8">Your basket is empty</p>';
             } else {
               footerEl.classList.remove('hidden');
-              totalEl.innerHTML = `£${this.getTotal().toFixed(2)} <span class="text-sm font-normal text-gray-500">+ VAT</span>`;
+              const subtotal = this.getTotal();
+              const vat = subtotal * 0.2;
+              const total = subtotal + vat;
+              totalEl.innerHTML = `£${total.toFixed(2)} <span class="text-sm font-normal text-gray-500">inc. VAT</span>`;
 
               // Toggle checkout vs enquiry sections
               const checkoutSection = document.getElementById('cart-checkout-section');
@@ -397,7 +400,7 @@ const organizationJsonLd = {
                   <div class="flex-1">
                     <h3 class="font-heading font-semibold text-sm">${item.name}</h3>
                     ${item.variant !== 'Default Title' ? `<p class="text-xs text-gray-500">${item.variant}</p>` : ''}
-                    <p class="text-roam-orange font-bold mt-1">£${item.price.toFixed(2)} <span class="text-xs font-normal text-gray-500">+ VAT</span></p>
+                    <p class="text-roam-orange font-bold mt-1">£${(item.price * 1.2).toFixed(2)} <span class="text-xs font-normal text-gray-500">inc. VAT</span></p>
                     <div class="flex items-center gap-2 mt-2">
                       <button onclick="window.roamCart.updateQty(${i}, ${item.qty - 1})" class="w-7 h-7 rounded border text-center hover:bg-gray-100 text-sm">-</button>
                       <span class="text-sm font-semibold">${item.qty}</span>
@@ -481,11 +484,11 @@ const organizationJsonLd = {
 
         // Populate hidden fields
         const basketSummary = cart.items.map((item: any) =>
-          `${item.name}${item.variant !== 'Default Title' ? ' (' + item.variant + ')' : ''} x${item.qty} - £${(item.price * item.qty).toFixed(2)}`
+          `${item.name}${item.variant !== 'Default Title' ? ' (' + item.variant + ')' : ''} x${item.qty} - £${(item.price * item.qty * 1.2).toFixed(2)} inc. VAT`
         ).join('\n');
 
         (window as any).__basketSummary = basketSummary;
-        (window as any).__basketTotal = `£${cart.getTotal().toFixed(2)}`;
+        (window as any).__basketTotal = `£${(cart.getTotal() * 1.2).toFixed(2)} inc. VAT`;
       }
 
       document.getElementById('cart-send-enquiry')?.addEventListener('click', openEnquiryModal);
