@@ -110,6 +110,13 @@ const breadcrumbJsonLd = {
 
           <p class="text-gray-600 text-lg mb-6">{product.description}</p>
 
+          {product.note && (
+            <div class="mb-6 bg-amber-50 border-l-4 border-amber-400 rounded-r-lg p-4 flex gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              <p class="text-sm text-amber-900">{product.note}</p>
+            </div>
+          )}
+
           {/* Registered Design Badge for Frame products */}
           {product.category.includes('Frames') && (
             <div class="mb-8 bg-gradient-to-r from-roam-dark to-gray-800 rounded-xl p-4 flex items-center gap-4 text-white">
