@@ -66,118 +66,6 @@
     "note": "Price is for the 3-piece frame system only. Photos may show optional extras (under-bed drawer storage, rear pull-out units) which are sold separately."
   },
   {
-    "id": "aluminium-overhead-locker",
-    "name": "Aluminium Overhead Locker",
-    "price": 399,
-    "compareAtPrice": null,
-    "category": [
-      "Kitchens"
-    ],
-    "tags": [
-      "Kitchens",
-      "Lockers"
-    ],
-    "madeToOrder": false,
-    "mpn": "aluminium-overhead-locker",
-    "compatibleVehicles": [
-      "vw-transporter-t5",
-      "vw-transporter-t6",
-      "vw-transporter-t6-1",
-      "ford-transit-custom"
-    ],
-    "description": "Add valuable storage space to your campervan with our Aluminium Overhead Locker, designed specifically for use above kitchen pods. Crafted from lightweight, high-quality aluminium, laser-cut and folded for precision and strength, finished with a durable textured black powder coat.",
-    "features": [
-      "High-quality laser-cut and folded aluminium construction",
-      "Blum soft-close hinges for smooth, quiet operation",
-      "Secure latch keeps door shut during travel",
-      "LED water-resistant under-lighting",
-      "Textured black powder-coated finish",
-      "Available in Short and Long Wheel Base"
-    ],
-    "specs": {
-      "Material": "Laser-cut and folded aluminium",
-      "Finish": "Textured black powder coat",
-      "Length (SWB)": "105 cm",
-      "Length (LWB)": "133 cm",
-      "Depth": "17.5 cm",
-      "Height": "12.5 cm",
-      "LED Lighting": "Integrated water-resistant"
-    },
-    "variants": [
-      {
-        "title": "Short Wheel Base",
-        "price": 399,
-        "stripePriceId": "price_1TAWR3P8jCOedj2ezPuL724Y"
-      },
-      {
-        "title": "Long Wheel Base",
-        "price": 399,
-        "stripePriceId": "price_1TAWR4P8jCOedj2ed4vFtGTL"
-      }
-    ],
-    "images": [
-      "/images/products/aluminium-overhead-locker-1.jpg",
-      "/images/products/aluminium-overhead-locker-2.jpg",
-      "/images/products/aluminium-overhead-locker-3.jpg",
-      "/images/products/aluminium-overhead-locker-4.jpg",
-      "/images/products/aluminium-overhead-locker-5.jpg",
-      "/images/products/aluminium-overhead-locker-6.jpg",
-      "/images/products/aluminium-overhead-locker-7.jpg",
-      "/images/products/aluminium-overhead-locker-8.jpg"
-    ]
-  },
-  {
-    "id": "kitchen-pod-campervan-package",
-    "name": "Kitchen Pod Campervan Package",
-    "price": 1249,
-    "compareAtPrice": null,
-    "category": [
-      "Kitchens"
-    ],
-    "tags": [
-      "Kitchen Pod",
-      "Kitchens"
-    ],
-    "madeToOrder": false,
-    "mpn": "kitchen-pod-campervan-package",
-    "compatibleVehicles": [
-      "vw-transporter-t5",
-      "vw-transporter-t6",
-      "vw-transporter-t6-1",
-      "ford-transit-custom"
-    ],
-    "description": "Experience the ultimate campervan kitchen setup with our Kitchen Pod Package, available in both SWB and LWB versions. Includes a fully equipped kitchen pod, overhead storage locker, and the innovative Sequoia table leg system with 18mm solid oak worktop and integrated LED lighting.",
-    "features": [
-      "Comprehensive kitchen solution with pod, overhead locker, and table system",
-      "CNC-cut poplar plywood construction",
-      "Blum soft-close hinges and Legrabox drawer systems with push-to-open",
-      "18mm solid oak worktop with integrated LED lighting",
-      "Sequoia oak table leg system with matching solid oak table",
-      "Space for twin burner hob",
-      "Available in SWB and LWB versions"
-    ],
-    "specs": {
-      "Material": "CNC-cut poplar plywood",
-      "Worktop": "18mm solid oak",
-      "Hinges": "Blum soft-close",
-      "Drawers": "Blum Legrabox, push-to-open",
-      "Table": "Sequoia system with solid oak"
-    },
-    "variants": [
-      {
-        "title": "Default Title",
-        "price": 1249,
-        "stripePriceId": "price_1TAWR4P8jCOedj2eXgygWutL"
-      }
-    ],
-    "images": [
-      "/images/products/kitchen-pod-campervan-package-1.jpg",
-      "/images/products/kitchen-pod-campervan-package-2.jpg",
-      "/images/products/kitchen-pod-campervan-package-3.jpg",
-      "/images/products/kitchen-pod-campervan-package-4.jpg"
-    ]
-  },
-  {
     "id": "central-under-bed-pull-out-drawer-storage",
     "name": "Central Under Bed Pull-Out Drawer Storage",
     "price": 399,
@@ -496,6 +384,118 @@
       "/images/products/cushion-boards-dual-density-foam-2.jpg",
       "/images/products/cushion-boards-dual-density-foam-3.jpg",
       "/images/products/cushion-boards-dual-density-foam-4.jpg"
+    ]
+  },
+  {
+    "id": "kitchen-pod-campervan-package",
+    "name": "Kitchen Pod Campervan Package",
+    "price": 1249,
+    "compareAtPrice": null,
+    "category": [
+      "Kitchens"
+    ],
+    "tags": [
+      "Kitchen Pod",
+      "Kitchens"
+    ],
+    "madeToOrder": false,
+    "mpn": "kitchen-pod-campervan-package",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
+    "description": "Experience the ultimate campervan kitchen setup with our Kitchen Pod Package, available in both SWB and LWB versions. Includes a fully equipped kitchen pod, overhead storage locker, and the innovative Sequoia table leg system with 18mm solid oak worktop and integrated LED lighting.",
+    "features": [
+      "Comprehensive kitchen solution with pod, overhead locker, and table system",
+      "CNC-cut poplar plywood construction",
+      "Blum soft-close hinges and Legrabox drawer systems with push-to-open",
+      "18mm solid oak worktop with integrated LED lighting",
+      "Sequoia oak table leg system with matching solid oak table",
+      "Space for twin burner hob",
+      "Available in SWB and LWB versions"
+    ],
+    "specs": {
+      "Material": "CNC-cut poplar plywood",
+      "Worktop": "18mm solid oak",
+      "Hinges": "Blum soft-close",
+      "Drawers": "Blum Legrabox, push-to-open",
+      "Table": "Sequoia system with solid oak"
+    },
+    "variants": [
+      {
+        "title": "Default Title",
+        "price": 1249,
+        "stripePriceId": "price_1TAWR4P8jCOedj2eXgygWutL"
+      }
+    ],
+    "images": [
+      "/images/products/kitchen-pod-campervan-package-1.jpg",
+      "/images/products/kitchen-pod-campervan-package-2.jpg",
+      "/images/products/kitchen-pod-campervan-package-3.jpg",
+      "/images/products/kitchen-pod-campervan-package-4.jpg"
+    ]
+  },
+  {
+    "id": "aluminium-overhead-locker",
+    "name": "Aluminium Overhead Locker",
+    "price": 399,
+    "compareAtPrice": null,
+    "category": [
+      "Kitchens"
+    ],
+    "tags": [
+      "Kitchens",
+      "Lockers"
+    ],
+    "madeToOrder": false,
+    "mpn": "aluminium-overhead-locker",
+    "compatibleVehicles": [
+      "vw-transporter-t5",
+      "vw-transporter-t6",
+      "vw-transporter-t6-1",
+      "ford-transit-custom"
+    ],
+    "description": "Add valuable storage space to your campervan with our Aluminium Overhead Locker, designed specifically for use above kitchen pods. Crafted from lightweight, high-quality aluminium, laser-cut and folded for precision and strength, finished with a durable textured black powder coat.",
+    "features": [
+      "High-quality laser-cut and folded aluminium construction",
+      "Blum soft-close hinges for smooth, quiet operation",
+      "Secure latch keeps door shut during travel",
+      "LED water-resistant under-lighting",
+      "Textured black powder-coated finish",
+      "Available in Short and Long Wheel Base"
+    ],
+    "specs": {
+      "Material": "Laser-cut and folded aluminium",
+      "Finish": "Textured black powder coat",
+      "Length (SWB)": "105 cm",
+      "Length (LWB)": "133 cm",
+      "Depth": "17.5 cm",
+      "Height": "12.5 cm",
+      "LED Lighting": "Integrated water-resistant"
+    },
+    "variants": [
+      {
+        "title": "Short Wheel Base",
+        "price": 399,
+        "stripePriceId": "price_1TAWR3P8jCOedj2ezPuL724Y"
+      },
+      {
+        "title": "Long Wheel Base",
+        "price": 399,
+        "stripePriceId": "price_1TAWR4P8jCOedj2ed4vFtGTL"
+      }
+    ],
+    "images": [
+      "/images/products/aluminium-overhead-locker-1.jpg",
+      "/images/products/aluminium-overhead-locker-2.jpg",
+      "/images/products/aluminium-overhead-locker-3.jpg",
+      "/images/products/aluminium-overhead-locker-4.jpg",
+      "/images/products/aluminium-overhead-locker-5.jpg",
+      "/images/products/aluminium-overhead-locker-6.jpg",
+      "/images/products/aluminium-overhead-locker-7.jpg",
+      "/images/products/aluminium-overhead-locker-8.jpg"
     ]
   }
 ]
