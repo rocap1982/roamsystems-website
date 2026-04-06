@@ -1,12 +1,12 @@
 ---
 project: roam-systems-website
 status: active
-last_updated: 2026-03-15
+last_updated: 2026-04-06
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
 active_work: "Sprint 005 complete — SEO marketing system deployed. No active sprint."
-latest_session_log: ""
+latest_session_log: "docs/sessions/2026-04-06.md"
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: ""
 active_audits_dir: docs/audits/active/
@@ -52,7 +52,7 @@ This file is the **fastest way to resume work** with minimal context.
 - Hybrid site (Astro + `@astrojs/node` adapter) — static pages prerendered, `/api/checkout` is server-rendered
 - No Shopify Storefront API integration yet — product data is a local JSON file
 - Stripe Checkout for standard products; Resend `/api/contact` for enquiries (replaced FormSubmit.co)
-- `stripePriceId` values are placeholders until Stripe account is configured with real products
+- `stripePriceId` values are live Stripe prices (verified and synced 2026-04-06)
 
 Update this file when:
 - priorities change,
