@@ -1,14 +1,11 @@
 ---
 /**
- * Layout.astro — used by every page EXCEPT the homepage (which uses HomeLayout).
+ * HomeLayout — dark-industrial layout for the homepage.
  *
- * Shares the same dark-industrial Nav island and Footer.astro with HomeLayout
- * so every page has a consistent brand experience. Differs from HomeLayout in:
+ * Differs from Layout.astro only in that <main> does NOT get top padding,
+ * so the hero section can render full-bleed behind the fixed nav.
  *
- *  1. <main> has pt-24/28 so content clears the fixed nav (homepage hero is
- *     full-bleed, interior pages are not).
- *  2. <body> is NOT theme-dark — page content below the nav keeps its own
- *     white/light backgrounds so existing page markup doesn't need to change.
+ * Both layouts share the same Nav island and Footer.astro component.
  */
 import '../styles/global.css';
 import { Nav } from '../components/home/Nav.tsx';
@@ -51,6 +48,7 @@ const organizationJsonLd = {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#0f0f10" />
     <link rel="canonical" href={canonicalURL.href} />
     <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -71,10 +69,13 @@ const organizationJsonLd = {
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800;900&family=Roboto+Condensed:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>{title} — ROAM Systems | Campervan Furniture</title>
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="theme-dark min-h-screen antialiased">
     <Nav client:load />
 
     <!-- Cart Sidebar -->
@@ -82,7 +83,7 @@ const organizationJsonLd = {
       <div id="cart-overlay" class="absolute inset-0 bg-black/50"></div>
       <div class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col">
         <div class="flex items-center justify-between p-6 border-b">
-          <h2 class="font-heading text-xl font-bold">Your Basket</h2>
+          <h2 class="font-heading text-xl font-bold text-roam-dark">Your Basket</h2>
           <div class="flex items-center gap-3">
             <button id="cart-clear" class="text-xs text-gray-400 hover:text-red-500 transition-colors hidden">Empty Basket</button>
             <button id="cart-close" class="text-gray-500 hover:text-gray-800">
@@ -96,7 +97,7 @@ const organizationJsonLd = {
           <p id="cart-empty" class="text-gray-500 text-center py-8">Your basket is empty</p>
         </div>
         <div id="cart-footer" class="border-t p-6 hidden">
-          <div class="flex justify-between font-heading font-bold text-lg mb-4">
+          <div class="flex justify-between font-heading font-bold text-lg mb-4 text-roam-dark">
             <span>Total:</span>
             <span id="cart-total">£0.00</span>
           </div>
@@ -127,7 +128,7 @@ const organizationJsonLd = {
         <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
           <div class="p-6">
             <div class="flex justify-between items-center mb-4">
-              <h2 class="font-heading text-2xl font-bold">Send Your Basket</h2>
+              <h2 class="font-heading text-2xl font-bold text-roam-dark">Send Your Basket</h2>
               <button id="enquiry-close" class="text-gray-500 hover:text-gray-800">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -138,20 +139,20 @@ const organizationJsonLd = {
             <form id="enquiry-form">
               <div class="space-y-4">
                 <div>
-                  <label for="name" class="block text-sm font-semibold mb-1">Full Name *</label>
-                  <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none" />
+                  <label for="name" class="block text-sm font-semibold mb-1 text-roam-dark">Full Name *</label>
+                  <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none text-roam-dark" />
                 </div>
                 <div>
-                  <label for="email" class="block text-sm font-semibold mb-1">Email *</label>
-                  <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none" />
+                  <label for="email" class="block text-sm font-semibold mb-1 text-roam-dark">Email *</label>
+                  <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none text-roam-dark" />
                 </div>
                 <div>
-                  <label for="phone" class="block text-sm font-semibold mb-1">Phone Number *</label>
-                  <input type="tel" id="phone" name="phone" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none" />
+                  <label for="phone" class="block text-sm font-semibold mb-1 text-roam-dark">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none text-roam-dark" />
                 </div>
                 <div>
-                  <label for="message" class="block text-sm font-semibold mb-1">Additional Notes</label>
-                  <textarea id="message" name="message" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none"></textarea>
+                  <label for="message" class="block text-sm font-semibold mb-1 text-roam-dark">Additional Notes</label>
+                  <textarea id="message" name="message" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[color:var(--color-amber-base)] focus:border-transparent outline-none text-roam-dark"></textarea>
                 </div>
               </div>
               <button type="submit" class="w-full mt-6 bg-[color:var(--color-amber-base)] hover:bg-[color:var(--color-amber-bright)] text-black font-heading font-bold py-3 px-6 rounded-lg transition-colors text-lg">
@@ -163,23 +164,20 @@ const organizationJsonLd = {
       </div>
     </div>
 
-    <!-- Main Content — pt-24/28 clears the fixed nav -->
-    <main class="flex-1 pt-24 md:pt-28">
+    <main>
       <slot />
     </main>
 
     <Footer />
 
-    <!-- Cart JavaScript (unchanged) -->
+    <!-- Cart JavaScript (shared behaviour for both layouts via window.roamCart) -->
     <script>
       const cart = {
         items: JSON.parse(localStorage.getItem('roam-cart') || '[]'),
-
         save() {
           localStorage.setItem('roam-cart', JSON.stringify(this.items));
           this.updateUI();
         },
-
         add(product: {id: string, name: string, price: number, variant: string, image: string, stripePriceId?: string | null}) {
           const existing = this.items.find((item: any) => item.id === product.id && item.variant === product.variant);
           if (existing) {
@@ -190,23 +188,19 @@ const organizationJsonLd = {
           this.save();
           this.openSidebar();
         },
-
         canCheckout() {
           return this.items.length > 0 && this.items.every((item: any) => item.stripePriceId && item.stripePriceId !== 'price_PLACEHOLDER');
         },
-
         remove(index: number) {
           this.items.splice(index, 1);
           this.save();
         },
-
         clear() {
           if (this.items.length === 0) return;
           if (!confirm('Are you sure you want to empty your basket?')) return;
           this.items = [];
           this.save();
         },
-
         updateQty(index: number, qty: number) {
           if (qty <= 0) {
             this.remove(index);
@@ -215,15 +209,12 @@ const organizationJsonLd = {
             this.save();
           }
         },
-
         getTotal() {
           return this.items.reduce((sum: number, item: any) => sum + (item.price * item.qty), 0);
         },
-
         getCount() {
           return this.items.reduce((sum: number, item: any) => sum + item.qty, 0);
         },
-
         updateUI() {
           const itemsEl = document.getElementById('cart-items');
           const emptyEl = document.getElementById('cart-empty');
@@ -270,13 +261,13 @@ const organizationJsonLd = {
                 <div class="flex gap-4 py-4 border-b">
                   <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg" />
                   <div class="flex-1">
-                    <h3 class="font-heading font-semibold text-sm">${item.name}</h3>
+                    <h3 class="font-heading font-semibold text-sm text-roam-dark">${item.name}</h3>
                     ${item.variant !== 'Default Title' ? `<p class="text-xs text-gray-500">${item.variant}</p>` : ''}
                     <p class="text-[color:var(--color-amber-base)] font-bold mt-1">£${(item.price * 1.2).toFixed(2)} <span class="text-xs font-normal text-gray-500">inc. VAT</span></p>
                     <div class="flex items-center gap-2 mt-2">
-                      <button onclick="window.roamCart.updateQty(${i}, ${item.qty - 1})" class="w-7 h-7 rounded border text-center hover:bg-gray-100 text-sm">-</button>
-                      <span class="text-sm font-semibold">${item.qty}</span>
-                      <button onclick="window.roamCart.updateQty(${i}, ${item.qty + 1})" class="w-7 h-7 rounded border text-center hover:bg-gray-100 text-sm">+</button>
+                      <button onclick="window.roamCart.updateQty(${i}, ${item.qty - 1})" class="w-7 h-7 rounded border text-center hover:bg-gray-100 text-sm text-roam-dark">-</button>
+                      <span class="text-sm font-semibold text-roam-dark">${item.qty}</span>
+                      <button onclick="window.roamCart.updateQty(${i}, ${item.qty + 1})" class="w-7 h-7 rounded border text-center hover:bg-gray-100 text-sm text-roam-dark">+</button>
                       <button onclick="window.roamCart.remove(${i})" class="ml-auto text-red-500 hover:text-red-700 text-xs">Remove</button>
                     </div>
                   </div>
@@ -285,12 +276,10 @@ const organizationJsonLd = {
             }
           }
         },
-
         openSidebar() {
           document.getElementById('cart-sidebar')?.classList.remove('hidden');
           document.body.style.overflow = 'hidden';
         },
-
         closeSidebar() {
           document.getElementById('cart-sidebar')?.classList.add('hidden');
           document.body.style.overflow = '';
@@ -360,7 +349,6 @@ const organizationJsonLd = {
         const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
         btn.disabled = true;
         btn.textContent = 'Sending...';
-
         try {
           const res = await fetch('/api/contact', {
             method: 'POST',
@@ -375,9 +363,7 @@ const organizationJsonLd = {
               basketTotal: (window as any).__basketTotal || '',
             }),
           });
-
           if (!res.ok) throw new Error('Failed to send');
-
           cart.items = [];
           cart.save();
           document.getElementById('enquiry-modal')?.classList.add('hidden');

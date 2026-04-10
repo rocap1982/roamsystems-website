@@ -1,13 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-roam-orange: #f47d23;
-  --color-roam-orange-dark: #d96a1a;
-  --color-roam-dark: #1a1a1a;
-  --color-roam-gray: #2d2d2d;
-  --color-roam-light: #f5f5f5;
-
-  /* Dark industrial palette — used by homepage v2 redesign */
+  /* Dark industrial palette */
   --color-ink-950: #0b0b0c;
   --color-ink-900: #0f0f10;
   --color-ink-800: #141416;
@@ -23,26 +17,25 @@
   --color-amber-base: #e87e04;
   --color-amber-bright: #f59e0b;
   --color-amber-dim: #b45f02;
+  --color-amber-glow: rgba(232, 126, 4, 0.35);
 
-  --font-family-heading: 'Barlow', sans-serif;
-  --font-family-body: 'Roboto Condensed', sans-serif;
+  /* Typography */
+  --font-display: "Inter", "Helvetica Neue", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 @layer base {
-  body {
-    font-family: var(--font-family-body);
-    color: #333;
-    background: #fff;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-family-heading);
-    font-weight: 700;
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Dark-theme body override (applied by HomeLayout) */
-  body.theme-dark {
-    background: var(--color-ink-900);
+  body {
+    background-color: var(--color-ink-900);
     color: var(--color-ink-100);
+    font-family: var(--font-body);
+    font-feature-settings: "ss01", "cv11";
   }
 
   ::selection {
@@ -50,8 +43,11 @@
     color: #000;
   }
 
+  /* Respect reduced motion site-wide */
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -68,23 +64,42 @@
       linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     background-size: 48px 48px;
   }
+
   .bg-grid-fade {
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
   }
 
+  /* Hairline border helpers */
+  .hairline {
+    border: 1px solid var(--color-ink-600);
+  }
+
+  .hairline-t { border-top: 1px solid var(--color-ink-600); }
+  .hairline-b { border-bottom: 1px solid var(--color-ink-600); }
+
+  /* Amber glow */
+  .glow-amber {
+    box-shadow: 0 0 0 1px rgba(232, 126, 4, 0.4), 0 20px 60px -20px var(--color-amber-glow);
+  }
+
+  /* Tight tracking for display text */
   .tracking-tightest { letter-spacing: -0.045em; }
 
-  /* Marquee */
+  /* Marquee keyframes */
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
+
   .marquee-track {
     animation: marquee 40s linear infinite;
     will-change: transform;
   }
-  .marquee-track:hover { animation-play-state: paused; }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
 
   /* BrandMark scan-line sweep */
   @keyframes brand-scan {
@@ -93,10 +108,39 @@
     85%  { opacity: 1; }
     100% { top: 110%; opacity: 0; }
   }
+
   .brand-scan {
     animation: brand-scan 2.4s ease-in-out infinite;
     animation-play-state: paused;
     box-shadow: 0 0 12px var(--color-amber-base);
   }
-  .group:hover .brand-scan { animation-play-state: running; }
+
+  .group:hover .brand-scan {
+    animation-play-state: running;
+  }
+
+  /* Placeholder image shimmer */
+  .placeholder-img {
+    background:
+      linear-gradient(135deg, var(--color-ink-800) 0%, var(--color-ink-700) 40%, var(--color-ink-800) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .placeholder-img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .placeholder-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(232, 126, 4, 0.08), transparent 60%);
+  }
 }

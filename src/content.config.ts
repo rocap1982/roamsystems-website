@@ -2,7 +2,8 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  // Exclude files prefixed "draft-" (WIP posts not yet ready for the build)
+  loader: glob({ pattern: ['**/*.md', '!**/draft-*.md'], base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
