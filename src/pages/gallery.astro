@@ -3,25 +3,40 @@ import Layout from '../layouts/Layout.astro';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-// Load gallery images from the public/images/gallery folder
-// Just drop new images into this folder and they'll appear automatically!
-let galleryImages: string[] = [];
+// Gallery categories — directly map to subfolders under public/images/gallery/
+// Order defines the order the filter pills appear.
+const CATEGORIES: { slug: string; label: string }[] = [
+  { slug: 'builds',     label: 'Builds' },
+  { slug: 'frames',     label: 'Frames' },
+  { slug: 'kitchens',   label: 'Kitchens' },
+  { slug: 'upholstery', label: 'Upholstery' },
+];
 
-try {
-  const galleryDir = path.join(process.cwd(), 'public/images/gallery');
-  const files = await fs.readdir(galleryDir);
-  galleryImages = files
-    .filter(f => /\.(jpg|jpeg|png|webp|gif|avif)$/i.test(f))
-    .sort()
-    .map(f => `/images/gallery/${f}`);
-} catch {
-  // Gallery folder may not exist yet or be empty
+type GalleryImage = { src: string; category: string };
+
+// Walk each category subfolder and collect images
+const galleryDir = path.join(process.cwd(), 'public/images/gallery');
+const images: GalleryImage[] = [];
+
+for (const { slug } of CATEGORIES) {
+  try {
+    const dir = path.join(galleryDir, slug);
+    const files = await fs.readdir(dir);
+    const imgs = files
+      .filter(f => /\.(jpg|jpeg|png|webp|gif|avif)$/i.test(f))
+      .sort()
+      .map(f => ({ src: `/images/gallery/${slug}/${f}`, category: slug }));
+    images.push(...imgs);
+  } catch {
+    // Folder may not exist yet — skip silently
+  }
 }
 
-// Also pull product images as gallery content if no gallery images exist
-import products from '../data/products.json';
-const productImages = products.flatMap(p => p.images);
-const allImages = galleryImages.length > 0 ? galleryImages : productImages;
+// Count per category for the pill labels
+const counts: Record<string, number> = Object.fromEntries(
+  CATEGORIES.map(c => [c.slug, images.filter(i => i.category === c.slug).length])
+);
+const total = images.length;
 ---
 
 <Layout title="Photo Gallery" description="See ROAM Systems campervan furniture installed in real conversions. M1 certified seating frames, kitchen pods, storage and upholstery photo gallery.">
@@ -31,29 +46,47 @@ const allImages = galleryImages.length > 0 ? galleryImages : productImages;
     <div class="max-w-7xl mx-auto px-4 text-center">
       <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Photo Gallery</h1>
       <p class="text-gray-300 max-w-2xl mx-auto">Browse our gallery of campervan builds, product installations, and customer conversions.</p>
-      <p class="text-roam-orange font-heading font-semibold mt-4">{allImages.length} Photos</p>
+      <p class="text-roam-orange font-heading font-semibold mt-4">{total} Photos</p>
+    </div>
+  </section>
+
+  <!-- Filter pills -->
+  <section class="bg-roam-light pt-10">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-wrap justify-center gap-3">
+        <button
+          type="button"
+          class="gallery-filter px-5 py-2 rounded-full font-heading font-semibold text-sm transition-all border-2 border-roam-dark bg-roam-dark text-white"
+          data-filter="all"
+        >
+          All <span class="opacity-70 ml-1">({total})</span>
+        </button>
+        {CATEGORIES.filter(c => counts[c.slug] > 0).map(c => (
+          <button
+            type="button"
+            class="gallery-filter px-5 py-2 rounded-full font-heading font-semibold text-sm transition-all border-2 border-roam-dark bg-white text-roam-dark hover:bg-roam-dark hover:text-white"
+            data-filter={c.slug}
+          >
+            {c.label} <span class="opacity-70 ml-1">({counts[c.slug]})</span>
+          </button>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- Gallery Grid -->
-  <section class="py-16 bg-roam-light">
+  <section class="py-10 bg-roam-light">
     <div class="max-w-7xl mx-auto px-4">
-      {galleryImages.length === 0 && (
-        <div class="text-center text-gray-500 mb-8 bg-white rounded-xl p-4 border border-gray-200">
-          <p class="text-sm">Gallery images showing from product catalogue. Add your own photos to <code class="bg-gray-100 px-2 py-1 rounded text-xs">public/images/gallery/</code> folder.</p>
-        </div>
-      )}
-
-      <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
-        {allImages.map((img, i) => (
-          <div class="break-inside-avoid">
+      <div id="gallery-grid" class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        {images.map((img, i) => (
+          <div class="gallery-cell break-inside-avoid" data-category={img.category}>
             <button
               class="gallery-item w-full rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all cursor-pointer group"
-              data-image={img}
+              data-image={img.src}
               data-index={i}
             >
               <img
-                src={img}
+                src={img.src}
                 alt={`Gallery image ${i + 1}`}
                 class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
@@ -83,22 +116,62 @@ const allImages = galleryImages.length > 0 ? galleryImages : productImages;
 </Layout>
 
 <script>
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
-  const images = Array.from(galleryItems).map(item => (item as HTMLElement).dataset.image || '');
-  let currentIndex = 0;
+  // --- Filter pills ---
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.gallery-filter');
+  const cells = Array.from(document.querySelectorAll<HTMLElement>('.gallery-cell'));
 
-  const lightboxCounter = document.getElementById('lightbox-counter');
-
-  function showImage(index: number) {
-    currentIndex = ((index % images.length) + images.length) % images.length;
-    if (lightboxImage) lightboxImage.src = images[currentIndex];
-    if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+  function setActiveButton(activeBtn: HTMLButtonElement) {
+    filterButtons.forEach(btn => {
+      btn.classList.remove('bg-roam-dark', 'text-white');
+      btn.classList.add('bg-white', 'text-roam-dark');
+    });
+    activeBtn.classList.remove('bg-white', 'text-roam-dark');
+    activeBtn.classList.add('bg-roam-dark', 'text-white');
   }
 
-  function openLightbox(index: number) {
-    showImage(index);
+  function applyFilter(filter: string) {
+    cells.forEach(cell => {
+      const show = filter === 'all' || cell.dataset.category === filter;
+      cell.style.display = show ? '' : 'none';
+    });
+    // Rebuild lightbox image list from currently visible items so prev/next works correctly
+    rebuildLightboxList();
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      setActiveButton(btn);
+      applyFilter(btn.dataset.filter || 'all');
+    });
+  });
+
+  // --- Lightbox ---
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+  const lightboxCounter = document.getElementById('lightbox-counter');
+  let visibleImages: string[] = [];
+  let currentIndex = 0;
+
+  function rebuildLightboxList() {
+    visibleImages = cells
+      .filter(cell => cell.style.display !== 'none')
+      .map(cell => {
+        const btn = cell.querySelector<HTMLElement>('.gallery-item');
+        return btn?.dataset.image || '';
+      });
+  }
+
+  function showImage(index: number) {
+    if (visibleImages.length === 0) return;
+    currentIndex = ((index % visibleImages.length) + visibleImages.length) % visibleImages.length;
+    if (lightboxImage) lightboxImage.src = visibleImages[currentIndex];
+    if (lightboxCounter) lightboxCounter.textContent = `${currentIndex + 1} / ${visibleImages.length}`;
+  }
+
+  function openLightbox(startSrc: string) {
+    rebuildLightboxList();
+    const idx = visibleImages.indexOf(startSrc);
+    showImage(idx >= 0 ? idx : 0);
     lightbox?.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
@@ -108,10 +181,9 @@ const allImages = galleryImages.length > 0 ? galleryImages : productImages;
     document.body.style.overflow = '';
   }
 
-  galleryItems.forEach(item => {
+  document.querySelectorAll<HTMLElement>('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
-      const index = parseInt((item as HTMLElement).dataset.index || '0');
-      openLightbox(index);
+      openLightbox(item.dataset.image || '');
     });
   });
 
@@ -129,4 +201,7 @@ const allImages = galleryImages.length > 0 ? galleryImages : productImages;
     if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
     if (e.key === 'ArrowRight') showImage(currentIndex + 1);
   });
+
+  // Initialise visible list on load
+  rebuildLightboxList();
 </script>
