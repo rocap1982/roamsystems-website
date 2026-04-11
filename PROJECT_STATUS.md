@@ -1,14 +1,14 @@
 ---
 project: roam-systems-website
 status: active
-last_updated: 2026-04-06
+last_updated: 2026-04-11
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
-active_work: "Sprint 005 complete — SEO marketing system deployed. No active sprint."
-latest_session_log: "docs/sessions/2026-04-06.md"
+active_work: "No active sprint. Homepage + site-wide nav/footer redesign shipped 2026-04-10 (no governance sprint doc — flagged in session log)."
+latest_session_log: "docs/sessions/2026-04-11.md"
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
-canonical_architecture_decision: ""
+canonical_architecture_decision: "Hybrid Astro + React islands via @astrojs/react (added 2026-04-10). All interactive homepage sections are React islands; cart/checkout scripts remain in the Astro layout."
 active_audits_dir: docs/audits/active/
 skills_index: .claude/skills/
 canonical_reference_root: docs/reference/
