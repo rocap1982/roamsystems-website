@@ -141,7 +141,7 @@ export const trustItems = [
   'UK Made & Delivered',
   '17 Approved Installers',
   'EU Registered Design',
-  'From £1,999 + VAT',
+  'From £2,050 + VAT',
 ];
 
 // --- Nav links: full site routes (used by every page) ---
