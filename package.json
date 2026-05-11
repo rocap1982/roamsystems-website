@@ -7,9 +7,11 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/check-blog-prices.mjs",
     "build": "astro build",
     "start": "node dist/server/entry.mjs",
     "preview": "astro preview",
+    "check:blog-prices": "node scripts/check-blog-prices.mjs",
     "astro": "astro"
   },
   "dependencies": {
