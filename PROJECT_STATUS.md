@@ -1,7 +1,7 @@
 ---
 project: roam-systems-website
 status: active
-last_updated: 2026-04-11
+last_updated: 2026-05-11
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
@@ -52,7 +52,7 @@ This file is the **fastest way to resume work** with minimal context.
 - Hybrid site (Astro + `@astrojs/node` adapter) — static pages prerendered, `/api/checkout` is server-rendered
 - No Shopify Storefront API integration yet — product data is a local JSON file
 - Stripe Checkout for standard products; Resend `/api/contact` for enquiries (replaced FormSubmit.co)
-- `stripePriceId` values are live Stripe prices (verified and synced 2026-04-06)
+- `stripePriceId` values are live Stripe prices (refreshed 2026-05-11 — price rise to cover materials cost increases; 7 new Prices created with `tax_behavior=exclusive`, old Prices still active for rollback)
 
 Update this file when:
 - priorities change,
