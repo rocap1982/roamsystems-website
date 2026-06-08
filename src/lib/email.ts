@@ -82,7 +82,7 @@ function getCustomFieldValue(
   return undefined;
 }
 
-export function buildEmailHtml(session: Stripe.Checkout.Session): string {
+function buildEmailHtml(session: Stripe.Checkout.Session): string {
   const lineItems = session.line_items?.data ?? [];
   const shipping = session.shipping_details;
   const orderRef = session.payment_intent
