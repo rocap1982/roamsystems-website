@@ -1,8 +1,9 @@
 ---
 doc_type: audit
 audit_type: mini
-status: active # active | resolved | superseded
+status: resolved # active | resolved | superseded
 created: 2026-06-08
+resolved: 2026-06-08
 auditor: "AI (Claude Code)"
 scope: "Checkout order-detail capture (phone + vehicle custom fields, confirmation email) + pricing source-of-truth refactor + vehicle fleet expansion to 6"
 open_p0: 0
@@ -73,8 +74,8 @@ pricing regression in the homepage marquee, and (2) stale status-doc snapshots
 - **Canonical ref**: `cfaa4d3` commit intent ("trust marquee 'From £1,999' → 'From £2,050'")
 - **What is wrong**: The source-of-truth refactor replaced the hardcoded "From £2,050" marquee label with `Math.min(...all variant prices)`, which now resolves to **£356** (the cheapest accessory variant — cushion boards/foam), not the cheapest seating frame. The homepage trust marquee therefore advertises **"From £356 + VAT"**, undercutting the intended ~£2,050 frame entry price.
 - **Expected**: Marquee should reflect the intended headline "from" price (cheapest seating frame, ~£2,050), per the originating commit message. Computing `Math.min` over the entire catalogue including low-cost accessories changes the advertised entry price.
-- **Status**: Open
-- **Fix recommendation**: Decide the intended semantics. Either (a) compute the min over a defined subset (e.g. products in the `Frames` category, or a flagged "headline" product), or (b) if "From £356" is genuinely acceptable, confirm with the owner and update the `cfaa4d3` intent note. Verify the rendered marquee on the homepage after the change.
+- **Status**: ✅ Resolved (FIX-2026-06-08-001, commit `2c4e92d`)
+- **Resolution**: Owner chose (a). `homeData.ts` now computes the marquee "from" price from the flagship M1 U-Shape Frame's lowest variant (`Math.min(...m1.variants...)` = £2,050), kept source-of-truth-driven. Deployed and verified live in Chrome: marquee reads "FROM £2,050 + VAT".
 
 ### AUDIT-2026-06-08-002
 
@@ -113,8 +114,8 @@ pricing regression in the homepage marquee, and (2) stale status-doc snapshots
 - **Canonical ref**: `PROJECT_STATUS.md` product schema (`compatibleVehicles` field); `src/data/vehicles.json` (6 vehicles)
 - **What is wrong**: The fleet grew to 6 vehicles (Renault Trafic, Nissan Primastar added), and `vehicle.compatibleProducts` was populated for all 6 — but the inverse field on each product, `compatibleVehicles`, still lists only the original 4. This field feeds the Google Merchant feed's `g:custom_label_0`, so every product in the feed omits the two new vehicles. (Customer-facing vehicle/product pages are unaffected — they read `vehicle.compatibleProducts`, which is complete.)
 - **Expected**: `compatibleVehicles` on each product reflects all vehicles the product fits (all 6), keeping the Merchant feed label consistent with `vehicle.compatibleProducts`.
-- **Status**: Open
-- **Fix recommendation**: Either add `renault-trafic` + `nissan-primastar` to every product's `compatibleVehicles`, or — better — derive `compatibleVehicles` from `vehicle.compatibleProducts` at build time to eliminate the two-way-sync drift trap (mirrors the products.json price source-of-truth refactor pattern in `cfaa4d3`).
+- **Status**: ✅ Resolved (FIX-2026-06-08-005)
+- **Resolution**: Added `renault-trafic` + `nissan-primastar` to all 9 products' `compatibleVehicles`, and added both to `VEHICLE_LABEL_MAP` in `google-merchant.xml.ts` (otherwise they leaked as raw slugs). Rebuilt feed verified: `custom_label_0` now reads "VW T5, VW T6, VW T6.1, Transit Custom, Renault Trafic, Nissan Primastar", zero raw-slug leakage. (Build-time derivation from `vehicle.compatibleProducts` noted as a future refactor to remove the two-way-sync trap, not done this pass.)
 
 ### AUDIT-2026-06-08-006
 
@@ -123,8 +124,8 @@ pricing regression in the homepage marquee, and (2) stale status-doc snapshots
 - **Canonical ref**: `src/data/vehicles.json` (6 vehicles)
 - **What is wrong**: The `/vehicles` listing page's SEO meta description (`<Layout description=...>`) and the visible page subtitle both read "fits VW Transporter T5, T6, T6.1 and Ford Transit Custom" — omitting Renault Trafic and Nissan Primastar. Customer-facing + indexed by search engines.
 - **Expected**: Copy names all 6 supported vehicles (or is phrased to not enumerate, e.g. "VW Transporter, Ford Transit Custom, Renault Trafic, Nissan Primastar and more").
-- **Status**: Open
-- **Fix recommendation**: Update both strings on `vehicles/index.astro`. Consider generating the list from `vehicles.json` to prevent recurrence.
+- **Status**: ✅ Resolved (FIX-2026-06-08-006)
+- **Resolution**: Updated both the `<Layout>` meta description and the visible subtitle on `vehicles/index.astro` to name all 6 vehicles ("…T5, T6, T6.1, Ford Transit Custom, Renault Trafic and Nissan Primastar…"). (Generating the list from `vehicles.json` noted as a future improvement to prevent recurrence.)
 
 ## Documentation completeness check
 
@@ -148,10 +149,12 @@ pricing regression in the homepage marquee, and (2) stale status-doc snapshots
 
 ## Resolution / follow-up
 
-- Next steps:
-  1. Decide intended marquee "from" price semantics and fix AUDIT-2026-06-08-001 (P2, customer-facing).
-  2. Backfill / derive product `compatibleVehicles` for the 2 new vehicles — fixes Merchant-feed `custom_label_0` (AUDIT-2026-06-08-005, P2).
-  3. Update `/vehicles` page copy + meta description to all 6 vehicles (AUDIT-2026-06-08-006, P2).
-  4. Status-doc drift (002, 003) corrected as part of this audit.
-  5. Optionally run a live Stripe test checkout to confirm the dropdown renders and the email Customer Details block populates end-to-end.
-- This audit stays **active** until the three P2 issues (001, 005, 006) are resolved. When resolved, move to `docs/audits/resolved/2026-06/` and update `PROJECT_STATUS.md`.
+- **Resolved 2026-06-08.** All three P2 issues fixed and deployed:
+  1. ✅ AUDIT-001 — marquee computes from flagship frame (£2,050), verified live (FIX-2026-06-08-001).
+  2. ✅ AUDIT-005 — product `compatibleVehicles` + feed `VEHICLE_LABEL_MAP` updated for both new vehicles; feed verified (FIX-2026-06-08-005).
+  3. ✅ AUDIT-006 — `/vehicles` copy + meta description name all 6 vehicles (FIX-2026-06-08-006).
+  4. ✅ Status-doc drift (002, 003) corrected during the audit pass.
+- **Remaining (not drift, no action required)**:
+  - AUDIT-004 (P3, informational) — success page doesn't echo phone/vehicle. Optional enhancement, not a contract violation. Deferred.
+  - Live Stripe test checkout — not performed (needs a Stripe test/read-only key). Independent of this audit's closure.
+- Moved to `docs/audits/resolved/2026-06/`; `PROJECT_STATUS.md` latest-audit pointer updated.

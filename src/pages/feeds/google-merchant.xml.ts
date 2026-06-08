@@ -16,6 +16,8 @@ const VEHICLE_LABEL_MAP: Record<string, string> = {
   'vw-transporter-t6': 'VW T6',
   'vw-transporter-t6-1': 'VW T6.1',
   'ford-transit-custom': 'Transit Custom',
+  'renault-trafic': 'Renault Trafic',
+  'nissan-primastar': 'Nissan Primastar',
 };
 
 function escapeXml(str: string): string {
