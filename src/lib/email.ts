@@ -58,7 +58,31 @@ function formatCurrency(amount: number | null | undefined): string {
   return `£${(amount / 100).toFixed(2)}`;
 }
 
-function buildEmailHtml(session: Stripe.Checkout.Session): string {
+// Maps the checkout dropdown `value` back to a human-readable vehicle name.
+// Keep in sync with the `custom_fields` dropdown in src/pages/api/checkout.ts.
+const VEHICLE_LABELS: Record<string, string> = {
+  vwT5: 'VW Transporter T5',
+  vwT6: 'VW Transporter T6',
+  vwT61: 'VW Transporter T6.1',
+  fordTransitCustom: 'Ford Transit Custom',
+  renaultTrafic: 'Renault Trafic',
+  nissanPrimastar: 'Nissan Primastar',
+  other: 'Other / not listed',
+};
+
+function getCustomFieldValue(
+  session: Stripe.Checkout.Session,
+  key: string
+): string | undefined {
+  const field = session.custom_fields?.find((f) => f.key === key);
+  if (!field) return undefined;
+  if (field.type === 'dropdown') return field.dropdown?.value ?? undefined;
+  if (field.type === 'text') return field.text?.value ?? undefined;
+  if (field.type === 'numeric') return field.numeric?.value ?? undefined;
+  return undefined;
+}
+
+export function buildEmailHtml(session: Stripe.Checkout.Session): string {
   const lineItems = session.line_items?.data ?? [];
   const shipping = session.shipping_details;
   const orderRef = session.payment_intent
@@ -92,6 +116,36 @@ function buildEmailHtml(session: Stripe.Checkout.Session): string {
 
   const taxAmount = session.total_details?.amount_tax;
   const shippingCost = session.shipping_cost?.amount_total;
+
+  // Customer details (captured at checkout)
+  const customerName = session.customer_details?.name ?? shipping?.name ?? '';
+  const customerEmail = session.customer_details?.email ?? '';
+  const customerPhone = session.customer_details?.phone ?? '';
+  const vehicleValue = getCustomFieldValue(session, 'vehicle');
+  const vehicleName = vehicleValue
+    ? VEHICLE_LABELS[vehicleValue] ?? vehicleValue
+    : '';
+  const vehicleYearReg = getCustomFieldValue(session, 'vehicleYearReg');
+  const vehicleDisplay = vehicleName
+    ? `${escapeHtml(vehicleName)}${vehicleYearReg ? ` (${escapeHtml(vehicleYearReg)})` : ''}`
+    : '';
+
+  const customerRows = [
+    customerName
+      ? `<tr><td style="padding:6px 0;color:#666;width:90px;vertical-align:top;">Name</td><td style="padding:6px 0;">${escapeHtml(customerName)}</td></tr>`
+      : '',
+    customerEmail
+      ? `<tr><td style="padding:6px 0;color:#666;vertical-align:top;">Email</td><td style="padding:6px 0;"><a href="mailto:${escapeHtml(customerEmail)}" style="color:#f47d23;">${escapeHtml(customerEmail)}</a></td></tr>`
+      : '',
+    customerPhone
+      ? `<tr><td style="padding:6px 0;color:#666;vertical-align:top;">Phone</td><td style="padding:6px 0;"><a href="tel:${escapeHtml(customerPhone)}" style="color:#f47d23;">${escapeHtml(customerPhone)}</a></td></tr>`
+      : '',
+    vehicleDisplay
+      ? `<tr><td style="padding:6px 0;color:#666;vertical-align:top;">Vehicle</td><td style="padding:6px 0;">${vehicleDisplay}</td></tr>`
+      : '',
+  ]
+    .filter(Boolean)
+    .join('');
 
   return `<!DOCTYPE html>
 <html>
@@ -144,10 +198,19 @@ function buildEmailHtml(session: Stripe.Checkout.Session): string {
         </tr>
       </table>
 
-      ${shippingAddress ? `
-      <!-- Shipping -->
+      ${customerRows ? `
+      <!-- Customer details -->
       <div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:24px;">
-        <h3 style="margin:0 0 8px;font-size:14px;color:#666;font-weight:600;">Shipping Address</h3>
+        <h3 style="margin:0 0 8px;font-size:14px;color:#666;font-weight:600;">Customer Details</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.6;">
+          ${customerRows}
+        </table>
+      </div>` : ''}
+
+      ${shippingAddress ? `
+      <!-- Delivery address -->
+      <div style="background:#f9f9f9;padding:16px;border-radius:8px;margin-bottom:24px;">
+        <h3 style="margin:0 0 8px;font-size:14px;color:#666;font-weight:600;">Delivery Address</h3>
         <p style="margin:0;font-size:14px;line-height:1.6;">${shippingAddress}</p>
       </div>` : ''}
 

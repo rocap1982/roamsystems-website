@@ -55,6 +55,34 @@ export const POST: APIRoute = async ({ request }) => {
       shipping_address_collection: {
         allowed_countries: ['GB'],
       },
+      phone_number_collection: {
+        enabled: true,
+      },
+      custom_fields: [
+        {
+          key: 'vehicle',
+          label: { type: 'custom', custom: 'Which vehicle is this for?' },
+          type: 'dropdown',
+          dropdown: {
+            options: [
+              { label: 'VW Transporter T5', value: 'vwT5' },
+              { label: 'VW Transporter T6', value: 'vwT6' },
+              { label: 'VW Transporter T6.1', value: 'vwT61' },
+              { label: 'Ford Transit Custom', value: 'fordTransitCustom' },
+              { label: 'Renault Trafic', value: 'renaultTrafic' },
+              { label: 'Nissan Primastar', value: 'nissanPrimastar' },
+              { label: 'Other / not listed', value: 'other' },
+            ],
+          },
+        },
+        {
+          key: 'vehicleYearReg',
+          label: { type: 'custom', custom: 'Vehicle year / registration' },
+          type: 'text',
+          optional: true,
+          text: { maximum_length: 50 },
+        },
+      ],
       automatic_tax: {
         enabled: true,
       },
