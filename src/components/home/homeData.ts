@@ -134,6 +134,11 @@ export const vehicles = [
 ];
 
 // --- Trust marquee items ---
+const minVariantPrice = Math.min(
+  ...raw.flatMap((p) => p.variants.map((v) => v.price)),
+);
+const fromPriceLabel = `From £${minVariantPrice.toLocaleString('en-GB')} + VAT`;
+
 export const trustItems = [
   'M1 Certified Safety',
   '100+ Fabric Choices',
@@ -141,7 +146,7 @@ export const trustItems = [
   'UK Made & Delivered',
   '17 Approved Installers',
   'EU Registered Design',
-  'From £1,999 + VAT',
+  fromPriceLabel,
 ];
 
 // --- Nav links: full site routes (used by every page) ---

@@ -2,7 +2,7 @@
   {
     "id": "m1-certified-u-shape-seating-frame",
     "name": "M1 Certified U-Shape Seating Frame",
-    "price": 1999,
+    "price": 2050,
     "compareAtPrice": null,
     "category": [
       "Frames"
@@ -40,13 +40,13 @@
     "variants": [
       {
         "title": "Standard",
-        "price": 1999,
-        "stripePriceId": "price_1TJ8DaP8jCOedj2emZ2brPYy"
+        "price": 2050,
+        "stripePriceId": "price_1TVugcP8jCOedj2eUbpmfjaR"
       },
       {
         "title": "Full Width",
-        "price": 2099,
-        "stripePriceId": "price_1TJ8DaP8jCOedj2eFYhihgOt"
+        "price": 2150,
+        "stripePriceId": "price_1TVugdP8jCOedj2exfaLmZ9l"
       }
     ],
     "images": [
@@ -68,7 +68,7 @@
   {
     "id": "central-under-bed-pull-out-drawer-storage",
     "name": "Central Under Bed Pull-Out Drawer Storage",
-    "price": 399,
+    "price": 420,
     "compareAtPrice": null,
     "category": [
       "Frames"
@@ -104,8 +104,8 @@
     "variants": [
       {
         "title": "Textured Black Powder Coat",
-        "price": 399,
-        "stripePriceId": "price_1TJ8DbP8jCOedj2eoREPwOSW"
+        "price": 420,
+        "stripePriceId": "price_1TVugdP8jCOedj2elGZtmm4y"
       }
     ],
     "images": [
@@ -129,7 +129,7 @@
   {
     "id": "rear-pull-out-drawer-storage-system",
     "name": "Rear Pull-Out Drawer Storage System",
-    "price": 449,
+    "price": 499,
     "compareAtPrice": null,
     "category": [
       "Frames"
@@ -165,8 +165,8 @@
     "variants": [
       {
         "title": "Textured Black Powder Coat",
-        "price": 449,
-        "stripePriceId": "price_1TJ8DbP8jCOedj2e4kzIJEe6"
+        "price": 499,
+        "stripePriceId": "price_1TVugeP8jCOedj2e6E4H6ZcW"
       }
     ],
     "images": [
@@ -182,7 +182,7 @@
   {
     "id": "rear-pull-out-kitchen-pod",
     "name": "Rear Pull-Out Kitchen Pod",
-    "price": 649,
+    "price": 699,
     "compareAtPrice": null,
     "category": [
       "Frames",
@@ -220,8 +220,8 @@
     "variants": [
       {
         "title": "Textured Black Powder Coat",
-        "price": 649,
-        "stripePriceId": "price_1TJ8DbP8jCOedj2ey3YSBGyM"
+        "price": 699,
+        "stripePriceId": "price_1TVugeP8jCOedj2e17WQeSDT"
       }
     ],
     "images": [
@@ -236,7 +236,7 @@
   {
     "id": "powder-coated-aluminium-front-facing-panels",
     "name": "Powder Coated Aluminium Front Facing Panels",
-    "price": 379,
+    "price": 399,
     "compareAtPrice": null,
     "category": [
       "Frames"
@@ -269,8 +269,8 @@
     "variants": [
       {
         "title": "Textured Black Powder Coat",
-        "price": 379,
-        "stripePriceId": "price_1TJ8DaP8jCOedj2ezIyG2ea8"
+        "price": 399,
+        "stripePriceId": "price_1TVugeP8jCOedj2e4WnkMwUK"
       }
     ],
     "images": [
@@ -286,7 +286,7 @@
   {
     "id": "full-upholstery-kit-rear-seating-only",
     "name": "Full Upholstery Kit – Rear Seating Only",
-    "price": 1099,
+    "price": 1210,
     "compareAtPrice": null,
     "category": [
       "Upholstery"
@@ -323,7 +323,7 @@
     "variants": [
       {
         "title": "Black",
-        "price": 1099,
+        "price": 1210,
         "stripePriceId": null
       }
     ],
@@ -338,7 +338,7 @@
   {
     "id": "cushion-boards-dual-density-foam",
     "name": "Cushion Boards & Dual Density Foam",
-    "price": 299,
+    "price": 356,
     "compareAtPrice": null,
     "category": [
       "Upholstery"
@@ -375,7 +375,7 @@
     "variants": [
       {
         "title": "Black",
-        "price": 299,
+        "price": 356,
         "stripePriceId": null
       }
     ],
@@ -389,7 +389,7 @@
   {
     "id": "kitchen-pod-campervan-package",
     "name": "Kitchen Pod Campervan Package",
-    "price": 1249,
+    "price": 1299,
     "compareAtPrice": null,
     "category": [
       "Kitchens"
@@ -426,8 +426,8 @@
     "variants": [
       {
         "title": "Default Title",
-        "price": 1249,
-        "stripePriceId": "price_1TJ8DcP8jCOedj2eLBLYsMUj"
+        "price": 1299,
+        "stripePriceId": "price_1TVugfP8jCOedj2eMiVRV72p"
       }
     ],
     "images": [

@@ -37,7 +37,7 @@ Our [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-
 - Laser-cut precision steel construction with textured black powder-coat finish
 - Quick conversion from seating to sleeping configuration
 
-The frame is available in Standard (£1,850) and Full Width (£1,995) configurations. The sleeping length extends to 170cm, which works well for most adults in the Transit Custom's load area.
+The frame is available in Standard and Full Width configurations. The sleeping length extends to 170cm, which works well for most adults in the Transit Custom's load area.
 
 For a complete finish, our [Full Upholstery Kit](/products/full-upholstery-kit-rear-seating-only) is made to order with over 100 fabric choices, including the Christina Marrone range. The cushions use dual-density foam — 25mm soft blue foam over 25mm firm chip foam — for proper support whether you're seated during the day or sleeping overnight.
 
@@ -57,11 +57,11 @@ Our [Kitchen Pod Package](/products/kitchen-pod-campervan-package) is available 
 - Sequoia table leg system with matching solid oak table
 - Space for a twin burner hob
 
-At £1,249, it's a comprehensive kitchen solution that also gives you a proper dining surface when needed. The [Aluminium Overhead Locker](/products/aluminium-overhead-locker) (£399) can be fitted directly above for additional storage — useful for plates, mugs, and dry food. It features Blum soft-close hinges and water-resistant LED lighting underneath.
+It's a comprehensive kitchen solution that also gives you a proper dining surface when needed. The [Aluminium Overhead Locker](/products/aluminium-overhead-locker) can be fitted directly above for additional storage — useful for plates, mugs, and dry food. It features Blum soft-close hinges and water-resistant LED lighting underneath.
 
 ### Rear Pull-Out Kitchen
 
-If you prefer a more minimal setup, the [Rear Pull-Out Kitchen Pod](/products/rear-pull-out-kitchen-pod) (£649) lives at the back of the van and slides out when you need it. It provides over 300 litres of storage and is built from laser-cut aluminium with heavy-duty runners rated to 220kg. You supply your own twin burner hob.
+If you prefer a more minimal setup, the [Rear Pull-Out Kitchen Pod](/products/rear-pull-out-kitchen-pod) lives at the back of the van and slides out when you need it. It provides over 300 litres of storage and is built from laser-cut aluminium with heavy-duty runners rated to 220kg. You supply your own twin burner hob.
 
 This option works particularly well if the Transit Custom doubles as a work vehicle during the week and you need to clear the load area quickly.
 
@@ -71,15 +71,15 @@ This option works particularly well if the Transit Custom doubles as a work vehi
 
 Space is always at a premium in a campervan conversion. The Transit Custom's floor-to-ceiling height is reasonable, but the biggest practical gains come from making the most of the under-bed area.
 
-Our [Central Under Bed Pull-Out Drawer Storage](/products/central-under-bed-pull-out-drawer-storage) (£399) provides over 200 litres of accessible storage with lockable heavy-duty runners and a 220kg load rating. It's built from laser-cut aluminium with a CNC-cut phenolic plywood front panel.
+Our [Central Under Bed Pull-Out Drawer Storage](/products/central-under-bed-pull-out-drawer-storage) provides over 200 litres of accessible storage with lockable heavy-duty runners and a 220kg load rating. It's built from laser-cut aluminium with a CNC-cut phenolic plywood front panel.
 
-For greater capacity, the [Rear Pull-Out Drawer Storage System](/products/rear-pull-out-drawer-storage-system) (£449) gives you 330+ litres on the same runner system. This is the option for gear-heavy trips — mountain bikes, camping equipment, or tools.
+For greater capacity, the [Rear Pull-Out Drawer Storage System](/products/rear-pull-out-drawer-storage-system) gives you 330+ litres on the same runner system. This is the option for gear-heavy trips — mountain bikes, camping equipment, or tools.
 
 ---
 
 ## The Finishing Detail
 
-Once your frame is installed, the [Powder Coated Aluminium Front Facing Panels](/products/powder-coated-aluminium-front-facing-panels) (£299) give the front face of the U-shape frame a clean, professional finish. Laser-cut to fit precisely, they use the same textured black powder coat as the rest of the ROAM Systems range, so everything ties together visually.
+Once your frame is installed, the [Powder Coated Aluminium Front Facing Panels](/products/powder-coated-aluminium-front-facing-panels) give the front face of the U-shape frame a clean, professional finish. Laser-cut to fit precisely, they use the same textured black powder coat as the rest of the ROAM Systems range, so everything ties together visually.
 
 ---
 
