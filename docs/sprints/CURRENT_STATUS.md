@@ -29,6 +29,7 @@ None.
 
 | Work | Date | Notes |
 |------|------|-------|
+| Checkout order-detail capture (small fix) | 2026-06-08 | `/api/checkout` now collects phone + required vehicle dropdown (6 vehicles + "other") + optional year/reg; confirmation email adds a Customer Details block. Canonical doc updated; build passes. Audit: `docs/audits/active/2026-06-08-checkout-order-detail-mini.md` (1 open P2 — homepage marquee now shows "From £356" instead of intended ~£2,050). |
 | Price rise — materials cost pass-through (small fix) | 2026-05-11 | 9 of 11 variants raised in `products.json`. 7 new Stripe Prices created (GBP, `tax_behavior=exclusive`, attached to existing parent Products); old Price IDs left active for one-line rollback. Locker SWB/LWB unchanged. Build passes; Merchant feed reflects new VAT-inclusive prices. |
 | Sprint 005: SEO Marketing System | 2026-03-15 | Vehicle pages, blog, Google Merchant feed, content pipeline, scheduled tasks. All gates pass. |
 | Sprint 4: SEO Phase 2 — OG + JSON-LD | 2026-03-15 | OG tags, Twitter Cards, Organization/Product/BreadcrumbList/LocalBusiness JSON-LD. All gates pass. |
@@ -40,5 +41,5 @@ None.
 ## Notes / Decisions
 
 - Plan `docs/plans/005-automated-seo-marketing.md` (approved + implemented)
-- All 9 products compatible with all 4 vehicles (T5, T6, T6.1, Transit Custom)
+- 6 vehicles (T5, T6, T6.1, Transit Custom, Renault Trafic, Nissan Primastar); all 6 list all 9 products in `vehicle.compatibleProducts`, so vehicle/product pages render correctly. Two trailing-edge drifts remain: product-side `compatibleVehicles` (Merchant-feed `custom_label_0`) and the `/vehicles` page copy still name only the original 4 — see AUDIT-2026-06-08-005/006.
 - Marketing API requires `MARKETING_API_TOKEN` Bearer auth (set on Railway before first use)

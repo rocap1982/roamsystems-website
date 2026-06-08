@@ -10,6 +10,7 @@ latest_session_log: "docs/sessions/2026-04-11.md"
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: "Hybrid Astro + React islands via @astrojs/react (added 2026-04-10). All interactive homepage sections are React islands; cart/checkout scripts remain in the Astro layout."
 active_audits_dir: docs/audits/active/
+latest_audit: "docs/audits/active/2026-06-08-checkout-order-detail-mini.md (Minor drift — 0 P0/P1, 3 P2: homepage marquee 'From £356' regression, Merchant-feed compatibleVehicles stale, /vehicles copy stale; status-doc drift fixed)"
 skills_index: .claude/skills/
 canonical_reference_root: docs/reference/
 ---
@@ -27,7 +28,7 @@ This file is the **fastest way to resume work** with minimal context.
 - **Hosting**: Railway (Node server)
 - **Payments**: Stripe Checkout (server-side sessions via `/api/checkout`)
 - **Product data**: `src/data/products.json` (9 products, 3 categories, `stripePriceId` + `madeToOrder` + `compatibleVehicles` + `mpn` fields)
-- **Vehicle data**: `src/data/vehicles.json` (4 vehicles: VW T5, T6, T6.1, Ford Transit Custom)
+- **Vehicle data**: `src/data/vehicles.json` (6 vehicles: VW T5, T6, T6.1, Ford Transit Custom, Renault Trafic, Nissan Primastar)
 - **Blog**: Astro Content Collections (`src/content/blog/`), schema in `src/content.config.ts`
 - **Google Merchant Feed**: Static XML at `/feeds/google-merchant.xml` (auto-generated from products.json)
 - **Images**: Shopify CDN (product images) + local `public/images/` (gallery, certs, logo)
@@ -46,6 +47,7 @@ This file is the **fastest way to resume work** with minimal context.
 - **Forms** migrated from FormSubmit.co to Resend via `/api/contact` server endpoint
 - **SEO Marketing System** (Sprint 005) — vehicle pages, blog, Google Merchant feed, content pipeline with scheduled tasks
 - **Last closed sprint**: Sprint 005 — `docs/sprints/005-seo-marketing-system.md` (stage: done)
+- **Checkout order-detail capture** (small fix, 2026-06-08) — `/api/checkout` now collects phone + a required vehicle dropdown (6 vehicles + "other") and optional year/reg; order-confirmation email includes a Customer Details block. Canonical doc updated. See `docs/audits/active/2026-06-08-checkout-order-detail-mini.md`.
 
 ## Key decisions
 

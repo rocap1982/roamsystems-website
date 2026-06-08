@@ -134,10 +134,11 @@ export const vehicles = [
 ];
 
 // --- Trust marquee items ---
-const minVariantPrice = Math.min(
-  ...raw.flatMap((p) => p.variants.map((v) => v.price)),
-);
-const fromPriceLabel = `From £${minVariantPrice.toLocaleString('en-GB')} + VAT`;
+// Advertise the flagship frame's entry price (its lowest variant), not the
+// global cheapest accessory. Stays computed from products.json so it tracks
+// price changes automatically.
+const flagshipFromPrice = Math.min(...m1.variants.map((v) => v.price));
+const fromPriceLabel = `From £${flagshipFromPrice.toLocaleString('en-GB')} + VAT`;
 
 export const trustItems = [
   'M1 Certified Safety',
