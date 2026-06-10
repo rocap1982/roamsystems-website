@@ -1,4 +1,5 @@
 import type Stripe from 'stripe';
+import productsData from '../data/products.json';
 
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
@@ -70,6 +71,29 @@ const VEHICLE_LABELS: Record<string, string> = {
   other: 'Other / not listed',
 };
 
+// Maps a Stripe price ID to its variant title (e.g. "Full Width"). Stripe line
+// items only carry the product *name*, so without this the email can't tell apart
+// variants of the same product (e.g. M1 U-Shape Standard vs Full Width). Only
+// products with more than one variant are mapped, so single-variant items don't
+// get a noisy "— Default Title" suffix. Source of truth: src/data/products.json.
+interface CatalogVariant {
+  title: string;
+  stripePriceId: string | null;
+}
+interface CatalogProduct {
+  variants: CatalogVariant[];
+}
+
+const PRICE_ID_TO_VARIANT: Record<string, string> = {};
+for (const product of productsData as CatalogProduct[]) {
+  if (product.variants.length < 2) continue;
+  for (const variant of product.variants) {
+    if (variant.stripePriceId) {
+      PRICE_ID_TO_VARIANT[variant.stripePriceId] = variant.title;
+    }
+  }
+}
+
 function getCustomFieldValue(
   session: Stripe.Checkout.Session,
   key: string
@@ -90,14 +114,18 @@ function buildEmailHtml(session: Stripe.Checkout.Session): string {
     : session.id?.slice(-8).toUpperCase() ?? 'N/A';
 
   const itemRows = lineItems
-    .map(
-      (item) => `
+    .map((item) => {
+      const priceId = item.price?.id;
+      const variant = priceId ? PRICE_ID_TO_VARIANT[priceId] : undefined;
+      const itemName = item.description ?? 'Item';
+      const displayName = variant ? `${itemName} — ${variant}` : itemName;
+      return `
       <tr>
-        <td style="padding:8px 0;border-bottom:1px solid #eee;">${item.description ?? 'Item'}</td>
+        <td style="padding:8px 0;border-bottom:1px solid #eee;">${displayName}</td>
         <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:center;">${item.quantity ?? 1}</td>
         <td style="padding:8px 0;border-bottom:1px solid #eee;text-align:right;">${formatCurrency(item.amount_total)}</td>
-      </tr>`
-    )
+      </tr>`;
+    })
     .join('');
 
   const shippingAddress = shipping?.address

@@ -35,7 +35,7 @@ export const POST: APIRoute = async ({ request }) => {
 
     try {
       const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
-        expand: ['line_items', 'shipping_cost'],
+        expand: ['line_items.data.price', 'shipping_cost'],
       });
       await sendConfirmationEmail(fullSession, event.id);
     } catch (err) {
