@@ -3,7 +3,7 @@ import products from '../../data/products.json';
 
 export const prerender = true;
 
-const SITE_URL = 'https://roamsystems.co.uk';
+const SITE_URL = 'https://www.roamsystems.co.uk';
 const BRAND = 'ROAM Systems';
 const VAT_RATE = 1.2;
 const SHIPPING_PRICE = '130.00 GBP';

@@ -7,7 +7,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://roamsystems.co.uk',
+  site: 'https://www.roamsystems.co.uk',
   integrations: [
     react(),
     sitemap({

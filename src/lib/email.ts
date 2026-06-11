@@ -244,7 +244,7 @@ function buildEmailHtml(session: Stripe.Checkout.Session): string {
 
       <p style="font-size:14px;color:#666;line-height:1.6;">
         We'll be in touch with delivery details. For more information about our delivery process, visit our
-        <a href="https://roamsystems.co.uk/delivery" style="color:#f47d23;">delivery information page</a>.
+        <a href="https://www.roamsystems.co.uk/delivery" style="color:#f47d23;">delivery information page</a>.
       </p>
     </div>
 

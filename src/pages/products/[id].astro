@@ -36,7 +36,7 @@ const productJsonLd = {
         "price": product.price,
         "priceCurrency": "GBP",
         "availability": product.madeToOrder ? "https://schema.org/MadeToOrder" : "https://schema.org/InStock",
-        "url": `https://roamsystems.co.uk/products/${product.id}`
+        "url": `https://www.roamsystems.co.uk/products/${product.id}`
       }
 };
 
@@ -44,8 +44,8 @@ const breadcrumbJsonLd = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://roamsystems.co.uk/" },
-    { "@type": "ListItem", "position": 2, "name": "All Furniture", "item": "https://roamsystems.co.uk/products" },
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.roamsystems.co.uk/" },
+    { "@type": "ListItem", "position": 2, "name": "All Furniture", "item": "https://www.roamsystems.co.uk/products" },
     { "@type": "ListItem", "position": 3, "name": product.name }
   ]
 };
