@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-06-08
+last_updated: 2026-06-11
 active_sprint: ""
 stage: ""
 ---
@@ -16,18 +16,21 @@ No active sprint.
 
 ## This Week's Priorities
 
+- [ ] **Set Stripe Terms of Service URL** (owner, Dashboard → Settings → Public details → `https://www.roamsystems.co.uk/policies/terms`; privacy URL optional) — REQUIRED before deploying the 2026-06-11 checkout-consent change, then deploy & verify checkout in test mode.
+- [ ] Mini-audit of the T&Cs/consent change after deploy (canonical surfaces touched).
 - [ ] (Optional) Verify live Stripe prices: `node --env-file=.env scripts/verify-stripe-prices.mjs` with a read-only key — confirms each `stripePriceId` charges the products.json amount and uses `tax_behavior=exclusive`.
 - [ ] Set `MARKETING_API_TOKEN` env var on Railway
 - [ ] Submit Google Merchant feed to Google Merchant Center
 
 ## Blockers
 
-None. (Stripe price verification needs a read-only key in `.env` from the owner — not blocking other work.)
+- **Deploy blocked** for the terms-acceptance change until the Stripe Dashboard ToS URL is set (checkout session creation fails without it). Committed with `[skip ci]` to prevent premature auto-deploy.
 
 ## Recently Closed Work
 
 | Work | Date | Notes |
 |------|------|-------|
+| T&Cs overhaul + checkout terms-acceptance + design marking (plan 2026-06-11) | 2026-06-11 | Full terms rewrite (IP/design-rights clause citing UK RDs 6266396-9 + EU RCD 015033319, contract-at-dispatch, Romark Engineering company details); Stripe `consent_collection` required checkbox; consent line in order email; refund policy CCR-2013 patch; basket notice; UK design numbers added to certifications page + footer marking. Build passes. AWAITING: Stripe Dashboard ToS URL, then deploy. |
 | Checkout order-detail capture (small fix) | 2026-06-08 | `/api/checkout` now collects phone + required vehicle dropdown (6 vehicles + "other") + optional year/reg; confirmation email adds a Customer Details block. Canonical doc updated. Deployed & verified live. |
 | Homepage marquee + vehicle-drift fixes (small fix) | 2026-06-08 | Marquee now computes flagship price ("From £2,050", was wrongly "From £356"); all products' `compatibleVehicles` + Merchant-feed label map + `/vehicles` copy updated to 6 vehicles. Deployed & verified live. Audit RESOLVED: `docs/audits/resolved/2026-06/2026-06-08-checkout-order-detail-mini.md` (all 3 P2 fixed). |
 | Price rise — materials cost pass-through (small fix) | 2026-05-11 | 9 of 11 variants raised in `products.json`. 7 new Stripe Prices created (GBP, `tax_behavior=exclusive`, attached to existing parent Products); old Price IDs left active for one-line rollback. Locker SWB/LWB unchanged. Build passes; Merchant feed reflects new VAT-inclusive prices. |

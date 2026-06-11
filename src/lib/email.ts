@@ -171,6 +171,9 @@ function buildEmailHtml(session: Stripe.Checkout.Session): string {
     vehicleDisplay
       ? `<tr><td style="padding:6px 0;color:#666;vertical-align:top;">Vehicle</td><td style="padding:6px 0;">${vehicleDisplay}</td></tr>`
       : '',
+    session.consent?.terms_of_service === 'accepted'
+      ? `<tr><td style="padding:6px 0;color:#666;vertical-align:top;">Terms</td><td style="padding:6px 0;">Accepted at checkout (Stripe consent record)</td></tr>`
+      : '',
   ]
     .filter(Boolean)
     .join('');

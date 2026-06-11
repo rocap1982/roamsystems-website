@@ -1,9 +1,10 @@
 ---
 doc_type: plan
-status: draft
+status: approved
 created: 2026-06-11
 author: "Claude (AI)"
-approver: ""
+approver: "Rob di Capite"
+approved: 2026-06-11
 related_issues: []
 ---
 
@@ -185,13 +186,17 @@ Rollback: remove `consent_collection`/`custom_text` params and redeploy (one-lin
 
 ## Approval
 
-- **Approver**:
-- **Date**:
-- **Conditions**:
+- **Approver**: Rob di Capite ("PROCEED WITH BOTH", 2026-06-11 session)
+- **Date**: 2026-06-11
+- **Conditions**: Stripe Dashboard Terms of Service URL must be set before production deploy.
 
 ## Implementation Record
 
-- **Implemented by**:
-- **Date**:
-- **Sprint**:
+- **Implemented by**: Claude (AI), same session as approval
+- **Date**: 2026-06-11
+- **Sprint**: None — implemented directly (contained scope, ~8 files)
 - **Deviations from plan**:
+  - Webhook needed no change (consent arrives on the retrieved session passed to `email.ts`).
+  - Certifications page already displayed the EU RCD; updated to add the previously-missing UK registered design numbers rather than creating a new section.
+  - Footer also gained company number/VAT line (Companies Act display requirement) alongside the design-marking line.
+  - Deployed with `[skip ci]` pending the Stripe Dashboard ToS URL (approval condition).

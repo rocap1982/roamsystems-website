@@ -53,7 +53,8 @@ Creates a Stripe Checkout session for standard products.
 - **Request body**: `{ items: [{ stripePriceId: string, qty: number }] }`
 - **Response (200)**: `{ url: string }` — Stripe hosted checkout URL
 - **Response (4xx/5xx)**: `{ error: string }`
-- **Session params**: `shipping_address_collection` (GB only), `phone_number_collection` (enabled), `custom_fields` (vehicle dropdown + optional year/reg text), `automatic_tax` (enabled), `customer_creation` (always), `shipping_options` (from `STRIPE_SHIPPING_RATE_ID` env var)
+- **Session params**: `shipping_address_collection` (GB only), `phone_number_collection` (enabled), `custom_fields` (vehicle dropdown + optional year/reg text), `automatic_tax` (enabled), `consent_collection.terms_of_service` (**required** — customer must tick "I agree to the Terms of Service" before paying; Stripe records `consent.terms_of_service: 'accepted'` on the session), `custom_text.terms_of_service_acceptance` (links to `/policies/terms`), `customer_creation` (always), `shipping_options` (from `STRIPE_SHIPPING_RATE_ID` env var)
+- **Account prerequisite**: the Stripe account must have a Terms of Service URL set in Dashboard → Settings → Business → Public details, or session creation fails. (Plan: `docs/plans/2026-06-11-terms-acceptance-and-ip.md`)
 - **Custom fields**:
   - `vehicle` (dropdown, required) — values: `vwT5`, `vwT6`, `vwT61`, `fordTransitCustom`, `renaultTrafic`, `nissanPrimastar`, `other`. Value→label map lives in `src/lib/email.ts` (`VEHICLE_LABELS`) and must stay in sync with the dropdown options.
   - `vehicleYearReg` (text, optional, max 50 chars) — vehicle year / registration.
@@ -66,7 +67,7 @@ Stripe webhook endpoint for post-payment processing.
 
 - **Request body**: Raw Stripe event payload (signature verified via `STRIPE_WEBHOOK_SECRET`)
 - **Response (200)**: `{ received: true }`
-- **Handled events**: `checkout.session.completed` — retrieves full session (with line_items, shipping_cost expanded; `customer_details` and `custom_fields` are returned by default), sends confirmation email via Resend. The email includes a Customer Details block (name, email, phone, vehicle + year/reg) and the delivery address.
+- **Handled events**: `checkout.session.completed` — retrieves full session (with line_items, shipping_cost expanded; `customer_details`, `custom_fields` and `consent` are returned by default), sends confirmation email via Resend. The email includes a Customer Details block (name, email, phone, vehicle + year/reg, plus a "Terms: Accepted at checkout" line when `consent.terms_of_service === 'accepted'`) and the delivery address.
 - **Idempotency**: Stripe event ID passed as `X-Entity-Ref-ID` header to Resend for deduplication
 - **Error handling**: Email failures return 200 (prevents Stripe retries for transient errors)
 

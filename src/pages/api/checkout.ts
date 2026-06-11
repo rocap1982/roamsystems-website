@@ -86,6 +86,16 @@ export const POST: APIRoute = async ({ request }) => {
       automatic_tax: {
         enabled: true,
       },
+      // Requires the Terms of Service URL to be set in Stripe Dashboard →
+      // Settings → Business → Public details, or session creation fails.
+      consent_collection: {
+        terms_of_service: 'required',
+      },
+      custom_text: {
+        terms_of_service_acceptance: {
+          message: `I agree to the [Terms of Service](${origin}/policies/terms), including the intellectual property and design rights provisions.`,
+        },
+      },
       customer_creation: 'always',
       ...(shippingRateId
         ? { shipping_options: [{ shipping_rate: shippingRateId }] }
