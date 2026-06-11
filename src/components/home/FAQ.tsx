@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Plus } from 'lucide-react';
 
 const faqs = [
-  { q: 'What is M1 Certification?', a: 'M1 certification (ECE Regulation 14.09) is the European safety standard for seats and their anchorages in motor vehicles. Our U-shape seating frame is independently tested and certified — including the integrated 3-point seatbelts and ISOFIX anchor points.' },
+  { q: 'What is M1 Certification?', a: 'M1 certification (ECE Regulation 14.09) is the European safety standard for seats and their anchorages in motor vehicles. On our U-shape frame, the certification covers the rear travel seat with its integrated 3-point seatbelts and ISOFIX anchor points, which is independently crash tested — not the full frame as a system. Side bench sections are for stationary use only.' },
   { q: 'Will ROAM furniture fit my campervan?', a: 'Our system is designed around the VW Transporter T5/T6/T6.1, Ford Transit Custom (2012+), Renault Trafic and Nissan Primastar. SWB and LWB configurations available. If you are unsure about compatibility, send us your vehicle details and we will confirm fitment.' },
   { q: 'Can I customise my order?', a: '100+ fabric options across the upholstery range, plus configuration choices across frames, kitchens and storage. Bespoke layouts can be accommodated — contact us with your requirements.' },
   { q: 'Do I need professional installation?', a: 'The M1 certified frame is best fitted by an approved installer to keep certification valid. Storage, kitchens and panels are designed for straightforward self-fit with basic tools.' },
