@@ -60,7 +60,7 @@ Testing is expensive and time-consuming, which is one reason why many budget sea
 
 Every ROAM Systems seating frame is designed and manufactured by Romark Engineering Ltd in the UK. Our frames are tested to ECE R14.09 by accredited laboratories, and we hold full certification documentation for every frame we sell.
 
-Our [U-shape seating frame](/products) is the only M1 certified U-shape frame available on the market. This is not a marketing claim — it is a verifiable fact backed by test certificates that we make available on our [certifications page](/certifications).
+Our [U-shape seating frame](/products) is the only steel M1 certified U-shape frame available on the market. This is not a marketing claim — it is a verifiable fact backed by test certificates that we make available on our [certifications page](/certifications).
 
 The frame is engineered from steel, with mounting points designed to distribute crash loads across the van floor. Every weld, every bracket, and every bolt hole is specified to meet the demands of the ECE R14.09 test protocol.
 

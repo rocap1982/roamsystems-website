@@ -22,7 +22,7 @@ export const featuredProduct = {
   id: m1.id,
   href: `/products/${m1.id}`,
   name: m1.name,
-  tagline: 'The only M1 certified U-shape seating system available',
+  tagline: 'The only steel M1 certified U-shape seating frame available',
   description:
     'Engineered for safety with integrated 3-point seatbelts and ISOFIX points. Quick bed conversion. Built in Essex by Romark Engineering.',
   price: m1.price,

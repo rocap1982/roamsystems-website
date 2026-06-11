@@ -90,7 +90,7 @@ export function Hero() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mt-8 max-w-xl text-base text-[color:var(--color-ink-200)] md:text-lg"
         >
-          The UK's only <span className="font-semibold text-white">M1 certified U-shape seating system</span>. Precision-engineered in Essex.
+          The only <span className="font-semibold text-white">steel M1 certified U-shape frame</span>. Precision-engineered in Essex.
         </motion.p>
 
         <motion.div

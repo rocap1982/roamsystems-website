@@ -5,7 +5,7 @@ const features = [
   {
     Icon: ShieldCheck,
     title: 'M1 Certified Safety',
-    body: 'ECE 14.09 certified seating with integrated 3-point seatbelts and ISOFIX points. The only M1 certified U-shape system in the UK.',
+    body: 'ECE 14.09 certified seating with integrated 3-point seatbelts and ISOFIX points. The only steel M1 certified U-shape frame in the UK.',
     meta: 'ECE 14.09',
   },
   {

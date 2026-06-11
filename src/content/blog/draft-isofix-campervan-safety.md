@@ -39,7 +39,7 @@ The combination of all three is rare in campervan furniture. Most conversion fur
 
 ## A Certified Approach to Family Campervan Seating
 
-The [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) from ROAM Systems is the only M1-certified U-shape frame on the market. It was engineered from the ground up to meet ECE R14.09, and includes:
+The [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) from ROAM Systems is the only steel M1 certified U-shape frame on the market. It was engineered from the ground up to meet ECE R14.09, and includes:
 
 - Integrated 3-point seatbelts
 - ISOFIX anchor points built into the frame
@@ -79,4 +79,4 @@ Travelling with children in a campervan is completely achievable with the right 
 - **3-point seatbelts** are fitted for all seating positions
 - Your chosen **child seat is compatible** with the specific ISOFIX installation
 
-If you're building a new conversion or upgrading an existing one, the [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) provides the safest foundation for a family campervan — and it's the only certified U-shape option available in the UK. If you have questions about compatibility with your vehicle or specific child seat requirements, [get in touch](/contact) — we're happy to help.
+If you're building a new conversion or upgrading an existing one, the [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) provides the safest foundation for a family campervan — and it's the only steel M1 certified U-shape frame available in the UK. If you have questions about compatibility with your vehicle or specific child seat requirements, [get in touch](/contact) — we're happy to help.
