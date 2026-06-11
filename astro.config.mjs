@@ -8,6 +8,16 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.roamsystems.co.uk',
+  security: {
+    // Required for Astro to trust Host / X-Forwarded-Host behind Railway's
+    // proxy. Without this, on-demand request URLs (middleware host checks,
+    // the Stripe success/cancel URLs built from request.url in
+    // /api/checkout) resolve to localhost.
+    allowedDomains: [
+      { hostname: 'roamsystems.co.uk' },
+      { hostname: 'www.roamsystems.co.uk' },
+    ],
+  },
   integrations: [
     react(),
     sitemap({
