@@ -117,6 +117,10 @@ const breadcrumbJsonLd = {
             <span class="text-roam-orange font-heading font-bold text-3xl">£{product.price.toFixed(2)} <span class="text-lg font-normal text-gray-500">+ VAT</span></span>
           </div>
 
+          {(product as any).leadTime && (
+            <p class="text-sm text-gray-500 -mt-4 mb-6">{(product as any).leadTime}</p>
+          )}
+
           <p class="text-gray-600 text-lg mb-6">{product.description}</p>
 
           {product.note && (
