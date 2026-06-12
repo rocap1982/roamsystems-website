@@ -1,6 +1,6 @@
 ---
 title: "Why M1 Certification Matters for Your Campervan"
-description: "Learn why M1 certification is essential for campervan seating. Understand ECE R14.09 safety standards, what testing involves, and how to ensure your conversion is road-legal."
+description: "Why M1 certification matters for campervan seating: ECE R14.09 safety standards, what testing involves, and how to keep your conversion road-legal."
 publishedDate: 2026-03-15
 author: "ROAM Systems"
 category: "certification"

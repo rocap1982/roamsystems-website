@@ -1,6 +1,6 @@
 ---
 title: "U-Shape Seating vs Rock and Roll Bed: Which Is Right for You?"
-description: "Comparing U-shape seating and rock and roll beds for campervan conversions. Learn which layout suits your build, your budget, and the way you actually use your van."
+description: "Comparing U-shape seating and rock and roll beds for campervan conversions — which layout suits your build, budget, and how you actually use your van."
 publishedDate: 2026-03-24
 author: "ROAM Systems"
 category: "guides"
