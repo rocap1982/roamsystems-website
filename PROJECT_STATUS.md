@@ -5,7 +5,7 @@ last_updated: 2026-06-12
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
-active_work: "No active sprint. T&Cs overhaul + mandatory Stripe checkout terms-acceptance + design-number marking DEPLOYED & VERIFIED LIVE 2026-06-12 (deploy da2ffa2a, commit 3b3918d). Mini-audit RESOLVED 2026-06-12: Aligned, 0 P0/P1, all 3 P3s fixed & deployed same day. Open: lead time published as 2-4 weeks pending owner confirmation (distributor says 4-6); optional live Stripe price verification."
+active_work: "No active sprint. SEO/legal audit fully closed 2026-06-12: approved meta trims + certifications scope wording DEPLOYED & VERIFIED LIVE (commit 0ec1a05; all 34 pages <160-char metas, www canonicals, 301s for legacy Shopify URLs). T&Cs overhaul live 2026-06-12 (commit 3b3918d), mini-audit RESOLVED. Open: non-www->www 301 needs the Cloudflare account that owns the roamsystems.co.uk zone (owner's logged-in CF account has 0 zones; DNS grey-cloud on aldo/haley.ns.cloudflare.com; both hosts serve 200 from Railway; www canonicals mitigate meanwhile) — owner hunting login; then proxy apex + redirect rule + SSL Full. Also open: GSC www property + sitemap resubmit; optional live Stripe price verification."
 latest_session_log: "docs/sessions/2026-06-08.md"
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: "Hybrid Astro + React islands via @astrojs/react (added 2026-04-10). All interactive homepage sections are React islands; cart/checkout scripts remain in the Astro layout."
