@@ -7,7 +7,7 @@ const faqs = [
   { q: 'Will ROAM furniture fit my campervan?', a: 'Our system is designed around the VW Transporter T5/T6/T6.1, Ford Transit Custom (2012+), Renault Trafic and Nissan Primastar. SWB and LWB configurations available. If you are unsure about compatibility, send us your vehicle details and we will confirm fitment.' },
   { q: 'Can I customise my order?', a: '100+ fabric options across the upholstery range, plus configuration choices across frames, kitchens and storage. Bespoke layouts can be accommodated — contact us with your requirements.' },
   { q: 'Do I need professional installation?', a: 'The M1 certified frame is best fitted by an approved installer to keep certification valid. Storage, kitchens and panels are designed for straightforward self-fit with basic tools.' },
-  { q: 'How long does delivery take?', a: 'Current production lead time: typically 2-4 weeks from order confirmation. UK delivery is 3–5 working days from dispatch.' },
+  { q: 'How long does delivery take?', a: 'Current production lead time: typically 2-4 weeks from order confirmation (bespoke trimming up to 6 weeks). UK delivery is 3–5 working days from dispatch.' },
   { q: 'Do you offer a warranty?', a: 'Yes — all ROAM products come with a manufacturer warranty. Full terms are supplied with your order.' },
   { q: 'How do I place an order?', a: 'Add items to your basket and send an enquiry. We will call you to confirm spec, lead time and arrange payment — no surprise checkouts.' },
   { q: 'Do you deliver internationally?', a: 'Currently we deliver UK-wide only. For international enquiries, contact us directly and we can discuss options.' },
