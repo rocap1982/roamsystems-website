@@ -16,7 +16,8 @@ No active sprint.
 
 ## This Week's Priorities
 
-- [ ] Mini-audit of the T&Cs/consent change (canonical surfaces touched; deployed 2026-06-12).
+- [x] Mini-audit of the T&Cs/consent change — DONE 2026-06-12: Aligned, 0 P0/P1, 3 P3 (`docs/audits/active/2026-06-12-terms-acceptance-ip-mini.md`).
+- [x] Fix the 3 audit P3s — DONE 2026-06-12, deployed; audit moved to `docs/audits/resolved/2026-06/2026-06-12-terms-acceptance-ip-mini.md`.
 - [ ] **Owner: confirm production lead time** — published as "typically 2-4 weeks" (matches delivery/shipping pages); distributor publishes 4-6 weeks. If different, update products.json `leadTime`, FAQ.tsx, delivery.astro, shipping.astro, terms.astro together.
 - [ ] Owner: send drawings cover-note licence + Agile IP email re fabricator customer (drafts in 2026-06-11/12 session).
 - [ ] (Optional) Verify live Stripe prices: `node --env-file=.env scripts/verify-stripe-prices.mjs` with a read-only key — confirms each `stripePriceId` charges the products.json amount and uses `tax_behavior=exclusive`.

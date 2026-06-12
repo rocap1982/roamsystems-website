@@ -5,12 +5,12 @@ last_updated: 2026-06-12
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
-active_work: "No active sprint. T&Cs overhaul + mandatory Stripe checkout terms-acceptance + design-number marking DEPLOYED & VERIFIED LIVE 2026-06-12 (deploy da2ffa2a, commit 3b3918d; live session creation confirmed consent_collection required; Stripe Dashboard ToS URL set by owner). audit-fixes branch fully merged to main. Open: mini-audit of the change; lead time published as 2-4 weeks pending owner confirmation (distributor says 4-6); optional live Stripe price verification."
+active_work: "No active sprint. T&Cs overhaul + mandatory Stripe checkout terms-acceptance + design-number marking DEPLOYED & VERIFIED LIVE 2026-06-12 (deploy da2ffa2a, commit 3b3918d). Mini-audit RESOLVED 2026-06-12: Aligned, 0 P0/P1, all 3 P3s fixed & deployed same day. Open: lead time published as 2-4 weeks pending owner confirmation (distributor says 4-6); optional live Stripe price verification."
 latest_session_log: "docs/sessions/2026-06-08.md"
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: "Hybrid Astro + React islands via @astrojs/react (added 2026-04-10). All interactive homepage sections are React islands; cart/checkout scripts remain in the Astro layout."
 active_audits_dir: docs/audits/active/
-latest_audit: "docs/audits/resolved/2026-06/2026-06-08-checkout-order-detail-mini.md (RESOLVED 2026-06-08 — 0 P0/P1; all 3 P2 fixed: marquee now 'From £2,050', Merchant-feed compatibleVehicles + label map updated for 6 vehicles, /vehicles copy updated)"
+latest_audit: "docs/audits/resolved/2026-06/2026-06-12-terms-acceptance-ip-mini.md (RESOLVED 2026-06-12 — Aligned; 0 P0/P1; all 3 P3 fixed same day: sidebar terms small print, product-badge UK design numbers, refund→terms cross-link)"
 skills_index: .claude/skills/
 canonical_reference_root: docs/reference/
 ---
