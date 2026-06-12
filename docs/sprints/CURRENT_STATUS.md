@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-06-11
+last_updated: 2026-06-12
 active_sprint: ""
 stage: ""
 ---
@@ -16,15 +16,16 @@ No active sprint.
 
 ## This Week's Priorities
 
-- [ ] **Set Stripe Terms of Service URL** (owner, Dashboard → Settings → Public details → `https://www.roamsystems.co.uk/policies/terms`; privacy URL optional) — REQUIRED before deploying the 2026-06-11 checkout-consent change, then deploy & verify checkout in test mode.
-- [ ] Mini-audit of the T&Cs/consent change after deploy (canonical surfaces touched).
+- [ ] Mini-audit of the T&Cs/consent change (canonical surfaces touched; deployed 2026-06-12).
+- [ ] **Owner: confirm production lead time** — published as "typically 2-4 weeks" (matches delivery/shipping pages); distributor publishes 4-6 weeks. If different, update products.json `leadTime`, FAQ.tsx, delivery.astro, shipping.astro, terms.astro together.
+- [ ] Owner: send drawings cover-note licence + Agile IP email re fabricator customer (drafts in 2026-06-11/12 session).
 - [ ] (Optional) Verify live Stripe prices: `node --env-file=.env scripts/verify-stripe-prices.mjs` with a read-only key — confirms each `stripePriceId` charges the products.json amount and uses `tax_behavior=exclusive`.
 - [ ] Set `MARKETING_API_TOKEN` env var on Railway
 - [ ] Submit Google Merchant feed to Google Merchant Center
 
 ## Blockers
 
-- **Deploy blocked** for the terms-acceptance change until the Stripe Dashboard ToS URL is set (checkout session creation fails without it). Committed with `[skip ci]` to prevent premature auto-deploy.
+None. (2026-06-12: Stripe ToS URL set by owner; terms-acceptance change deployed — deploy da2ffa2a, commit 3b3918d — and verified live: session creation returns consent_collection.terms_of_service=required; terms page, footer marking, product lead-time line all confirmed serving.)
 
 ## Recently Closed Work
 
