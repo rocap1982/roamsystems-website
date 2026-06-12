@@ -19,7 +19,7 @@ No active sprint.
 - [x] Mini-audit of the T&Cs/consent change — DONE 2026-06-12: Aligned, 0 P0/P1, 3 P3 (`docs/audits/active/2026-06-12-terms-acceptance-ip-mini.md`).
 - [x] Fix the 3 audit P3s — DONE 2026-06-12, deployed; audit moved to `docs/audits/resolved/2026-06/2026-06-12-terms-acceptance-ip-mini.md`.
 - [ ] **Owner: confirm production lead time** — published as "typically 2-4 weeks" (matches delivery/shipping pages); distributor publishes 4-6 weeks. If different, update products.json `leadTime`, FAQ.tsx, delivery.astro, shipping.astro, terms.astro together.
-- [ ] Owner: send drawings cover-note licence + Agile IP email re fabricator customer (drafts in 2026-06-11/12 session).
+- [ ] Owner: send revised Agile IP email (fabricator customer was refunded in full 2026-06-12 — no drawings released, no bed shipped; licence template at `docs/business-assets/ROAM_Drawing_Release_Installation_Licence.docx` retained for future trade customers).
 - [ ] (Optional) Verify live Stripe prices: `node --env-file=.env scripts/verify-stripe-prices.mjs` with a read-only key — confirms each `stripePriceId` charges the products.json amount and uses `tax_behavior=exclusive`.
 - [ ] Set `MARKETING_API_TOKEN` env var on Railway
 - [ ] Submit Google Merchant feed to Google Merchant Center
