@@ -2,6 +2,7 @@
   {
     "id": "m1-certified-u-shape-seating-frame",
     "name": "M1 Certified U-Shape Seating Frame",
+    "roam_code": "ROAM-FRAME-USHAPE-M1",
     "price": 2050,
     "compareAtPrice": null,
     "category": [
@@ -73,6 +74,7 @@
   {
     "id": "central-under-bed-pull-out-drawer-storage",
     "name": "Central Under Bed Pull-Out Drawer Storage",
+    "roam_code": "ROAM-DRAWER-CENTRAL",
     "price": 420,
     "compareAtPrice": null,
     "category": [
@@ -136,6 +138,7 @@
   {
     "id": "rear-pull-out-drawer-storage-system",
     "name": "Rear Pull-Out Drawer Storage System",
+    "roam_code": "ROAM-DRAWER-REAR",
     "price": 499,
     "compareAtPrice": null,
     "category": [
@@ -191,6 +194,7 @@
   {
     "id": "rear-pull-out-kitchen-pod",
     "name": "Rear Pull-Out Kitchen Pod",
+    "roam_code": "ROAM-KITPOD-REAR",
     "price": 699,
     "compareAtPrice": null,
     "category": [
@@ -247,6 +251,7 @@
   {
     "id": "powder-coated-aluminium-front-facing-panels",
     "name": "Powder Coated Aluminium Front Facing Panels",
+    "roam_code": "ROAM-PANEL-FRONT",
     "price": 399,
     "compareAtPrice": null,
     "category": [
@@ -299,6 +304,7 @@
   {
     "id": "full-upholstery-kit-rear-seating-only",
     "name": "Full Upholstery Kit – Rear Seating Only",
+    "roam_code": "ROAM-UPH-REARKIT",
     "price": 1210,
     "compareAtPrice": null,
     "category": [
@@ -308,7 +314,7 @@
       "Upholstery",
       "Upholstery Kit"
     ],
-    "madeToOrder": true,
+    "madeToOrder": false,
     "mpn": "full-upholstery-kit-rear-seating-only",
     "compatibleVehicles": [
       "vw-transporter-t5",
@@ -339,7 +345,7 @@
       {
         "title": "Black",
         "price": 1210,
-        "stripePriceId": null
+        "stripePriceId": "price_1ToN5eP8jCOedj2egdLwuX7B"
       }
     ],
     "images": [
@@ -354,6 +360,7 @@
   {
     "id": "cushion-boards-dual-density-foam",
     "name": "Cushion Boards & Dual Density Foam",
+    "roam_code": "ROAM-CUSHION-FOAM",
     "price": 356,
     "compareAtPrice": null,
     "category": [
@@ -363,7 +370,7 @@
       "Cushion Boards",
       "Upholstery"
     ],
-    "madeToOrder": true,
+    "madeToOrder": false,
     "mpn": "cushion-boards-dual-density-foam",
     "compatibleVehicles": [
       "vw-transporter-t5",
@@ -394,7 +401,7 @@
       {
         "title": "Black",
         "price": 356,
-        "stripePriceId": null
+        "stripePriceId": "price_1ToN5fP8jCOedj2enR5j7Vp5"
       }
     ],
     "images": [
@@ -408,6 +415,7 @@
   {
     "id": "kitchen-pod-campervan-package",
     "name": "Kitchen Pod Campervan Package",
+    "roam_code": "ROAM-KITPOD-PKG",
     "price": 1299,
     "compareAtPrice": null,
     "category": [
@@ -461,6 +469,7 @@
   {
     "id": "aluminium-overhead-locker",
     "name": "Aluminium Overhead Locker",
+    "roam_code": "ROAM-LOCKER-OH",
     "price": 399,
     "compareAtPrice": null,
     "category": [

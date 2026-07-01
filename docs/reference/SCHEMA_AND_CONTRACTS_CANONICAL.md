@@ -19,6 +19,7 @@ The product catalogue is a JSON array. Each product object:
 - **Required fields**:
   - `id`: string — unique slug, used in URL routing (`/products/[id]`)
   - `name`: string — display name
+  - `roam_code`: string — **canonical product code** shared across all systems. Identical to Stripe `metadata.roam_code` (and Stripe price `lookup_key`) and Sage `item_code`. This is the single source-of-truth code for reconciling the website, Stripe, and Sage. Uppercase, hyphenated (e.g. `"ROAM-FRAME-USHAPE-M1"`). One code per product record.
   - `price`: number — current price in GBP
   - `compareAtPrice`: number | null — original/comparison price (null if no discount)
   - `category`: string[] — one or more of: `"Frames"`, `"Kitchens"`, `"Upholstery"`
@@ -35,6 +36,27 @@ The product catalogue is a JSON array. Each product object:
   - `category` must contain at least one valid category
   - `variants` must contain at least one entry
   - `images` must contain at least one URL
+  - `roam_code` must be unique across all products and match the canonical code in Stripe (`metadata.roam_code` / price `lookup_key`) and Sage (`item_code`)
+
+### Canonical product code → Stripe price mapping
+
+The primary variant's `stripePriceId` is the checkout price for each `roam_code`:
+
+| roam_code | website `id` | primary Stripe price |
+|-----------|--------------|----------------------|
+| `ROAM-FRAME-USHAPE-M1` | `m1-certified-u-shape-seating-frame` | `price_1TVugcP8jCOedj2eUbpmfjaR` |
+| `ROAM-KITPOD-PKG` | `kitchen-pod-campervan-package` | `price_1TVugfP8jCOedj2eMiVRV72p` |
+| `ROAM-KITPOD-REAR` | `rear-pull-out-kitchen-pod` | `price_1TVugeP8jCOedj2e17WQeSDT` |
+| `ROAM-DRAWER-REAR` | `rear-pull-out-drawer-storage-system` | `price_1TVugeP8jCOedj2e6E4H6ZcW` |
+| `ROAM-DRAWER-CENTRAL` | `central-under-bed-pull-out-drawer-storage` | `price_1TVugdP8jCOedj2elGZtmm4y` |
+| `ROAM-PANEL-FRONT` | `powder-coated-aluminium-front-facing-panels` | `price_1TVugeP8jCOedj2e4WnkMwUK` |
+| `ROAM-LOCKER-OH` | `aluminium-overhead-locker` | `price_1TJ8DcP8jCOedj2eWU2iUH22` |
+| `ROAM-UPH-REARKIT` | `full-upholstery-kit-rear-seating-only` | `price_1ToN5eP8jCOedj2egdLwuX7B` |
+| `ROAM-CUSHION-FOAM` | `cushion-boards-dual-density-foam` | `price_1ToN5fP8jCOedj2enR5j7Vp5` |
+
+All prices are net (ex-VAT), `tax_behavior=exclusive`.
+
+> **2026-07-01**: The two Upholstery products (`ROAM-UPH-REARKIT`, `ROAM-CUSHION-FOAM`) were previously `madeToOrder: true` (enquiry-only, no checkout path). They now have live Stripe prices and are flipped to `madeToOrder: false`, so they render the standard Add-to-Basket / Stripe checkout flow like the other 7 products. Displayed prices unchanged.
 
 ### Valid categories
 
