@@ -1,12 +1,12 @@
 ---
 project: roam-systems-website
 status: active
-last_updated: 2026-06-12
+last_updated: 2026-07-02
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
-active_work: "No active sprint. SEO/legal audit fully closed 2026-06-12: approved meta trims + certifications scope wording DEPLOYED & VERIFIED LIVE (commit 0ec1a05; all 34 pages <160-char metas, www canonicals, 301s for legacy Shopify URLs). T&Cs overhaul live 2026-06-12 (commit 3b3918d), mini-audit RESOLVED. Open: non-www->www 301 — Cloudflare zone owner IDENTIFIED via Outlook search 2026-06-12: Identity Pixel Design Ltd (spencer@identitypixel.com) kept DNS in their CF account when the domain registration moved to owner's GoDaddy (cust 296089358, Mar 2026). Full DNS inventory captured in docs/reference/DNS_ROAMSYSTEMS_CO_UK.md. Next: either ask Identity Pixel to proxy apex + add 301 rule, or migrate zone to owner's own CF account (registrar access in hand). www canonicals live meanwhile. GSC: domain property covers www; www sitemap-index.xml submitted 2026-06-12 (initial 'Couldn't fetch' is pre-crawl placeholder; sitemap verified serving 200 with www URLs). Also open: optional live Stripe price verification."
-latest_session_log: "docs/sessions/2026-06-08.md"
+active_work: "No active sprint. 2026-07-02 (small fix): catalogue aligned to canonical roam_code across Stripe/Sage/website; both Upholstery products wired to Stripe checkout (madeToOrder true->false) — now all 9 products purchasable. Branch feat/roam-code-catalogue-alignment pushed (commit 384725e); NOT yet merged/deployed. Open question: bespoke upholstery fabric choice not captured at checkout. PRIOR: SEO/legal audit fully closed 2026-06-12: approved meta trims + certifications scope wording DEPLOYED & VERIFIED LIVE (commit 0ec1a05; all 34 pages <160-char metas, www canonicals, 301s for legacy Shopify URLs). T&Cs overhaul live 2026-06-12 (commit 3b3918d), mini-audit RESOLVED. Open: non-www->www 301 — Cloudflare zone owner IDENTIFIED via Outlook search 2026-06-12: Identity Pixel Design Ltd (spencer@identitypixel.com) kept DNS in their CF account when the domain registration moved to owner's GoDaddy (cust 296089358, Mar 2026). Full DNS inventory captured in docs/reference/DNS_ROAMSYSTEMS_CO_UK.md. Next: either ask Identity Pixel to proxy apex + add 301 rule, or migrate zone to owner's own CF account (registrar access in hand). www canonicals live meanwhile. GSC: domain property covers www; www sitemap-index.xml submitted 2026-06-12 (initial 'Couldn't fetch' is pre-crawl placeholder; sitemap verified serving 200 with www URLs). Also open: optional live Stripe price verification."
+latest_session_log: "docs/sessions/2026-07-02.md"
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: "Hybrid Astro + React islands via @astrojs/react (added 2026-04-10). All interactive homepage sections are React islands; cart/checkout scripts remain in the Astro layout."
 active_audits_dir: docs/audits/active/
@@ -27,7 +27,7 @@ This file is the **fastest way to resume work** with minimal context.
 - **Styling**: Tailwind CSS v4.2 (Vite plugin)
 - **Hosting**: Railway (Node server)
 - **Payments**: Stripe Checkout (server-side sessions via `/api/checkout`)
-- **Product data**: `src/data/products.json` (9 products, 3 categories, `stripePriceId` + `madeToOrder` + `compatibleVehicles` + `mpn` fields)
+- **Product data**: `src/data/products.json` (9 products, 3 categories, `roam_code` [canonical cross-system code] + `stripePriceId` + `madeToOrder` + `compatibleVehicles` + `mpn` fields). All 9 now purchasable via Stripe checkout (both Upholstery products wired 2026-07-02).
 - **Vehicle data**: `src/data/vehicles.json` (6 vehicles: VW T5, T6, T6.1, Ford Transit Custom, Renault Trafic, Nissan Primastar)
 - **Blog**: Astro Content Collections (`src/content/blog/`), schema in `src/content.config.ts`
 - **Google Merchant Feed**: Static XML at `/feeds/google-merchant.xml` (auto-generated from products.json)

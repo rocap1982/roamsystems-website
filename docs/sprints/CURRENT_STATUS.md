@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-06-12
+last_updated: 2026-07-02
 active_sprint: ""
 stage: ""
 ---
@@ -20,7 +20,9 @@ No active sprint.
 - [x] Fix the 3 audit P3s — DONE 2026-06-12, deployed; audit moved to `docs/audits/resolved/2026-06/2026-06-12-terms-acceptance-ip-mini.md`.
 - [x] Lead time confirmed by owner 2026-06-12: standard 2-4 weeks, bespoke trimming up to 6 weeks. All five surfaces updated (products.json leadTime incl. Upholstery products, FAQ.tsx, delivery.astro, shipping.astro, terms.astro) and deployed.
 - [ ] Owner: send revised Agile IP email (fabricator customer was refunded in full 2026-06-12 — no drawings released, no bed shipped; licence template at `docs/business-assets/ROAM_Drawing_Release_Installation_Licence.docx` retained for future trade customers).
-- [ ] (Optional) Verify live Stripe prices: `node --env-file=.env scripts/verify-stripe-prices.mjs` with a read-only key — confirms each `stripePriceId` charges the products.json amount and uses `tax_behavior=exclusive`.
+- [ ] Merge + deploy `feat/roam-code-catalogue-alignment` (commit 384725e): canonical roam_code on all 9 products; both Upholstery products wired to Stripe checkout. Pushed, not merged.
+- [ ] Open question: bespoke Upholstery fabric choice (100+ options) is not captured at checkout — decide post-order enquiry vs. checkout custom field.
+- [ ] (Optional) Verify live Stripe prices: `node --env-file=.env scripts/verify-stripe-prices.mjs` with a read-only key — confirms each `stripePriceId` charges the products.json amount and uses `tax_behavior=exclusive`. Now covers all 9 products incl. the two newly-wired Upholstery prices (`price_1ToN5e…`, `price_1ToN5f…`).
 - [ ] Set `MARKETING_API_TOKEN` env var on Railway
 - [ ] Submit Google Merchant feed to Google Merchant Center
 
@@ -32,6 +34,7 @@ None. (2026-06-12: Stripe ToS URL set by owner; terms-acceptance change deployed
 
 | Work | Date | Notes |
 |------|------|-------|
+| Canonical roam_code + upholstery checkout wiring (small fix) | 2026-07-02 | Added `roam_code` to all 9 products (matches Stripe `metadata.roam_code`/`lookup_key` + Sage `item_code`). Wired Full Upholstery Kit (`price_1ToN5e…`) + Cushion Boards (`price_1ToN5f…`) to checkout; flipped both `madeToOrder` true→false so they render Add-to-Basket like the other 7. No prices changed. Build passes. Branch `feat/roam-code-catalogue-alignment` (384725e) pushed, NOT merged/deployed. Canonical schema doc updated. |
 | T&Cs overhaul + checkout terms-acceptance + design marking (plan 2026-06-11) | 2026-06-11 | Full terms rewrite (IP/design-rights clause citing UK RDs 6266396-9 + EU RCD 015033319, contract-at-dispatch, Romark Engineering company details); Stripe `consent_collection` required checkbox; consent line in order email; refund policy CCR-2013 patch; basket notice; UK design numbers added to certifications page + footer marking. Build passes. AWAITING: Stripe Dashboard ToS URL, then deploy. |
 | Checkout order-detail capture (small fix) | 2026-06-08 | `/api/checkout` now collects phone + required vehicle dropdown (6 vehicles + "other") + optional year/reg; confirmation email adds a Customer Details block. Canonical doc updated. Deployed & verified live. |
 | Homepage marquee + vehicle-drift fixes (small fix) | 2026-06-08 | Marquee now computes flagship price ("From £2,050", was wrongly "From £356"); all products' `compatibleVehicles` + Merchant-feed label map + `/vehicles` copy updated to 6 vehicles. Deployed & verified live. Audit RESOLVED: `docs/audits/resolved/2026-06/2026-06-08-checkout-order-detail-mini.md` (all 3 P2 fixed). |
