@@ -17,7 +17,10 @@ const CANONICAL_HOST = 'www.roamsystems.co.uk';
 export const onRequest = defineMiddleware((context, next) => {
   const url = context.url;
 
-  if (url.hostname === 'roamsystems.co.uk') {
+  // Never redirect API routes: forms POST same-origin to /api/*, and a 301 to
+  // www is a cross-origin redirect the browser blocks ("Failed to fetch") and
+  // would also downgrade the POST to a GET.
+  if (url.hostname === 'roamsystems.co.uk' && !url.pathname.startsWith('/api/')) {
     return context.redirect(`https://${CANONICAL_HOST}${url.pathname}${url.search}`, 301);
   }
 
