@@ -157,6 +157,7 @@ export const navLinks = [
   { label: 'Upholstery', href: '/products?category=Upholstery' },
   { label: 'Kitchens', href: '/products?category=Kitchens' },
   { label: 'Vehicles', href: '/vehicles' },
+  { label: 'Kia PV5', href: '/kia-pv5' },
   { label: 'Installers', href: '/installers' },
   { label: 'Blog', href: '/blog' },
   { label: 'Gallery', href: '/gallery' },

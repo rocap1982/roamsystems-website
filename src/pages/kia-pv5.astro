@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Photos live in public/images/kia-pv5/. Add entries here as they arrive;
+// until then the gallery shows a "photos coming soon" panel.
+const photos: Array<{ src: string; alt: string }> = [];
+---
+
+<Layout title="Kia PV5 Seating — Coming December 2026" description="ROAM Systems seating for the Kia PV5, made in the UK by Romark Engineering. Due December 2026 and already on display at Kia. Register your interest.">
+
+  <!-- Header -->
+  <section class="bg-roam-dark text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <span class="inline-block bg-roam-orange text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">Coming December 2026</span>
+      <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">Kia PV5 Seating</h1>
+      <p class="text-gray-300 max-w-2xl mx-auto">A ROAM Systems seat for the all-electric Kia PV5, made in the UK by Romark Engineering. Already on display at Kia, with first deliveries due December 2026.</p>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section class="py-12 bg-roam-light">
+    <div class="max-w-7xl mx-auto px-4">
+      {photos.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {photos.map((photo) => (
+            <div class="aspect-[4/3] overflow-hidden rounded-2xl shadow-md bg-white">
+              <img src={photo.src} alt={photo.alt} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 p-12 text-center">
+          <h2 class="font-heading text-2xl font-bold mb-2">Photos coming soon</h2>
+          <p class="text-gray-600">We're adding photos of the PV5 seat shortly.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Register interest -->
+  <section class="py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <div class="bg-white rounded-2xl shadow-md p-8 border border-gray-100">
+        <h2 class="font-heading text-2xl font-bold mb-2">Register Your Interest</h2>
+        <p class="text-gray-600 mb-6">Leave your details and we'll be in touch as soon as the PV5 seat is available to order.</p>
+
+        <div id="pv5-success" class="hidden text-center py-8">
+          <h3 class="font-heading text-xl font-bold mb-2">Thanks, you're on the list</h3>
+          <p class="text-gray-600">We'll contact you when the Kia PV5 seat is ready to order.</p>
+        </div>
+
+        <form id="pv5-form" class="space-y-6">
+          <div id="pv5-error" class="hidden bg-red-50 border border-red-200 text-red-700 rounded-lg px-4 py-3 text-sm"></div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="pv5-name" class="block text-sm font-semibold mb-1">Full Name *</label>
+              <input type="text" id="pv5-name" name="name" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none" />
+            </div>
+            <div>
+              <label for="pv5-email" class="block text-sm font-semibold mb-1">Email *</label>
+              <input type="email" id="pv5-email" name="email" required class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none" />
+            </div>
+          </div>
+          <div>
+            <label for="pv5-phone" class="block text-sm font-semibold mb-1">Phone Number</label>
+            <input type="tel" id="pv5-phone" name="phone" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none" />
+          </div>
+          <div>
+            <label for="pv5-message" class="block text-sm font-semibold mb-1">Message</label>
+            <textarea id="pv5-message" name="message" rows="4" placeholder="Anything we should know? e.g. trade or dealer enquiry, timescale" class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-roam-orange focus:border-transparent outline-none"></textarea>
+          </div>
+          <button type="submit" class="w-full bg-roam-orange hover:bg-roam-orange-dark text-white font-heading font-bold py-3 px-8 rounded-lg transition-colors text-lg">
+            Register Interest
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  document.getElementById('pv5-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const errorEl = document.getElementById('pv5-error')!;
+    const successEl = document.getElementById('pv5-success')!;
+
+    errorEl.classList.add('hidden');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'contact',
+          name: (form.querySelector('#pv5-name') as HTMLInputElement).value,
+          email: (form.querySelector('#pv5-email') as HTMLInputElement).value,
+          phone: (form.querySelector('#pv5-phone') as HTMLInputElement).value,
+          subject: 'Kia PV5 — Register Interest',
+          message: (form.querySelector('#pv5-message') as HTMLTextAreaElement).value,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || 'Failed to send');
+      }
+
+      form.classList.add('hidden');
+      successEl.classList.remove('hidden');
+    } catch (err) {
+      errorEl.textContent = err instanceof Error ? err.message : 'Something went wrong. Please try again or email us directly.';
+      errorEl.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = 'Register Interest';
+    }
+  });
+</script>
