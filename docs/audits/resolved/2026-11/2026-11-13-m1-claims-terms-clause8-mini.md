@@ -1,12 +1,12 @@
 ---
 doc_type: audit
 audit_type: mini
-status: active # active | resolved | superseded
+status: resolved # active | resolved | superseded
 created: 2026-11-13
 auditor: "AI (Claude Code)"
 scope: "Test-claim wording alignment (\"M1 Certified\" -> \"M1 Tested\", crash-test / legal-requirement claims removed), terms clause 8 rewrite, installers rename, and /api/* middleware exemption — commits b71544b, d44d84a, 914bf38, f9c5fb6, 55058dc (all on origin/main, verified live 2026-11-13)"
 open_p0: 0
-open_p1: 1
+open_p1: 0
 ---
 
 # Mini Audit Result: M1 test-claim wording + terms clause 8 + middleware — 2026-11-13
@@ -50,10 +50,10 @@ five commits, 30 files.
 
 ## Summary
 
-- **Total issues**: 11 (9 open, 2 resolved same day: 003, 004)
+- **Total issues**: 11 (7 open; 001, 003, 004 resolved and 007 closed by owner decision, all 2026-11-13)
 - **P0**: 0
-- **P1**: 1 open
-- **P2**: 6 (4 open: 002, 005, 006, 007)
+- **P1**: 1 — resolved (owner confirmed Full Width has the same rear section)
+- **P2**: 6 (3 open: 002, 005, 006)
 - **P3**: 4 open
 - **Assessment**: ⚠️ Minor drift — the deployed site itself is clean and matches the test documents; drift is in what surrounds it (one unconfirmed test-scope question, Stripe-held product names, the content pipeline and trade collateral).
 
@@ -83,8 +83,8 @@ five commits, 30 files.
 - **Canonical ref**: VOSC summaries VO00269 / VO00270, "Model" field
 - **What is wrong**: Both test summaries identify the tested article as **"M1 Smart U Bed V1 Double Seat Bed 1580mm Width"**. The site sells the frame in two configurations, **Standard** (max frame width 158 cm, which matches) and **Full Width** (£2,150), and applies the tested claim to the product as a whole without saying which configuration was tested. Nothing in the repo records whether the Full Width rear travel seat is the same assembly as the 1580 mm article that VOSC tested, or whether current production is still the "V1" design.
 - **Expected**: The claim is limited to the article that was tested. If the Full Width rear section is physically identical to the tested one, say so on record; if it differs (width, leg span, fixings), the Full Width variant must not be described as tested.
-- **Status**: Open — needs owner confirmation; not determinable from the repo
-- **Fix recommendation**: Owner confirms (a) whether the Full Width rear travel seat is identical to the tested 1580 mm assembly, and (b) whether current production matches V1. Then either record the confirmation here and close, or add "Standard configuration (1580 mm)" to the product description, `safetyNote`, certifications page and clause 8. Stating the tested model name next to the claim would be sound either way.
+- **Status**: Resolved 2026-11-13 — owner confirmation
+- **Resolution**: The owner (Rob di Capite) stated on 2026-11-13: "Full width is the same rear section", and earlier the same day: "It is the rear section which has the seatbelts and isofix only that is tested." The "M1 tested" claim therefore stands for both the Standard and Full Width configurations, on the owner's statement. This rests on the owner's knowledge of the product; the repo holds no drawing or part-number evidence. Not confirmed: whether current production is still the "V1" design named on the summaries (asked, not answered).
 
 ### AUDIT-2026-11-13-002
 
@@ -137,8 +137,8 @@ five commits, 30 files.
 - **Canonical ref**: Commits 914bf38 / 55058dc
 - **What is wrong**: Trade-facing collateral kept in the repo still makes the retracted claims: "M1 crash tested seating system with integrated seatbelts and ISOFIX points", "fully certified travel seating to ECE M1 standards", "M1 Certified U-Shape Bed System", and "M1 certified U-shape frame" on the A5 flyer and price list. These go to conversion companies, the audience most likely to rely on them.
 - **Expected**: Outbound collateral uses the same wording as the site.
-- **Status**: Open
-- **Fix recommendation**: Update the email template and `create_price_list.py`, regenerate the price list PDF, and reissue the flyer before the next mail-out.
+- **Status**: Open — redraft prepared 2026-11-13, awaiting owner approval
+- **Progress**: Email template, price list email HTML, `create_price_list.py` and the regenerated price list PDF are reworded on branch `claude/charming-faraday-f93mxq` (commit d788e58), not yet on `main`. The A5 flyer is Adobe Illustrator artwork with no source file in the repo; replacement wording was given to the owner for the designer. Noted but not changed: the price list and flyer show the U-shape frame at £1,850 ex VAT / £2,219 inc VAT while the site sells it from £2,050 + VAT; the flyer also describes the overhead locker as "with seatbelts and isofix powder coated".
 
 ### AUDIT-2026-11-13-007
 
@@ -147,8 +147,8 @@ five commits, 30 files.
 - **Canonical ref**: gov.uk "Converting a van to carry passengers in the rear"
 - **What is wrong**: The post reports that guidance "says there are no specific regulations covering the conversion of vans to carry passengers". The source sentence continues: "However, Regulation 100 of The Road Vehicles (Construction & Use) Regulations 1986 … will apply", requiring passengers to be carried so that no danger is caused, and it goes on to cite section 40A of the Road Traffic Act 1988. Quoting the first half alone reads as "unregulated". Likewise "no formal checking procedure for private conversions" omits the next sentence, which advises a seatbelt installation check (class IVa) at an MOT station when new belts are fitted.
 - **Expected**: Commit f9c5fb6 set out to quote the guidance rather than draw conclusions; a partial quote draws one by omission.
-- **Status**: Open
-- **Fix recommendation**: Add the "However, Regulation 100 …" point (passengers must be carried so that no danger is caused) and the class IVa advisory. All other gov.uk attributions in the four published posts were checked and are accurate.
+- **Status**: Closed 2026-11-13 — owner decision, no change
+- **Resolution**: A sentence adding the Regulation 100 point was proposed to the owner, who rejected it ("Reject .gov sentence"). The blog wording stays as approved.
 
 ### AUDIT-2026-11-13-008
 
@@ -214,5 +214,6 @@ five commits, 30 files.
 
 ## Resolution / follow-up
 
-- Next steps, in order: owner answers AUDIT-001 (which configuration was tested); owner renames the Stripe Products (AUDIT-002); trade collateral reworded and reissued (AUDIT-006); blog quote completed once the owner approves the added sentence (AUDIT-007); content pipeline claims rule (AUDIT-005).
-- When AUDIT-001 is resolved, move this file to `docs/audits/resolved/2026-11/` and update `PROJECT_STATUS.md`.
+- **Resolved 2026-11-13**: the only P1 (AUDIT-001) is closed on the owner's confirmation, so this audit moves to `docs/audits/resolved/2026-11/` under the audit workflow rule. The open P2/P3 items are carried in `docs/sprints/CURRENT_STATUS.md`.
+- Owner decisions recorded 2026-11-13: Full Width has the same rear section as the tested article (001); proposed gov.uk sentence rejected (007); owner will check social posts himself (005, published posts); on the recommendation that a solicitor read clause 8, the owner replied "C8: ok" — no solicitor review is recorded.
+- Still open: Stripe Product names (002, owner); content-pipeline claims rule and old social drafts (005); trade collateral awaiting owner approval, flyer needs the designer (006); P3 items 008-011.
