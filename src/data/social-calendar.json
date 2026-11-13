@@ -6,7 +6,7 @@
     },
     "wednesday": {
       "type": "education-certification",
-      "description": "Share knowledge about M1 certification, ISOFIX safety, EU Registered Design, or campervan conversion tips"
+      "description": "Share knowledge about M1 testing (seat belt anchorage pull test, rear travel seat only), ISOFIX, EU Registered Design, or campervan conversion tips"
     },
     "friday": {
       "type": "lifestyle-community",
@@ -15,8 +15,8 @@
   },
   "platforms": ["facebook", "instagram"],
   "hashtagSets": {
-    "product": ["#campervanfurniture", "#campervanseat", "#m1certified", "#roamsystems", "#campervanconversion", "#vanlife", "#campervan", "#vwt6", "#vwt5", "#transitcustom"],
-    "certification": ["#m1certification", "#roadsafety", "#campervansafety", "#ECE14", "#isofix", "#roamsystems", "#campervanconversion", "#ukmanufactured"],
+    "product": ["#campervanfurniture", "#campervanseat", "#m1tested", "#roamsystems", "#campervanconversion", "#vanlife", "#campervan", "#vwt6", "#vwt5", "#transitcustom"],
+    "certification": ["#m1tested", "#roadsafety", "#campervansafety", "#ECE14", "#isofix", "#roamsystems", "#campervanconversion", "#ukmanufactured"],
     "lifestyle": ["#vanlife", "#campervanlife", "#vanlifediaries", "#homeiswhereyouparkit", "#campervan", "#roamsystems", "#weekendadventures", "#vanconversion"]
   }
 }

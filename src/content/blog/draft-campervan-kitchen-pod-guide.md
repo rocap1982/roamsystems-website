@@ -97,7 +97,7 @@ Don't forget USB points and 12 V sockets near the pod — they'll be used consta
 
 ## How the Pod Fits with the Rest of the Build
 
-Finally, think about how the kitchen pod sits alongside your seating, sleeping, and storage. A great pod in isolation is less useful if it blocks access to the [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) or makes it awkward to convert between seating and bed.
+Finally, think about how the kitchen pod sits alongside your seating, sleeping, and storage. A great pod in isolation is less useful if it blocks access to the [M1 Tested U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) or makes it awkward to convert between seating and bed.
 
 The pod, frame, overhead locker, and storage drawers in our range are designed as a system — proportions match, finishes are consistent, and the layout flows. That kind of coherence is hard to retrofit if you piece a build together from different suppliers.
 

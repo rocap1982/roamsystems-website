@@ -253,7 +253,7 @@ function buildEmailHtml(session: Stripe.Checkout.Session): string {
 
     <!-- Footer -->
     <div style="background:#1a1a1a;padding:24px;text-align:center;">
-      <p style="margin:0 0 8px;color:#999;font-size:12px;">Roam Systems — Premium M1-Certified Campervan Furniture</p>
+      <p style="margin:0 0 8px;color:#999;font-size:12px;">Roam Systems — Premium Campervan Furniture</p>
       <p style="margin:0;color:#999;font-size:12px;">
         <a href="mailto:sales@roamsystems.co.uk" style="color:#f47d23;">sales@roamsystems.co.uk</a>
       </p>
@@ -346,7 +346,7 @@ function buildFormEmailHtml(data: FormEmailData): string {
       ${basketSection}
     </div>
     <div style="background:#1a1a1a;padding:24px;text-align:center;">
-      <p style="margin:0 0 8px;color:#999;font-size:12px;">Roam Systems — Premium M1-Certified Campervan Furniture</p>
+      <p style="margin:0 0 8px;color:#999;font-size:12px;">Roam Systems — Premium Campervan Furniture</p>
       <p style="margin:0;color:#999;font-size:12px;">
         <a href="mailto:sales@roamsystems.co.uk" style="color:#f47d23;">sales@roamsystems.co.uk</a>
       </p>

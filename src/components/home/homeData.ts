@@ -22,7 +22,7 @@ export const featuredProduct = {
   id: m1.id,
   href: `/products/${m1.id}`,
   name: m1.name,
-  tagline: 'The only steel M1 certified U-shape seating frame available',
+  tagline: 'Steel U-shape seating frame with an M1 tested rear travel seat',
   description:
     'Engineered for safety with integrated 3-point seatbelts and ISOFIX points. Quick bed conversion. Built in Essex by Romark Engineering.',
   price: m1.price,
@@ -141,11 +141,11 @@ const flagshipFromPrice = Math.min(...m1.variants.map((v) => v.price));
 const fromPriceLabel = `From £${flagshipFromPrice.toLocaleString('en-GB')} + VAT`;
 
 export const trustItems = [
-  'M1 Certified Safety',
+  'M1 Tested Travel Seat',
   '100+ Fabric Choices',
   '220kg Runner Capacity',
   'UK Made & Delivered',
-  '17 Approved Installers',
+  '17 Experienced Installers',
   'EU Registered Design',
   fromPriceLabel,
 ];
@@ -166,7 +166,7 @@ export const navLinks = [
 // Secondary nav links (mobile drawer + footer only, not in desktop header)
 export const navLinksSecondary = [
   { label: 'Delivery', href: '/delivery' },
-  { label: 'Certifications', href: '/certifications' },
+  { label: 'Testing', href: '/certifications' },
 ];
 
 // Declare window.roamCart so TS stops complaining inside island components

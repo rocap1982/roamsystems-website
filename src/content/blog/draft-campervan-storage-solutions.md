@@ -36,7 +36,7 @@ The right answer for any individual build is a combination of these, sized to wh
 
 ## Under-Bed Storage: The Workhorse
 
-The space beneath the [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) is the biggest single volume of usable storage in most VW Transporter and Transit Custom conversions. Used well, it can hold the bulk of your gear without taking any floor space when the van is in seating or sleeping mode.
+The space beneath the [M1 Tested U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) is the biggest single volume of usable storage in most VW Transporter and Transit Custom conversions. Used well, it can hold the bulk of your gear without taking any floor space when the van is in seating or sleeping mode.
 
 The two practical issues with under-bed space are **access** and **load capacity**. A cavernous space you can only reach by lifting cushions is dead space — you'll stop using it on day three. A drawer system that sags under the weight of camping gear becomes a permanent annoyance.
 
@@ -88,7 +88,7 @@ There's a pattern in campervan builds where the storage looks great on paper, th
 
 If you're converting a [VW T5](/vehicles/vw-transporter-t5), [VW T6](/vehicles/vw-transporter-t6), [VW T6.1](/vehicles/vw-transporter-t6-1), or [Ford Transit Custom](/vehicles/ford-transit-custom) for family use, a layout that's worked well for a lot of our customers looks something like this:
 
-- **M1 Certified U-Shape Seating Frame** — safe, road-legal rear seating with sleeping conversion
+- **M1 Tested U-Shape Seating Frame** — rear seating with sleeping conversion
 - **Central Under Bed Pull-Out Drawer Storage** — daily-use items: cooking kit, dry food, kids' bits
 - **Rear Pull-Out Drawer Storage System** — bulkier gear: clothes, walking boots, sleeping bags
 - **Kitchen Pod Campervan Package + Aluminium Overhead Locker** — kitchen plus mug/plate storage above

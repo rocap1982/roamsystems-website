@@ -22,7 +22,7 @@ export function Hero() {
         <div className="absolute right-0 top-0 hidden h-full w-[60%] lg:block">
           <img
             src={heroImage}
-            alt="M1 Certified U-Shape Seating Frame"
+            alt="M1 Tested U-Shape Seating Frame"
             className="h-full w-full object-cover object-center"
             loading="eager"
           />
@@ -90,7 +90,7 @@ export function Hero() {
           transition={{ delay: 0.7, duration: 0.6 }}
           className="mt-8 max-w-xl text-base text-[color:var(--color-ink-200)] md:text-lg"
         >
-          The only <span className="font-semibold text-white">steel M1 certified U-shape frame</span>. Precision-engineered in Essex.
+          A <span className="font-semibold text-white">steel U-shape frame with an M1 tested rear travel seat</span>. Precision-engineered in Essex.
         </motion.p>
 
         <motion.div
@@ -145,7 +145,7 @@ export function Hero() {
         >
           <div className="flex items-center gap-2">
             <span className="h-px w-8 bg-[color:var(--color-amber-base)]" />
-            <span>ECE 14.09 Certified</span>
+            <span>ECE R14.09 Tested</span>
           </div>
           <div>RCD 015033319</div>
           <div>17 UK Installers</div>

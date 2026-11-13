@@ -1,19 +1,19 @@
 ---
-title: "Why M1 Certification Matters for Your Campervan"
+title: "Why M1 Testing Matters for Your Campervan"
 description: "M1 and ECE R14.09 explained for campervan seating: what a seat belt anchorage pull test involves, what it does not cover, and what to ask a supplier."
 publishedDate: 2026-03-15
 updatedDate: 2026-11-13
 author: "ROAM Systems"
 category: "certification"
-tags: ["M1 certification", "safety", "ECE R14.09", "campervan seating"]
+tags: ["M1 testing", "safety", "ECE R14.09", "campervan seating"]
 image: "https://cdn.shopify.com/s/files/1/0709/6431/4330/files/u-shaped-frame-m1-certified-1.jpg"
 draft: false
-keywords: ["M1 certified campervan seat", "M1 certification campervan", "ECE R14.09"]
+keywords: ["M1 tested campervan seat", "M1 testing campervan", "ECE R14.09"]
 ---
 
 If you are converting a van into a campervan, one of the most important decisions you will make is choosing the rear seating. This guide explains what "M1" and ECE R14.09 mean for campervan seating, what the test involves, and what it does not cover.
 
-## What Is M1 Certification?
+## What Does M1 Tested Mean?
 
 M1 is a vehicle classification used across the UK and Europe for vehicles designed to carry passengers — specifically, vehicles with no more than eight passenger seats in addition to the driver's seat.
 
@@ -56,7 +56,7 @@ Both were static pull tests, with the seat fixed to a steel plate test structure
 
 The side bench sections are untested and for stationary use only.
 
-We publish the test documents on our [certifications page](/certifications).
+We publish the test documents on our [testing page](/certifications).
 
 ## What to Ask a Supplier
 

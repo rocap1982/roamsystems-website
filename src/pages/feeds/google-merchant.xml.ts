@@ -80,7 +80,7 @@ export const GET: APIRoute = () => {
   <channel>
     <title>ROAM Systems</title>
     <link>${SITE_URL}</link>
-    <description>Premium M1 Certified Campervan Furniture</description>
+    <description>Premium Campervan Furniture</description>
 ${items}
   </channel>
 </rss>`;

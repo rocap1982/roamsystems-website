@@ -62,7 +62,7 @@ export function FeaturedProduct() {
               className="inline-flex items-center gap-2 rounded-md border border-[color:var(--color-amber-base)] bg-[color:var(--color-amber-base)]/10 px-3 py-1.5"
             >
               <ShieldCheck className="h-4 w-4 text-[color:var(--color-amber-base)]" strokeWidth={2.5} />
-              <span className="text-xs font-black uppercase tracking-[0.2em] text-[color:var(--color-amber-base)]">M1 Certified</span>
+              <span className="text-xs font-black uppercase tracking-[0.2em] text-[color:var(--color-amber-base)]">M1 Tested</span>
             </motion.div>
 
             <motion.h2
@@ -72,7 +72,7 @@ export function FeaturedProduct() {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="mt-6 font-black uppercase leading-[0.95] tracking-tightest text-white text-4xl md:text-5xl lg:text-6xl"
             >
-              The only <span className="text-[color:var(--color-amber-base)]">M1 certified</span> U-shape seating system available
+              U-shape seating with an <span className="text-[color:var(--color-amber-base)]">M1 tested</span> rear travel seat
             </motion.h2>
 
             <motion.p

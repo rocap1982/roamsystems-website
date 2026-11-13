@@ -2,10 +2,10 @@ import { motion } from 'framer-motion';
 import { ShieldCheck, Cog, MapPin, Users } from 'lucide-react';
 
 const features = [
-  { Icon: ShieldCheck, title: 'M1 Certified Safety', body: 'M1 certified travel seat with integrated 3-point seatbelts and ISOFIX points, independently pull tested for seat belt anchorage strength to ECE R14.09. The only steel M1 certified U-shape frame in the UK.', meta: 'ECE 14.09' },
+  { Icon: ShieldCheck, title: 'M1 Tested Travel Seat', body: 'Rear travel seat with integrated 3-point seatbelts and ISOFIX points, independently pull tested for seat belt anchorage strength to ECE R14.09 (M1 loads). Side bench sections are untested and for stationary use only.', meta: 'ECE 14.09' },
   { Icon: Cog, title: 'Precision Engineered', body: 'Laser-cut frames. CNC-machined joinery. Powder-coated finishes. Built to tolerances the caravan industry has never seen.', meta: '±0.2mm tolerance' },
   { Icon: MapPin, title: 'Designed & Made in the UK', body: 'Manufactured by Romark Engineering Ltd in Essex. Protected by EU Registered Community Design RCD 015033319.', meta: 'RCD 015033319' },
-  { Icon: Users, title: 'Nationwide Support', body: 'A network of 17 approved installers from Essex to Scotland. Fit it yourself, or let a pro handle it.', meta: '17 Installers' },
+  { Icon: Users, title: 'Nationwide Support', body: 'A network of 17 experienced installers from Essex to Scotland. Fit it yourself, or let a pro handle it.', meta: '17 Installers' },
 ];
 
 export function WhyRoam() {

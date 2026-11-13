@@ -38,7 +38,7 @@ The two most common seating configurations for a VW Transporter are:
 
 **U-shape (or L-shape) seating** wraps around the rear of the van, creating a lounge-style area where passengers face each other. This layout is far more sociable for eating, relaxing, and spending time together. When converted to a bed, U-shape frames can offer a larger sleeping area.
 
-ROAM Systems manufactures the only steel [M1 certified U-shape seating frame](/products) on the market. It is designed specifically for the VW T5, T6, and T6.1, and fits both SWB (short wheelbase) and LWB (long wheelbase) models with the appropriate configuration.
+ROAM Systems manufactures a steel [U-shape seating frame](/products) with an M1 tested rear travel seat. It is designed specifically for the VW T5, T6, and T6.1, and fits both SWB (short wheelbase) and LWB (long wheelbase) models with the appropriate configuration.
 
 ## Kitchen Pod Options
 
@@ -102,7 +102,7 @@ Ready to start planning your conversion? Here is what we suggest:
 
 1. **Browse our [product range](/products)** to see the full selection of frames, kitchens, and upholstery
 2. **Check your vehicle compatibility** — all our products list which Transporter models they fit
-3. **Find an [approved installer](/installers)** if you would prefer professional fitting
+3. **Find an [experienced installer](/installers)** if you would prefer professional fitting
 4. **[Contact us](/contact)** if you have questions — we are happy to help you plan your build
 
 Your VW Transporter is a brilliant base for a campervan. With the right furniture, it becomes something truly special.

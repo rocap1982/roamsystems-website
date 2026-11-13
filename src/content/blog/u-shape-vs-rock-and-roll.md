@@ -30,13 +30,13 @@ Rock and roll beds have been a staple of campervan conversions for decades. They
 - Seating is usually limited to two or three passengers
 - No ability to seat a group for eating or socialising
 - Sleeping length is often constrained by the seat position in the van
-- Safety certification varies — many are M1 certified, but quality varies widely between manufacturers
+- Test evidence varies between manufacturers — ask for the test documents
 
 ## What Is a U-Shape Seating Frame?
 
 A U-shape seating frame creates a three-sided seating area at the rear of the van, typically with an optional table in the centre. The seats fold flat to form a sleeping area.
 
-ROAM Systems' [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) has a rear travel seat that has been independently pull tested for seat belt anchorage strength to ECE R14.09. It includes integrated 3-point seatbelts and ISOFIX points, and is available in Standard and Full Width configurations.
+ROAM Systems' [M1 Tested U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) has a rear travel seat that has been independently pull tested for seat belt anchorage strength to ECE R14.09. It includes integrated 3-point seatbelts and ISOFIX points, and is available in Standard and Full Width configurations.
 
 **Typical advantages:**
 - Seats four to five people comfortably
@@ -70,7 +70,7 @@ If you regularly travel with children or friends, the U-shape layout is the more
 
 For families with young children, the ROAM Systems U-shape also includes ISOFIX anchor points, independently tested to ECE R145, for fitting a compatible child seat. This is not a feature available on most rock and roll beds.
 
-### Safety certification
+### Safety testing
 
 This is one area where it pays to look closely at specifications, not just marketing language.
 
@@ -78,7 +78,7 @@ An ECE R14.09 pull test means the seat belt anchorages have been independently t
 
 Many rock and roll beds on the market are sold as M1 tested. When comparing options, check for the specific regulation (ECE R14.09) and ask for the test documents rather than relying on general claims.
 
-The rear travel seat of the ROAM Systems U-shape frame has been independently pull tested for seat belt anchorage strength to ECE R14.09. The side bench sections are untested and for stationary use only. For more detail on what the test covers, see our guide: [Why M1 Certification Matters for Your Campervan](/blog/why-m1-certification-matters).
+The rear travel seat of the ROAM Systems U-shape frame has been independently pull tested for seat belt anchorage strength to ECE R14.09. The side bench sections are untested and for stationary use only. For more detail on what the test covers, see our guide: [Why M1 Testing Matters for Your Campervan](/blog/why-m1-certification-matters).
 
 ### Customisation and build compatibility
 
@@ -102,11 +102,11 @@ There is no universally correct answer, but here is a simple way to think about 
 - You have a long wheelbase van with enough rear depth
 - You travel with family, children, or groups of friends
 - You want a layout that functions as a lounge and dining space
-- Safety certification and ISOFIX compatibility are important to you
+- Independent seat belt anchorage testing and ISOFIX points are important to you
 - You want the most versatile use of your rear space
 
 For many converters, the U-shape layout represents a significant upgrade in how the van actually feels to live in. It is the difference between a sleeping space that also has seats, and a genuine living space that also converts to sleep.
 
 ---
 
-If you are still working out the right layout for your specific vehicle, take a look at our [vehicle guides](/vehicles/) for VW Transporter and Ford Transit Custom. You can also view the full specification and dimensions for the [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) on the product page.
+If you are still working out the right layout for your specific vehicle, take a look at our [vehicle guides](/vehicles/) for VW Transporter and Ford Transit Custom. You can also view the full specification and dimensions for the [M1 Tested U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) on the product page.

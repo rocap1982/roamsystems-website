@@ -1,7 +1,7 @@
 [
   {
     "id": "m1-certified-u-shape-seating-frame",
-    "name": "M1 Certified U-Shape Seating Frame",
+    "name": "M1 Tested U-Shape Seating Frame",
     "price": 2050,
     "compareAtPrice": null,
     "category": [
@@ -21,10 +21,10 @@
       "renault-trafic",
       "nissan-primastar"
     ],
-    "description": "Transform your campervan interior with our exclusive M1 Certified U-Shape Seating Frame, designed for safety, comfort, and versatility. The only steel M1 certified U-shape seating frame — integrated 3-point belts and ISOFIX. The rear travel seat is independently pull tested for seat belt anchorage strength to ECE R14.09. Available in Standard and Full Width configurations.",
+    "description": "Transform your campervan interior with our exclusive M1 Tested U-Shape Seating Frame, designed for safety, comfort, and versatility. Steel frame with integrated 3-point belts and ISOFIX on the rear travel seat. The rear travel seat is independently pull tested for seat belt anchorage strength to ECE R14.09. Side bench sections are untested and for stationary use only. Available in Standard and Full Width configurations.",
     "metaDescription": "U-shape campervan seating — steel frame, 3-point belts and ISOFIX. Rear travel seat independently pull tested for seat belt anchorage strength to ECE R14.09.",
     "features": [
-      "ECE 14.09 M1 certified safety",
+      "Rear travel seat M1 tested to ECE R14.09 (seat belt anchorage pull test)",
       "Integrated 3-point seatbelts and ISOFIX points",
       "Laser-cut, precision-engineered steel construction",
       "Textured black powder-coated finish",
@@ -67,7 +67,7 @@
       "/images/products/m1-certified-u-shape-seating-frame-2.jpg"
     ],
     "note": "Price is for the 3-piece frame system only. Photos may show optional extras (under-bed drawer storage, rear pull-out units) which are sold separately.",
-    "safetyNote": "M1 certification (ECE R14.09) applies to the rear belted travel seat. Side bench sections are for stationary use only — passengers must not travel on unbelted seating.",
+    "safetyNote": "M1 testing (ECE R14.09 seat belt anchorage pull test) applies only to the rear section with the seat belts and ISOFIX. Side bench sections are untested and for stationary use only — passengers must not travel on unbelted seating.",
     "leadTime": "Lead time: 2-4 weeks for stocked items from order confirmation."
   },
   {
@@ -266,18 +266,18 @@
       "renault-trafic",
       "nissan-primastar"
     ],
-    "description": "Add a sleek, modern finish to your campervan's interior with our Powder Coated Aluminium Front Facing Panels. Designed to perfectly fit the front face of our M1 Certified U-Shape Seating Frame, providing a seamless and professional look with additional protection and durability.",
+    "description": "Add a sleek, modern finish to your campervan's interior with our Powder Coated Aluminium Front Facing Panels. Designed to perfectly fit the front face of our M1 Tested U-Shape Seating Frame, providing a seamless and professional look with additional protection and durability.",
     "features": [
       "Laser-cut and folded aluminium for precision and strength",
       "Textured black powder-coated finish resists scratches and wear",
-      "Seamless integration with M1 Certified U-Shape Seating Frame",
+      "Seamless integration with M1 Tested U-Shape Seating Frame",
       "Lightweight yet robust construction",
       "Professional, stylish finish"
     ],
     "specs": {
       "Material": "Laser-cut and folded aluminium",
       "Finish": "Textured black powder coat",
-      "Compatibility": "M1 Certified U-Shape Seating Frame"
+      "Compatibility": "M1 Tested U-Shape Seating Frame"
     },
     "variants": [
       {
@@ -325,14 +325,14 @@
       "Dual density foam: 25mm soft blue + 25mm firm chip foam",
       "Over 100 colour and pattern choices",
       "Professionally trimmed fabric covers",
-      "Custom fit for M1 Certified U-Shape Seating Frame",
+      "Custom fit for M1 Tested U-Shape Seating Frame",
       "Made to order for a bespoke solution"
     ],
     "specs": {
       "Board": "12mm birch plywood, CNC-cut",
       "Foam": "Dual density (25mm soft + 25mm firm)",
       "Fabrics": "100+ colours and patterns",
-      "Compatibility": "M1 Certified U-Shape Seating Frame",
+      "Compatibility": "M1 Tested U-Shape Seating Frame",
       "Made To Order": "Yes"
     },
     "variants": [
@@ -380,14 +380,14 @@
       "25mm firm chip foam for structural support",
       "Professionally upholstered in premium fabrics",
       "Available in Christina Marrone range and genuine VW fabrics",
-      "Custom fit for M1 Certified U-Shape Seating Frame"
+      "Custom fit for M1 Tested U-Shape Seating Frame"
     ],
     "specs": {
       "Board Thickness": "12mm birch plywood",
       "Foam Layer 1": "25mm soft blue foam",
       "Foam Layer 2": "25mm firm chip foam",
       "Overall Cushion Depth": "65mm",
-      "Compatibility": "M1 Certified U-Shape Seating Frame",
+      "Compatibility": "M1 Tested U-Shape Seating Frame",
       "Fabric Options": "Christina Marrone, VW fabrics, others"
     },
     "variants": [
