@@ -1,16 +1,16 @@
 ---
 project: roam-systems-website
 status: active
-last_updated: 2026-06-12
+last_updated: 2026-11-13
 
 # "Resume context" pointers (keep these current)
 sprint_current_status: docs/sprints/CURRENT_STATUS.md
-active_work: "No active sprint. SEO/legal audit fully closed 2026-06-12: approved meta trims + certifications scope wording DEPLOYED & VERIFIED LIVE (commit 0ec1a05; all 34 pages <160-char metas, www canonicals, 301s for legacy Shopify URLs). T&Cs overhaul live 2026-06-12 (commit 3b3918d), mini-audit RESOLVED. Open: non-www->www 301 — Cloudflare zone owner IDENTIFIED via Outlook search 2026-06-12: Identity Pixel Design Ltd (spencer@identitypixel.com) kept DNS in their CF account when the domain registration moved to owner's GoDaddy (cust 296089358, Mar 2026). Full DNS inventory captured in docs/reference/DNS_ROAMSYSTEMS_CO_UK.md. Next: either ask Identity Pixel to proxy apex + add 301 rule, or migrate zone to owner's own CF account (registrar access in hand). www canonicals live meanwhile. GSC: domain property covers www; www sitemap-index.xml submitted 2026-06-12 (initial 'Couldn't fetch' is pre-crawl placeholder; sitemap verified serving 200 with www URLs). Also open: optional live Stripe price verification."
+active_work: "No active sprint. 2026-11-13: test-claim wording aligned to the VOSC test summaries and DEPLOYED/LIVE on main (commits d44d84a, 914bf38, f9c5fb6, 55058dc) — product renamed 'M1 Tested U-Shape Seating Frame' (slug/id/mpn unchanged), crash-test and legal-requirement claims removed, terms clause 8 rewritten (test scope + installer responsibilities), 'Approved' -> 'Experienced' installers, /certifications retitled 'Testing & Quality'. Mini-audit OPEN: docs/audits/active/2026-11-13-m1-claims-terms-clause8-mini.md — 1 P1 (owner to confirm whether the Full Width configuration is the tested 1580mm article), 4 open P2 (Stripe Product names, content pipeline/social drafts, trade collateral, blog partial quote); approval record and canonical docs resolved same day. Also on main since 2026-10-06: middleware no longer 301s /api/* on the non-www host (b71544b). Earlier (2026-06-12): SEO/legal audit fully closed 2026-06-12: approved meta trims + certifications scope wording DEPLOYED & VERIFIED LIVE (commit 0ec1a05; all 34 pages <160-char metas, www canonicals, 301s for legacy Shopify URLs). T&Cs overhaul live 2026-06-12 (commit 3b3918d), mini-audit RESOLVED. Open: non-www->www 301 — Cloudflare zone owner IDENTIFIED via Outlook search 2026-06-12: Identity Pixel Design Ltd (spencer@identitypixel.com) kept DNS in their CF account when the domain registration moved to owner's GoDaddy (cust 296089358, Mar 2026). Full DNS inventory captured in docs/reference/DNS_ROAMSYSTEMS_CO_UK.md. Next: either ask Identity Pixel to proxy apex + add 301 rule, or migrate zone to owner's own CF account (registrar access in hand). www canonicals live meanwhile. GSC: domain property covers www; www sitemap-index.xml submitted 2026-06-12 (initial 'Couldn't fetch' is pre-crawl placeholder; sitemap verified serving 200 with www URLs). Also open: optional live Stripe price verification."
 latest_session_log: "docs/sessions/2026-06-08.md"
 roadmap_next_phase: "Site feature development (Shopify integration, checkout, SEO)"
 canonical_architecture_decision: "Hybrid Astro + React islands via @astrojs/react (added 2026-04-10). All interactive homepage sections are React islands; cart/checkout scripts remain in the Astro layout."
 active_audits_dir: docs/audits/active/
-latest_audit: "docs/audits/resolved/2026-06/2026-06-12-terms-acceptance-ip-mini.md (RESOLVED 2026-06-12 — Aligned; 0 P0/P1; all 3 P3 fixed same day: sidebar terms small print, product-badge UK design numbers, refund→terms cross-link)"
+latest_audit: "docs/audits/active/2026-11-13-m1-claims-terms-clause8-mini.md (ACTIVE — Minor drift; open P0: 0, open P1: 1; 4 open P2, 4 P3). Previous: docs/audits/resolved/2026-06/2026-06-12-terms-acceptance-ip-mini.md (RESOLVED 2026-06-12)"
 skills_index: .claude/skills/
 canonical_reference_root: docs/reference/
 ---
@@ -19,7 +19,7 @@ This file is the **fastest way to resume work** with minimal context.
 
 ## What is this project?
 
-**Roam Systems** — an e-commerce website for Romark Engineering Ltd (Essex, UK) selling premium M1-certified campervan furniture: seating frames, kitchen pods, storage systems, and upholstery.
+**Roam Systems** — an e-commerce website for Romark Engineering Ltd (Essex, UK) selling premium campervan furniture (U-shape frame with an M1 tested rear travel seat): seating frames, kitchen pods, storage systems, and upholstery.
 
 ## Tech stack
 

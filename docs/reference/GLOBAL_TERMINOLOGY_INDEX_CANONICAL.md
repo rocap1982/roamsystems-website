@@ -11,7 +11,7 @@ This document defines the authoritative set of terms and definitions used across
 
 ## Product & Engineering Terms
 
-- **M1 Certification**: ECE 14.09 safety standard for motor vehicle seating. All ROAM seating frames carry this certification.
+- **M1 tested**: The rear belted travel seat of the U-shape frame was independently pull tested by VOSC for seat belt anchorage strength to the M1 load requirements of ECE R14.09 (test VO00269, 18/03/2021), and its ISOFIX anchorages to ECE R145 (test VO00270, 23/03/2021). Static pull tests on a steel plate test structure — not in a vehicle, not crash tests. Side bench sections are untested and for stationary use only. Do not use "M1 certified", "crash tested" or "approved installer".
 - **ISOFIX**: International standard (ISO 13216) for child seat attachment points integrated into vehicle seating.
 - **CNC**: Computer Numerical Control — precision manufacturing method used for cutting plywood and aluminium components.
 - **SWB**: Short Wheel Base — a van body length configuration (e.g. VW T5/T6 SWB).

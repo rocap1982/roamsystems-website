@@ -9,7 +9,7 @@ last_updated: 2026-03-13
 
 ## Purpose
 
-Roam Systems is an e-commerce website for **Romark Engineering Ltd** (Essex, UK) that sells premium M1-certified campervan furniture, seating frames, kitchen pods, storage solutions, and upholstery. The site serves as the company's digital storefront and product catalogue.
+Roam Systems is an e-commerce website for **Romark Engineering Ltd** (Essex, UK) that sells premium campervan furniture: a U-shape seating frame with an M1 tested rear travel seat, kitchen pods, storage solutions, and upholstery. The site serves as the company's digital storefront and product catalogue.
 
 ## Users and roles
 
@@ -47,7 +47,7 @@ Roam Systems is an e-commerce website for **Romark Engineering Ltd** (Essex, UK)
 
 ## Invariants (non-negotiable behavior)
 
-- All seating frames must display M1 certification status
+- Test claims must state their scope: rear travel seat only, static pull test, not a crash test, not tested in a vehicle. Use "M1 tested", never "M1 certified"
 - Product prices are in GBP (£)
 - Product IDs are kebab-case slugs matching `products.json` entries
 - Cart state persists across page navigations via localStorage
@@ -68,7 +68,7 @@ Roam Systems is an e-commerce website for **Romark Engineering Ltd** (Essex, UK)
 | `/products` | `src/pages/products/index.astro` | Product listing with category filter |
 | `/products/[id]` | `src/pages/products/[id].astro` | Product detail page |
 | `/gallery` | `src/pages/gallery.astro` | 44-image product gallery |
-| `/certifications` | `src/pages/certifications.astro` | Safety certification gallery |
+| `/certifications` | `src/pages/certifications.astro` | Test summaries (VOSC) and registered designs — page titled "Testing & Quality" |
 | `/contact` | `src/pages/contact.astro` | Contact form |
 | `/delivery` | `src/pages/delivery.astro` | Delivery information |
 | `/stockists` | `src/pages/stockists.astro` | Dealer/stockist directory |
@@ -84,7 +84,7 @@ Roam Systems is an e-commerce website for **Romark Engineering Ltd** (Essex, UK)
 
 ## Glossary
 
-- **M1 certification**: ECE 14.09 safety standard for motor vehicle seating
+- **M1 tested**: rear travel seat's seat belt anchorages pull tested to ECE R14.09 M1 loads — see `GLOBAL_TERMINOLOGY_INDEX_CANONICAL.md`
 - **SWB**: Short Wheel Base (van configuration)
 - **LWB**: Long Wheel Base (van configuration)
 - **ISOFIX**: International standard for child seat attachment points
