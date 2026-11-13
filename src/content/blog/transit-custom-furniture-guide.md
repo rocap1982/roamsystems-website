@@ -26,9 +26,9 @@ The Transit Custom's relatively flat sidewalls and consistent floor profile make
 
 ---
 
-## Seating That's Actually Road Legal
+## Seating With Independent Test Evidence
 
-One of the most common oversights in campervan conversions is rear seating that isn't legally safe for carrying passengers. If you're planning to travel with friends or family in the back, the seats need to meet **ECE R14.09 M1 certification** — the same safety standard applied to manufacturer-fitted seats.
+One of the most common oversights in campervan conversions is rear seating with no test evidence behind it. If you're planning to travel with friends or family in the back, check how the seat has been tested. [UK government guidance](https://www.gov.uk/government/publications/converting-a-van-to-carry-passengers-in-the-rear/converting-a-van-to-carry-passengers-in-the-rear) says additional seats should be fitted securely, and that seat belt anchorage points should be capable of withstanding the high forces of an impact. The rear travel seat of our U-shape frame has been independently pull tested for seat belt anchorage strength to **ECE R14.09**.
 
 Our [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) is the only steel M1 certified U-shape frame on the market and is designed to fit the Ford Transit Custom alongside VW T5, T6, and T6.1. It includes:
 

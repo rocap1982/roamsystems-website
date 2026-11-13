@@ -24,11 +24,11 @@ The cargo area is wide enough for a comfortable double bed, long enough for a ki
 
 The rear seating frame is the foundation of your conversion. It provides the seating for travelling, the bed base for sleeping, and in many cases, storage space underneath. Getting this right is critical.
 
-### M1 Certification Is Non-Negotiable
+### Check How the Seat Has Been Tested
 
-If you plan to carry passengers in the rear of your campervan, your seating frame must be M1 certified to ECE R14.09. This is a legal requirement, not a preference. Uncertified frames may look similar, but they have not been tested to withstand crash forces — and that distinction matters for your safety, your insurance, and your MOT.
+If you plan to carry passengers in the rear of your campervan, check how the seating has been tested. [UK government guidance](https://www.gov.uk/government/publications/converting-a-van-to-carry-passengers-in-the-rear/converting-a-van-to-carry-passengers-in-the-rear) says additional seats should be fitted securely, and that seat belt anchorage points should be capable of withstanding the high forces of an impact. It also says you should tell your insurer about the changes.
 
-Read our detailed article on [why M1 certification matters](/blog/why-m1-certification-matters) for a full breakdown of the standard and what to look for.
+The rear travel seat of our U-shape frame has been independently pull tested for seat belt anchorage strength to ECE R14.09. Read our article on [M1 and ECE R14.09](/blog/why-m1-certification-matters) for what the test covers and what it does not.
 
 ### Rock and Roll vs U-Shape
 

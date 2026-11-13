@@ -23,15 +23,15 @@ In standard cars, ISOFIX points are built into the rear seat structure at the fa
 
 ## Why Campervans Are Different
 
-When you buy a family car, the rear seats have been crash-tested as part of the vehicle's type approval. Campervans are different. The rear seating is a conversion — it's added after the base vehicle leaves the factory. Unless the conversion furniture has been independently tested and certified to carry passengers, those seats may not be legal to use while the vehicle is moving.
+In a family car, the rear seats are fitted by the vehicle manufacturer. Campervans are different. The rear seating is a conversion — it's added after the base vehicle leaves the factory. Unless the conversion seating has been independently tested, there is no evidence of the strength of its seat belt anchorages.
 
-This is where M1 certification matters. M1 (ECE R14.09) is the European standard for passenger vehicle seating. An M1-certified seat frame has been tested under the same regulation as car seats — including forward-facing impact testing. Without it, fitting passengers in the rear during travel is technically non-compliant in many cases, and your insurer may not cover you in the event of an accident.
+This is where independent testing matters. ECE Regulation 14 covers seat belt anchorages. The rear travel seat of our U-shape frame has been independently pull tested to the M1 load requirements of ECE R14.09, and its ISOFIX anchorages have been tested to ECE R145. These were static pull tests on a steel test structure. They were not carried out in a vehicle and they are not crash tests. Tell your insurer about any seating you add.
 
 ## ISOFIX in Campervan Seating: What to Look For
 
 If you're planning to travel with young children, you need rear seating that provides:
 
-1. **M1 certification** — confirms the frame has been crash-tested to passenger vehicle standards
+1. **Independent seat belt anchorage testing** — confirms the seat has been pull tested for seat belt anchorage strength to ECE R14.09
 2. **Integrated ISOFIX anchor points** — allows you to fit a compatible child seat safely
 3. **3-point seatbelts** — required for legal adult and older-child travel in the rear
 

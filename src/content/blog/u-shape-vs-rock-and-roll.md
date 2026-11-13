@@ -36,7 +36,7 @@ Rock and roll beds have been a staple of campervan conversions for decades. They
 
 A U-shape seating frame creates a three-sided seating area at the rear of the van, typically with an optional table in the centre. The seats fold flat to form a sleeping area.
 
-ROAM Systems' [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) is the only steel U-shape frame on the market that has achieved ECE R14.09 M1 certification — the same safety standard required for factory-fitted passenger seating. It includes integrated 3-point seatbelts and ISOFIX points, and is available in Standard and Full Width configurations.
+ROAM Systems' [M1 Certified U-Shape Seating Frame](/products/m1-certified-u-shape-seating-frame) has a rear travel seat that has been independently pull tested for seat belt anchorage strength to ECE R14.09. It includes integrated 3-point seatbelts and ISOFIX points, and is available in Standard and Full Width configurations.
 
 **Typical advantages:**
 - Seats four to five people comfortably
@@ -68,17 +68,17 @@ This is where the two options diverge most significantly. A rock and roll bed ty
 
 If you regularly travel with children or friends, the U-shape layout is the more practical and more social choice. The ability to sit around a table together — for a meal, a game, or just a conversation — changes the feel of a trip completely.
 
-For families with young children, the ROAM Systems U-shape also includes ISOFIX anchor points, which means child seats can be fitted safely. This is not a feature available on most rock and roll beds.
+For families with young children, the ROAM Systems U-shape also includes ISOFIX anchor points, independently tested to ECE R145, for fitting a compatible child seat. This is not a feature available on most rock and roll beds.
 
 ### Safety certification
 
 This is one area where it pays to look closely at specifications, not just marketing language.
 
-M1 certification under ECE R14.09 means the seat frame and anchorage points have been independently tested to withstand the forces of a serious collision. It is a legal requirement for motor caravan registration in the UK and across Europe.
+An ECE R14.09 pull test means the seat belt anchorages have been independently tested for strength. It is not a legal requirement for registering a motor caravan: [DVLA guidance](https://www.gov.uk/government/publications/converting-a-vehicle-into-a-motor-caravan/converting-a-vehicle-into-a-motor-caravan) says any seat belts and seats installed for use while travelling must be securely mounted.
 
-Many rock and roll beds on the market carry M1 certification from reputable manufacturers. When comparing options, check for the specific regulation (ECE R14.09) and ask for certification documentation rather than relying on general claims.
+Many rock and roll beds on the market are sold as M1 tested. When comparing options, check for the specific regulation (ECE R14.09) and ask for the test documents rather than relying on general claims.
 
-The ROAM Systems U-shape seating frame is ECE R14.09 M1 certified — the only steel U-shape frame on the market to hold this certification. For more detail on what M1 certification means in practice, see our guide: [Why M1 Certification Matters for Your Campervan](/blog/why-m1-certification-matters).
+The rear travel seat of the ROAM Systems U-shape frame has been independently pull tested for seat belt anchorage strength to ECE R14.09. The side bench sections are untested and for stationary use only. For more detail on what the test covers, see our guide: [Why M1 Certification Matters for Your Campervan](/blog/why-m1-certification-matters).
 
 ### Customisation and build compatibility
 
