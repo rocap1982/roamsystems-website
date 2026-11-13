@@ -1,12 +1,12 @@
 ---
 doc_type: audit
 audit_type: mini
-status: resolved # active | resolved | superseded
+status: active # active | resolved | superseded
 created: 2026-11-13
 auditor: "AI (Claude Code)"
 scope: "Test-claim wording alignment (\"M1 Certified\" -> \"M1 Tested\", crash-test / legal-requirement claims removed), terms clause 8 rewrite, installers rename, and /api/* middleware exemption — commits b71544b, d44d84a, 914bf38, f9c5fb6, 55058dc (all on origin/main, verified live 2026-11-13)"
 open_p0: 0
-open_p1: 0
+open_p1: 1
 ---
 
 # Mini Audit Result: M1 test-claim wording + terms clause 8 + middleware — 2026-11-13
@@ -50,10 +50,10 @@ five commits, 30 files.
 
 ## Summary
 
-- **Total issues**: 11 (7 open; 001, 003, 004 resolved and 007 closed by owner decision, all 2026-11-13)
+- **Total issues**: 12 (7 open; 001, 003, 004, 006 resolved and 007 closed by owner decision, all 2026-11-13; 012 added and open)
 - **P0**: 0
-- **P1**: 1 — resolved (owner confirmed Full Width has the same rear section)
-- **P2**: 6 (3 open: 002, 005, 006)
+- **P1**: 2 — 001 resolved (owner confirmed Full Width has the same rear section); **012 open** (tested article is V1, owner believes production is V3)
+- **P2**: 6 (2 open: 002, 005) plus follow-ups from 006 (price list prices and company details, flyer)
 - **P3**: 4 open
 - **Assessment**: ⚠️ Minor drift — the deployed site itself is clean and matches the test documents; drift is in what surrounds it (one unconfirmed test-scope question, Stripe-held product names, the content pipeline and trade collateral).
 
@@ -84,7 +84,7 @@ five commits, 30 files.
 - **What is wrong**: Both test summaries identify the tested article as **"M1 Smart U Bed V1 Double Seat Bed 1580mm Width"**. The site sells the frame in two configurations, **Standard** (max frame width 158 cm, which matches) and **Full Width** (£2,150), and applies the tested claim to the product as a whole without saying which configuration was tested. Nothing in the repo records whether the Full Width rear travel seat is the same assembly as the 1580 mm article that VOSC tested, or whether current production is still the "V1" design.
 - **Expected**: The claim is limited to the article that was tested. If the Full Width rear section is physically identical to the tested one, say so on record; if it differs (width, leg span, fixings), the Full Width variant must not be described as tested.
 - **Status**: Resolved 2026-11-13 — owner confirmation
-- **Resolution**: The owner (Rob di Capite) stated on 2026-11-13: "Full width is the same rear section", and earlier the same day: "It is the rear section which has the seatbelts and isofix only that is tested." The "M1 tested" claim therefore stands for both the Standard and Full Width configurations, on the owner's statement. This rests on the owner's knowledge of the product; the repo holds no drawing or part-number evidence. Not confirmed: whether current production is still the "V1" design named on the summaries (asked, not answered).
+- **Resolution**: The owner (Rob di Capite) stated on 2026-11-13: "Full width is the same rear section", and earlier the same day: "It is the rear section which has the seatbelts and isofix only that is tested." The "M1 tested" claim therefore stands for both the Standard and Full Width configurations, on the owner's statement. This rests on the owner's knowledge of the product; the repo holds no drawing or part-number evidence. Whether current production is still the "V1" design named on the summaries is now AUDIT-2026-11-13-012.
 
 ### AUDIT-2026-11-13-002
 
@@ -137,8 +137,11 @@ five commits, 30 files.
 - **Canonical ref**: Commits 914bf38 / 55058dc
 - **What is wrong**: Trade-facing collateral kept in the repo still makes the retracted claims: "M1 crash tested seating system with integrated seatbelts and ISOFIX points", "fully certified travel seating to ECE M1 standards", "M1 Certified U-Shape Bed System", and "M1 certified U-shape frame" on the A5 flyer and price list. These go to conversion companies, the audience most likely to rely on them.
 - **Expected**: Outbound collateral uses the same wording as the site.
-- **Status**: Open — redraft prepared 2026-11-13, awaiting owner approval
-- **Progress**: Email template, price list email HTML, `create_price_list.py` and the regenerated price list PDF are reworded on branch `claude/charming-faraday-f93mxq` (commit d788e58), not yet on `main`. The A5 flyer is Adobe Illustrator artwork with no source file in the repo; replacement wording was given to the owner for the designer. Noted but not changed: the price list and flyer show the U-shape frame at £1,850 ex VAT / £2,219 inc VAT while the site sells it from £2,050 + VAT; the flyer also describes the overhead locker as "with seatbelts and isofix powder coated".
+- **Status**: Resolved 2026-11-13 for the claim wording — owner approved the redraft ("approved"); email template, price list email HTML, generator and regenerated PDF are on `main`.
+- **Follow-ups (owner statements 2026-11-13)**:
+  - The price list price of £1,850 for the U-shape frame is out of date. Price list prices have not been changed yet; a draft matched to `products.json` is awaiting owner confirmation. Do not send the price list until then.
+  - "Company was closed down, roam systems is under romark now": the price list footer (PDF and email HTML) and the A5 flyer still name "Roam Systems Ltd", Unit 3, 47 King Street, Company No. 1318982. A footer draft using the Romark Engineering Limited details from terms clause 1 is awaiting owner confirmation.
+  - The A5 flyer (`RoamSystems-Flyers-A5-incVAT-EMAIL-v2.pdf`, Illustrator artwork, no source in repo) still says "M1 certified U-shape frame", carries the old prices and the closed company's details. Owner: "We will re-do the flyer at a later date". It should not be sent in the meantime.
 
 ### AUDIT-2026-11-13-007
 
@@ -190,6 +193,16 @@ five commits, 30 files.
 - **Status**: Open
 - **Fix recommendation**: Rewrite both answers; confirm with the owner whether a written warranty exists before keeping that claim.
 
+### AUDIT-2026-11-13-012
+
+- **Priority**: P1
+- **Location**: every "M1 tested" statement on the site and in the trade collateral; `src/pages/policies/terms.astro` clause 8 ("These tests apply only to genuine ROAM Systems products as manufactured by Romark Engineering Limited")
+- **Canonical ref**: VOSC summaries VO00269 / VO00270 — "This report relates to the performance of the M1 Smart U Bed **V1** Double Seat Bed 1580mm Width as tested on a surrogate vehicle floor"
+- **What is wrong**: Both test summaries relate to design revision **V1**, tested in March 2021. Asked whether current production is still V1, the owner replied on 2026-11-13: "V3 i believe". The repo holds no record of what changed between V1 and V3. If any change affected the tested rear section (frame members, welds, leg type or height, leg span, the 12 x M12 floor fixings, seat belt or ISOFIX anchorage positions or parts), the summaries may not describe the product sold today, and the site's test claims and clause 8 would not be supported for current production.
+- **Expected**: Either evidence that the rear section is unchanged from V1 in every respect relevant to the tests, or the test house's written view that the V1 results still apply, or a re-test of the current revision.
+- **Status**: Open — owner to confirm the production revision and what changed
+- **Fix recommendation**: (1) Owner confirms the current revision from the drawing register. (2) List every change to the rear section between V1 and current. (3) If nothing relevant to the tests changed, record that here with the drawing revisions and close. (4) If anything relevant changed, ask VOSC in writing whether VO00269 and VO00270 still apply, and decide on a re-test. Until closed, no new claim should be added that current production "is" tested; the present wording says the rear travel seat "has been" tested, which is true of the V1 article.
+
 ## Documentation completeness check
 
 - Clause 8 and the claim changes shipped with no plan or session log; the owner approval record is now in AUDIT-003. Status docs updated by this audit.
@@ -214,6 +227,7 @@ five commits, 30 files.
 
 ## Resolution / follow-up
 
-- **Resolved 2026-11-13**: the only P1 (AUDIT-001) is closed on the owner's confirmation, so this audit moves to `docs/audits/resolved/2026-11/` under the audit workflow rule. The open P2/P3 items are carried in `docs/sprints/CURRENT_STATUS.md`.
-- Owner decisions recorded 2026-11-13: Full Width has the same rear section as the tested article (001); proposed gov.uk sentence rejected (007); owner will check social posts himself (005, published posts); on the recommendation that a solicitor read clause 8, the owner replied "C8: ok" — no solicitor review is recorded.
-- Still open: Stripe Product names (002, owner); content-pipeline claims rule and old social drafts (005); trade collateral awaiting owner approval, flyer needs the designer (006); P3 items 008-011.
+- **Re-opened 2026-11-13**: AUDIT-001 was closed on the owner's confirmation and this audit was briefly moved to resolved. The owner then stated that current production is "V3 i believe", while the VOSC summaries relate to V1. That is recorded as AUDIT-012 (P1, open), so the audit is back in `docs/audits/active/`.
+- Owner decisions recorded 2026-11-13: Full Width has the same rear section as the tested article (001); proposed gov.uk sentence rejected (007); collateral wording approved (006); owner will check social posts and rename the Stripe Product himself (005, 002); the old Roam Systems company is closed and ROAM Systems now trades under Romark; the flyer will be redone later; on the recommendation that a solicitor read clause 8, the owner replied "C8: ok" — no solicitor review is recorded.
+- Still open: **012 (P1)**; Stripe Product names (002, owner); content-pipeline claims rule and old social drafts (005); price list prices and company details, and the flyer (006 follow-ups); P3 items 008-011.
+- When AUDIT-012 is resolved, move this file to `docs/audits/resolved/2026-11/` and update `PROJECT_STATUS.md`.
