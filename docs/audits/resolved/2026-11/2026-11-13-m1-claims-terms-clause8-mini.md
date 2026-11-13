@@ -1,12 +1,12 @@
 ---
 doc_type: audit
 audit_type: mini
-status: active # active | resolved | superseded
+status: resolved # active | resolved | superseded
 created: 2026-11-13
 auditor: "AI (Claude Code)"
 scope: "Test-claim wording alignment (\"M1 Certified\" -> \"M1 Tested\", crash-test / legal-requirement claims removed), terms clause 8 rewrite, installers rename, and /api/* middleware exemption — commits b71544b, d44d84a, 914bf38, f9c5fb6, 55058dc (all on origin/main, verified live 2026-11-13)"
 open_p0: 0
-open_p1: 1
+open_p1: 0
 ---
 
 # Mini Audit Result: M1 test-claim wording + terms clause 8 + middleware — 2026-11-13
@@ -50,9 +50,9 @@ five commits, 30 files.
 
 ## Summary
 
-- **Total issues**: 12 (7 open; 001, 003, 004, 006 resolved and 007 closed by owner decision, all 2026-11-13; 012 added and open)
+- **Total issues**: 12 (6 open; 001, 003, 004, 006, 012 resolved and 007 closed by owner decision, all 2026-11-13)
 - **P0**: 0
-- **P1**: 2 — 001 resolved (owner confirmed Full Width has the same rear section); **012 open** (tested article is V1, owner believes production is V3)
+- **P1**: 2, both resolved on owner confirmation — 001 (Full Width has the same rear section) and 012 (rear seat unchanged from V1 to V3)
 - **P2**: 6 (2 open: 002, 005) plus follow-ups from 006 (price list prices and company details, flyer)
 - **P3**: 4 open
 - **Assessment**: ⚠️ Minor drift — the deployed site itself is clean and matches the test documents; drift is in what surrounds it (one unconfirmed test-scope question, Stripe-held product names, the content pipeline and trade collateral).
@@ -139,8 +139,8 @@ five commits, 30 files.
 - **Expected**: Outbound collateral uses the same wording as the site.
 - **Status**: Resolved 2026-11-13 for the claim wording — owner approved the redraft ("approved"); email template, price list email HTML, generator and regenerated PDF are on `main`.
 - **Follow-ups (owner statements 2026-11-13)**:
-  - The price list price of £1,850 for the U-shape frame is out of date. Price list prices have not been changed yet; a draft matched to `products.json` is awaiting owner confirmation. Do not send the price list until then.
-  - "Company was closed down, roam systems is under romark now": the price list footer (PDF and email HTML) and the A5 flyer still name "Roam Systems Ltd", Unit 3, 47 King Street, Company No. 1318982. A footer draft using the Romark Engineering Limited details from terms clause 1 is awaiting owner confirmation.
+  - Price list prices updated 2026-11-13 (PDF regenerated, email HTML, generator). SWB £1,450 and LWB £1,650 Kitchen Pod Package prices were given by the owner; the other eight rows were set to the current `products.json` prices (U-shape £2,050 Standard; Full Width £2,150 is not shown on the list). Open question: the website sells "Kitchen Pod Campervan Package" at a single £1,299, which does not match either owner-supplied price.
+  - Price list footer (PDF and email HTML) now reads "ROAM Systems — a trading name of Romark Engineering Limited", Unit 8-9, Stanford Industrial Estate, Baryta Close, Stanford-le-Hope, Essex SS17 0JE, Company No. 07411656 — wording approved by the owner ("Footer approved").
   - The A5 flyer (`RoamSystems-Flyers-A5-incVAT-EMAIL-v2.pdf`, Illustrator artwork, no source in repo) still says "M1 certified U-shape frame", carries the old prices and the closed company's details. Owner: "We will re-do the flyer at a later date", then "ignor the flyer, it is confusing things". The flyer is out of scope of this audit by owner decision and is not tracked further; the file is unchanged.
 
 ### AUDIT-2026-11-13-007
@@ -200,8 +200,8 @@ five commits, 30 files.
 - **Canonical ref**: VOSC summaries VO00269 / VO00270 — "This report relates to the performance of the M1 Smart U Bed **V1** Double Seat Bed 1580mm Width as tested on a surrogate vehicle floor"
 - **What is wrong**: Both test summaries relate to design revision **V1**, tested in March 2021. Asked whether current production is still V1, the owner replied on 2026-11-13: "V3 i believe". The repo holds no record of what changed between V1 and V3. If any change affected the tested rear section (frame members, welds, leg type or height, leg span, the 12 x M12 floor fixings, seat belt or ISOFIX anchorage positions or parts), the summaries may not describe the product sold today, and the site's test claims and clause 8 would not be supported for current production.
 - **Expected**: Either evidence that the rear section is unchanged from V1 in every respect relevant to the tests, or the test house's written view that the V1 results still apply, or a re-test of the current revision.
-- **Status**: Open — owner to confirm the production revision and what changed
-- **Fix recommendation**: (1) Owner confirms the current revision from the drawing register. (2) List every change to the rear section between V1 and current. (3) If nothing relevant to the tests changed, record that here with the drawing revisions and close. (4) If anything relevant changed, ask VOSC in writing whether VO00269 and VO00270 still apply, and decide on a re-test. Until closed, no new claim should be added that current production "is" tested; the present wording says the rear travel seat "has been" tested, which is true of the V1 article.
+- **Status**: Resolved 2026-11-13 — owner confirmation
+- **Resolution**: The owner (Rob di Capite) stated on 2026-11-13: "V1 to v3, rear seat did not change". He also supplied the original VOSC summaries for VO00269 and VO00270 (unwatermarked originals and watermarked scans); they match the copies published in `public/images/certs/` field for field, are signed by Russell Edmunds, Engineering & Technical Director, and both relate to the "M1 Smart U Bed V1 Double Seat Bed 1580mm Width". The "M1 tested" wording therefore stands for current production on the owner's statement that the tested rear section is unchanged. This rests on the owner's knowledge of the product: the repo holds no drawing-revision comparison, and VOSC has not been asked whether the V1 results apply to V3. The originals were not added to the repo.
 
 ## Documentation completeness check
 
@@ -227,7 +227,6 @@ five commits, 30 files.
 
 ## Resolution / follow-up
 
-- **Re-opened 2026-11-13**: AUDIT-001 was closed on the owner's confirmation and this audit was briefly moved to resolved. The owner then stated that current production is "V3 i believe", while the VOSC summaries relate to V1. That is recorded as AUDIT-012 (P1, open), so the audit is back in `docs/audits/active/`.
-- Owner decisions recorded 2026-11-13: Full Width has the same rear section as the tested article (001); proposed gov.uk sentence rejected (007); collateral wording approved (006); owner will check social posts and rename the Stripe Product himself (005, 002); the old Roam Systems company is closed and ROAM Systems now trades under Romark; the flyer will be redone later; on the recommendation that a solicitor read clause 8, the owner replied "C8: ok" — no solicitor review is recorded.
-- Still open: **012 (P1)**; Stripe Product names (002, owner); content-pipeline claims rule and old social drafts (005); price list prices and company details (006 follow-ups; flyer out of scope by owner decision); P3 items 008-011.
-- When AUDIT-012 is resolved, move this file to `docs/audits/resolved/2026-11/` and update `PROJECT_STATUS.md`.
+- **Resolved 2026-11-13**: both P1s (001, 012) are closed on the owner's confirmation, so this audit is in `docs/audits/resolved/2026-11/`. It was re-opened once during the day when the owner said production was "V3 i believe"; he then confirmed the rear seat did not change from V1 to V3.
+- Owner decisions recorded 2026-11-13: Full Width has the same rear section as the tested article (001); rear seat unchanged V1 to V3 (012); proposed gov.uk sentence rejected (007); collateral wording, price list footer and SWB/LWB prices approved or supplied (006); owner will check social posts and rename the Stripe Product himself (005, 002); the old Roam Systems company is closed and ROAM Systems trades under Romark; the A5 flyer is out of scope; on the recommendation that a solicitor read clause 8, the owner replied "C8: ok" — no solicitor review is recorded.
+- Carried in `docs/sprints/CURRENT_STATUS.md`: Stripe Product names (002, owner); content-pipeline claims rule and old social drafts (005); website Kitchen Pod Package price vs price list (006 follow-up); P3 items 008-011.

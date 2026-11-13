@@ -98,25 +98,25 @@ def diamond(c, cx, cy, s, col):
 
 products = [
     ("M1 Tested U-Shape Seating Frame",
-     "Seatbelts & ISOFIX on rear travel seat, powder coated", "1,850"),
+     "Seatbelts & ISOFIX on rear travel seat, powder coated", "2,050"),
     ("Kitchen Pod Package (SWB)",
-     "Pod, overhead locker & Sequoia table system", "1,249"),
+     "Pod, overhead locker & Sequoia table system", "1,450"),
     ("Kitchen Pod Package (LWB)",
-     "Pod, overhead locker & Sequoia table system", "1,399"),
+     "Pod, overhead locker & Sequoia table system", "1,650"),
     ("Full Upholstery Kit \u2013 Rear Seating",
-     "CNC ply, dual density foam, 100+ colours", "1,099"),
+     "CNC ply, dual density foam, 100+ colours", "1,210"),
     ("Rear Pull-Out Kitchen Pod",
-     "Twin burner hob bay, 300L+ storage", "649"),
+     "Twin burner hob bay, 300L+ storage", "699"),
     ("Rear Pull-Out Drawer Storage",
-     "Aluminium, 330L+, 220kg rated runners", "449"),
+     "Aluminium, 330L+, 220kg rated runners", "499"),
     ("Central Under Bed Drawer",
-     "Aluminium build, 200L+, phenolic ply front", "399"),
+     "Aluminium build, 200L+, phenolic ply front", "420"),
     ("Aluminium Overhead Locker",
      "Lightweight, textured black powder coat", "399"),
     ("Powder Coated Front Panels",
-     "Aluminium panels for U-Shape frame", "299"),
+     "Aluminium panels for U-Shape frame", "399"),
     ("Cushion Boards & Dual Density Foam",
-     "12mm CNC birch ply, shaped foam", "299"),
+     "12mm CNC birch ply, shaped foam", "356"),
 ]
 
 
@@ -279,11 +279,11 @@ def create_price_list():
 
     fl_x = margin + footer_logo_w + 3*mm
     c.setFillColor(WHITE_T); c.setFont(H_SEMI, 7)
-    c.drawString(fl_x, footer_h - 5.5*mm, "Roam Systems Ltd")
+    c.drawString(fl_x, footer_h - 5.5*mm, "ROAM Systems \u2014 a trading name of Romark Engineering Limited")
     c.setFillColor(GREY_T); c.setFont(B_REG, 5.8)
-    c.drawString(fl_x, footer_h - 9.5*mm, "Unit 3, 47 King Street, Stanford-Le-Hope, Essex  SS17 0HJ")
+    c.drawString(fl_x, footer_h - 9.5*mm, "Unit 8-9, Stanford Industrial Estate, Baryta Close, Stanford-le-Hope, Essex  SS17 0JE")
     c.setFillColor(DIM_T); c.setFont(B_REG, 5.5)
-    c.drawString(fl_x, footer_h - 13*mm, "Registered in England & Wales  \u00b7  Company No. 1318982")
+    c.drawString(fl_x, footer_h - 13*mm, "Registered in England & Wales  \u00b7  Company No. 07411656")
 
     rx = WIDTH - margin
     c.setFillColor(ROAM_ORANGE); c.setFont(H_SEMI, 7)
