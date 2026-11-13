@@ -28,6 +28,9 @@ The product catalogue is a JSON array. Each product object:
   - `specs`: object — key-value specification pairs (keys and values are strings)
   - `variants`: array of `{ title: string, price: number }`
   - `images`: string[] — URLs (currently Shopify CDN)
+- **Optional display notes** (rendered on the product page when present):
+  - `safetyNote`: string — test scope note (U-shape frame)
+  - `headClearanceNote`: string — head clearance / D pillar note (U-shape frame, added 2026-11-13)
 - **Constraints**:
   - `id` must be unique across all products
   - `id` must be a valid URL slug (lowercase, hyphens only)

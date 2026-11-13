@@ -137,6 +137,12 @@ const breadcrumbJsonLd = {
             </div>
           )}
 
+          {(product as any).headClearanceNote && (
+            <div class="mb-6 bg-slate-50 border-l-4 border-slate-400 rounded-r-lg p-4">
+              <p class="text-sm text-slate-700">{(product as any).headClearanceNote}</p>
+            </div>
+          )}
+
           {/* Registered Design Badge for Frame products */}
           {product.category.includes('Frames') && (
             <div class="mb-8 bg-gradient-to-r from-roam-dark to-gray-800 rounded-xl p-4 flex items-center gap-4 text-white">
