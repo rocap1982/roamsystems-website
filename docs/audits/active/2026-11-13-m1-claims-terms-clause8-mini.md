@@ -141,7 +141,7 @@ five commits, 30 files.
 - **Follow-ups (owner statements 2026-11-13)**:
   - The price list price of £1,850 for the U-shape frame is out of date. Price list prices have not been changed yet; a draft matched to `products.json` is awaiting owner confirmation. Do not send the price list until then.
   - "Company was closed down, roam systems is under romark now": the price list footer (PDF and email HTML) and the A5 flyer still name "Roam Systems Ltd", Unit 3, 47 King Street, Company No. 1318982. A footer draft using the Romark Engineering Limited details from terms clause 1 is awaiting owner confirmation.
-  - The A5 flyer (`RoamSystems-Flyers-A5-incVAT-EMAIL-v2.pdf`, Illustrator artwork, no source in repo) still says "M1 certified U-shape frame", carries the old prices and the closed company's details. Owner: "We will re-do the flyer at a later date". It should not be sent in the meantime.
+  - The A5 flyer (`RoamSystems-Flyers-A5-incVAT-EMAIL-v2.pdf`, Illustrator artwork, no source in repo) still says "M1 certified U-shape frame", carries the old prices and the closed company's details. Owner: "We will re-do the flyer at a later date", then "ignor the flyer, it is confusing things". The flyer is out of scope of this audit by owner decision and is not tracked further; the file is unchanged.
 
 ### AUDIT-2026-11-13-007
 
@@ -229,5 +229,5 @@ five commits, 30 files.
 
 - **Re-opened 2026-11-13**: AUDIT-001 was closed on the owner's confirmation and this audit was briefly moved to resolved. The owner then stated that current production is "V3 i believe", while the VOSC summaries relate to V1. That is recorded as AUDIT-012 (P1, open), so the audit is back in `docs/audits/active/`.
 - Owner decisions recorded 2026-11-13: Full Width has the same rear section as the tested article (001); proposed gov.uk sentence rejected (007); collateral wording approved (006); owner will check social posts and rename the Stripe Product himself (005, 002); the old Roam Systems company is closed and ROAM Systems now trades under Romark; the flyer will be redone later; on the recommendation that a solicitor read clause 8, the owner replied "C8: ok" — no solicitor review is recorded.
-- Still open: **012 (P1)**; Stripe Product names (002, owner); content-pipeline claims rule and old social drafts (005); price list prices and company details, and the flyer (006 follow-ups); P3 items 008-011.
+- Still open: **012 (P1)**; Stripe Product names (002, owner); content-pipeline claims rule and old social drafts (005); price list prices and company details (006 follow-ups; flyer out of scope by owner decision); P3 items 008-011.
 - When AUDIT-012 is resolved, move this file to `docs/audits/resolved/2026-11/` and update `PROJECT_STATUS.md`.
