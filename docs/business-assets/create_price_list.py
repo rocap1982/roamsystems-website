@@ -29,7 +29,7 @@ RULE_COL       = HexColor("#383838")
 
 # Logo path
 LOGO_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                          "roam-systems", "public", "images", "roam-systems-logo.png")
+                          "..", "..", "public", "images", "roam-systems-logo.png")
 
 
 def register_fonts():
@@ -97,8 +97,8 @@ def diamond(c, cx, cy, s, col):
 
 
 products = [
-    ("M1 Certified U-Shape Seating Frame",
-     "Integrated seatbelts & ISOFIX, powder coated", "1,850"),
+    ("M1 Tested U-Shape Seating Frame",
+     "Seatbelts & ISOFIX on rear travel seat, powder coated", "1,850"),
     ("Kitchen Pod Package (SWB)",
      "Pod, overhead locker & Sequoia table system", "1,249"),
     ("Kitchen Pod Package (LWB)",
