@@ -19,7 +19,7 @@ M1 is a vehicle classification used across the UK and Europe for vehicles design
 
 When a campervan seat is described as "M1 certified" or "M1 tested", it usually means the seat belt anchorages have been pull tested to the M1 load requirements of ECE Regulation 14.
 
-This is not a legal requirement for a private van conversion. [UK government guidance](https://www.gov.uk/government/publications/converting-a-van-to-carry-passengers-in-the-rear/converting-a-van-to-carry-passengers-in-the-rear) says there are no specific regulations covering the conversion of vans to carry passengers. It also says additional seats should be fitted securely, and that seat belt anchorage points should be capable of withstanding the high forces of an impact.
+[UK government guidance](https://www.gov.uk/government/publications/converting-a-van-to-carry-passengers-in-the-rear/converting-a-van-to-carry-passengers-in-the-rear) says there are no specific regulations covering the conversion of vans to carry passengers. It also says additional seats should be fitted securely, and that seat belt anchorage points should be capable of withstanding the high forces of an impact.
 
 ## The Standard Behind It: ECE R14.09
 

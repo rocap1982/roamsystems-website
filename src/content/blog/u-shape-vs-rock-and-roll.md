@@ -74,7 +74,7 @@ For families with young children, the ROAM Systems U-shape also includes ISOFIX 
 
 This is one area where it pays to look closely at specifications, not just marketing language.
 
-An ECE R14.09 pull test means the seat belt anchorages have been independently tested for strength. It is not a legal requirement for registering a motor caravan: [DVLA guidance](https://www.gov.uk/government/publications/converting-a-vehicle-into-a-motor-caravan/converting-a-vehicle-into-a-motor-caravan) says any seat belts and seats installed for use while travelling must be securely mounted.
+An ECE R14.09 pull test means the seat belt anchorages have been independently tested for strength. [DVLA guidance](https://www.gov.uk/government/publications/converting-a-vehicle-into-a-motor-caravan/converting-a-vehicle-into-a-motor-caravan) on converting a vehicle into a motor caravan says any seat belts and seats installed for use while travelling must be securely mounted.
 
 Many rock and roll beds on the market are sold as M1 tested. When comparing options, check for the specific regulation (ECE R14.09) and ask for the test documents rather than relying on general claims.
 
