@@ -16,6 +16,7 @@ No active sprint.
 
 ## This Week's Priorities
 
+- [ ] **Owner to confirm (raised 2026-11-13, not yet verified)**: the VOSC summaries and terms clause 8 state the seat was tested fixed with 12 x M12 bolts. The VW T6 installation guide in the repo (SolidWorks, May 2025) specifies M10 fixings and a 10.5mm drill, and an installer video received 2026-11-13 says "only eight bolts supplied", that the supplied bolts are about 20mm too short, and that the guide's 115mm heel reference does not line the reinforcement plate up with the chassis on a T6 LWB. Confirm the supplied fixing size, quantity and length against the tested arrangement before the installation guide is revised (owner wants a range of fore-aft positions for head clearance at the D pillar). No website wording changed.
 - [x] P1 closed 2026-11-13: owner confirmed the rear seat did not change from V1 to V3. (AUDIT-2026-11-13-012)
 - [x] P1 closed 2026-11-13: owner confirmed the Full Width configuration has the same rear section as the article VOSC tested. (AUDIT-2026-11-13-001)
 - [ ] Owner: rename the Stripe Product to "M1 Tested U-Shape Seating Frame" — checkout page, receipts and order emails take the name from Stripe. (AUDIT-2026-11-13-002)
