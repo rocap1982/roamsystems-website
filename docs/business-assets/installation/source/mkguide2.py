@@ -22,7 +22,7 @@ def quote(text):
     p=d.add_paragraph(); p.paragraph_format.left_indent=Mm(8); r=p.add_run('“'+text+'”'); r.italic=True; return p
 
 d.add_heading('ROAM Systems rear seat system: installation guide',0)
-para('Generic guide for experienced vehicle converters. Revision A, 13 November 2026. Approved by Romark Engineering Limited. Replaces the installation guide dated May 2025.',bold=True)
+para('Generic guide for experienced vehicle converters. Revision A DRAFT, 15 November 2026. Under review by Romark Engineering Limited. NOT FOR ISSUE: fixings, spreader plates and position figures are to be confirmed on a vehicle. Will replace the installation guide dated May 2025.',bold=True)
 para('ROAM Systems is a trading name of Romark Engineering Limited. sales@roamsystems.co.uk')
 
 d.add_heading('1. Who this guide is for',1)
