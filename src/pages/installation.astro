@@ -32,7 +32,7 @@ const LIP = 80;
 const f1 = { s: 0.25, x0: 560, y0: 395 };
 const X1 = (mm: number) => f1.x0 + mm * f1.s;
 const Y1 = (mm: number) => f1.y0 - mm * f1.s;
-const f2 = { s: 0.22, x0: 235, y0: 350 };
+const f2 = { s: 0.22, x0: 275, y0: 350 };
 const X2 = (mm: number) => f2.x0 + mm * f2.s;
 const Y2 = (mm: number) => f2.y0 - mm * f2.s;
 // illustrative occupant on the 13 degree backrest line from the R point
@@ -213,16 +213,13 @@ const neck = along(660);
             <path d={seat.frame} fill="#d4d4d8" fill-rule="evenodd" stroke={DARK} stroke-width="1.2" stroke-linejoin="round" vector-effect="non-scaling-stroke" />
             <path d={seat.detail} fill="none" stroke="#52525b" stroke-width="0.8" stroke-linecap="round" vector-effect="non-scaling-stroke" />
           </g>
-          <!-- occupant (illustration, drawn in mm on the 13 degree backrest line from the R point) -->
-          <g transform={`translate(${f2.x0} ${f2.y0}) scale(${f2.s} ${-f2.s})`} fill="none" stroke="#3f3f46" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
-            <line x1={R[0] + 10} y1={R[1] + 20} x2={neck[0]} y2={neck[1]} stroke-width="130" />
-            <line x1={R[0]} y1={R[1] + 10} x2="-820" y2="525" stroke-width="135" />
-            <line x1="-820" y1="525" x2="-845" y2="70" stroke-width="95" />
-            <line x1="-850" y1="38" x2="-960" y2="38" stroke-width="70" />
-            <circle cx={head[0]} cy={head[1]} r="82.5" fill="#3f3f46" stroke="none" />
+          <!-- occupant: 50th percentile UK adult male (sitting height 910mm), drawn in mm on the seat -->
+          <g transform={`translate(${f2.x0} ${f2.y0}) scale(${f2.s} ${-f2.s})`}>
+            <path d={seat.occupant} fill="#52525b" stroke="#3f3f46" stroke-width="0.8" vector-effect="non-scaling-stroke" />
+            <path d={seat.occupant_arm} fill="#71717a" stroke="#3f3f46" stroke-width="1" vector-effect="non-scaling-stroke" />
           </g>
-          <circle cx={X2(head[0])} cy={Y2(head[1])} r={82.5 * f2.s + 10} fill="none" stroke={ORANGE} stroke-width="2" stroke-dasharray="4 4" />
-          <text x="30" y="372" font-size="12" fill={DARK}>Tallest person who will travel, upright, belt fastened</text>
+          <circle cx={X2(head[0])} cy={Y2(seat.occupant_head_top - 120)} r={150 * f2.s} fill="none" stroke={ORANGE} stroke-width="2" stroke-dasharray="4 4" />
+          <text x="30" y="372" font-size="12" fill={DARK}>Shown: average (50th percentile) adult male. Check with the tallest person who will travel.</text>
           <!-- flow chart -->
           <rect x="370" y="24" width="320" height="64" rx="8" fill={LIGHT} stroke={DARK} stroke-width="1.5" />
           <text x="530" y="50" font-size="13" font-weight="700" fill={DARK} text-anchor="middle">Is the head clear of the roof, D pillar,</text>
@@ -247,7 +244,7 @@ const neck = along(660);
           <text x="620" y="290" font-size="12" fill={DARK} text-anchor="middle">that person does not</text>
           <text x="620" y="306" font-size="12" fill={DARK} text-anchor="middle">travel in that seat</text>
         </svg>
-        <figcaption class="text-sm text-gray-500 mt-3">Figure 2. Head clearance check. Seat from the ROAM design model at the 80mm position; seat and D pillar to one scale (VW T6 measurement); occupant and roof illustrative.</figcaption>
+        <figcaption class="text-sm text-gray-500 mt-3">Figure 2. Head clearance check. Seat from the ROAM design model at the 80mm position; seat and D pillar to one scale (VW T6 measurement); occupant is an average (50th percentile) UK adult male, sitting height 910mm, other proportions approximate; roof illustrative.</figcaption>
       </figure>
 
       <p>
