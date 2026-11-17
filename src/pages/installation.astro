@@ -29,6 +29,7 @@ const rightX = leftX + 1114 * sc;
 // D pillar from the owner's T6 measurement: underside 1300mm above floor, 100mm deep from the rear doors
 // (door face assumed level with the lip; not yet confirmed).
 const LIP = 80;
+const MEAS = 115; // roof was measured with the seat fitted at 115mm from the lip
 const f1 = { s: 0.25, x0: 560, y0: 395 };
 const X1 = (mm: number) => f1.x0 + mm * f1.s;
 const Y1 = (mm: number) => f1.y0 - mm * f1.s;
@@ -137,10 +138,11 @@ const neck = along(660);
           <text x={X1(LIP) + 22} y={Y1(1080)} font-size="13" fill={DARK}>Rear</text>
           <text x={X1(LIP) + 22} y={Y1(1080) + 16} font-size="13" fill={DARK}>window</text>
           <!-- rear header (D pillar) and roof, measured on a VW T6 LWB -->
-          <g transform={`translate(${X1(LIP)} ${f1.y0}) scale(${f1.s} ${-f1.s})`}>
+          <g transform={`translate(${X1(LIP - MEAS)} ${f1.y0}) scale(${f1.s} ${-f1.s})`}>
+            <rect x="0" y="1306" width={MEAS} height="188" fill="#6b7280" />
             <path d={seat.roof} fill="#6b7280" stroke={DARK} stroke-width="1.2" vector-effect="non-scaling-stroke" />
           </g>
-          <line x1={X1(LIP - 60)} y1={Y1(1306) + 2} x2="430" y2="62" stroke={GREY} stroke-width="1" />
+          <line x1={X1(LIP - 160)} y1={Y1(1306) + 2} x2="430" y2="62" stroke={GREY} stroke-width="1" />
           <text x="426" y="52" font-size="13" fill={DARK} text-anchor="end">D pillar / rear header,</text>
           <text x="426" y="68" font-size="13" fill={DARK} text-anchor="end">underside 1306mm above floor</text>
           <!-- ROAM rear seat -->
@@ -177,7 +179,7 @@ const neck = along(660);
           <text x="150" y="342" font-size="13" fill={DARK}>fixings land elsewhere</text>
           <text x="60" y="90" font-size="14" font-weight="700" fill={DARK}>FRONT OF VAN</text>
         </svg>
-        <figcaption class="text-sm text-gray-500 mt-3">Figure 1. Measuring the seat position. Seat drawn from the ROAM design model, shown at the 80mm position. Seat, floor, lip and D pillar to one scale; D pillar and roof measured on a VW T6 LWB (rear door face assumed level with the lip). Belt reel gap and labels enlarged for clarity.</figcaption>
+        <figcaption class="text-sm text-gray-500 mt-3">Figure 1. Measuring the seat position. Seat drawn from the ROAM design model, shown at the 80mm position. Seat, floor, lip and D pillar to one scale; D pillar and roof measured on a VW T6 LWB with the seat fitted at 115mm, shown here moved back to 80mm. Belt reel gap and labels enlarged for clarity.</figcaption>
       </figure>
     </section>
 
@@ -201,7 +203,8 @@ const neck = along(660);
         <svg viewBox="0 0 720 380" class="w-full h-auto" role="img" aria-label="Head clearance check: seated occupant with the roof and D pillar, and the two options if the head touches">
           <rect width="720" height="380" fill="white" />
           <!-- roof / pop-top bed (varies) -->
-          <g transform={`translate(${X2(LIP)} ${f2.y0}) scale(${f2.s} ${-f2.s})`}>
+          <g transform={`translate(${X2(LIP - MEAS)} ${f2.y0}) scale(${f2.s} ${-f2.s})`}>
+            <rect x="0" y="1306" width={MEAS} height="188" fill="#6b7280" />
             <path d={seat.roof} fill="#6b7280" stroke={DARK} stroke-width="1.2" vector-effect="non-scaling-stroke" />
           </g>
           <text x="30" y="14" font-size="12" fill={DARK}>Roof and D pillar (measured, VW T6 LWB)</text>
@@ -250,7 +253,7 @@ const neck = along(660);
           <text x="620" y="290" font-size="12" fill={DARK} text-anchor="middle">that person does not</text>
           <text x="620" y="306" font-size="12" fill={DARK} text-anchor="middle">travel in that seat</text>
         </svg>
-        <figcaption class="text-sm text-gray-500 mt-3">Figure 2. Head clearance check. Seat from the ROAM design model at the 80mm position; seat, D pillar and roof to one scale (measured on a VW T6 LWB); black figure: average (50th percentile) UK adult male built from published body dimensions (Pheasant, Bodyspace), sitting upright against the backrest with the cushion compressed 25mm; grey figure: child aged 8-9 years (95th percentile) from the ROAM design model. Always check with the tallest person who will travel.</figcaption>
+        <figcaption class="text-sm text-gray-500 mt-3">Figure 2. Head clearance check. Seat from the ROAM design model at the 80mm position; seat, D pillar and roof to one scale (roof measured on a VW T6 LWB with the seat at 115mm); black figure: average (50th percentile) UK adult male built from published body dimensions (Pheasant, Bodyspace), sitting upright against the backrest with the cushion compressed 25mm; grey figure: child aged 8-9 years (95th percentile) from the ROAM design model. Always check with the tallest person who will travel.</figcaption>
       </figure>
 
       <p>
