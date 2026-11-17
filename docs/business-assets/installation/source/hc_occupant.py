@@ -17,8 +17,9 @@ from shapely.ops import unary_union
 J = json.load(open(sys.argv[1]))
 def poly(d): return Polygon([tuple(map(float, p.split())) for p in d[1:].replace('Z', '').strip().split(' L')])
 cush = [poly(c) for c in J['cushions']]
-back = max(cush, key=lambda p: p.bounds[3] - p.bounds[1])       # backrest cushion
-base = max(cush, key=lambda p: p.bounds[2] - p.bounds[0])        # base cushion
+base_i = max(range(len(cush)), key=lambda i: cush[i].bounds[2] - cush[i].bounds[0])
+back = unary_union([c for i, c in enumerate(cush) if i != base_i])   # backrest layers; the front face is used
+base = cush[base_i]                                              # base cushion
 # backrest front face: front-most cushion point at each height between 600 and 1000mm
 ys = np.arange(600, 1001, 25); xs = []
 for y in ys:
@@ -48,7 +49,7 @@ cosA = math.cos(A)
 V = lambda pts: Polygon(pts).buffer(0)
 L = lambda h: h / cosA                                            # seated height above seat -> distance along the backrest
 # ---- torso (back on the backrest, l along backrest, f forward)
-torso = V(cr([T(L(20), 18), T(L(70), -6), T(L(150), 2), T(L(240), 16), T(L(360), 4), T(L(470), -2),
+torso = V(cr([T(L(20), 10), T(L(70), -10), T(L(150), -4), T(L(240), 10), T(L(360), -4), T(L(470), -9),
                     T(L(540), 2), T(L(575), 14), T(L(600), 34), T(L(618), 70), T(L(628), 110), T(L(622), 150), T(L(585), 205), T(L(510), 238),
                     T(L(420), 250), T(L(320), 238), T(L(230), 252), T(L(150), 262), T(L(70), 255), T(L(25), 210),
                     T(L(5), 120)]))
