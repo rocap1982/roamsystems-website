@@ -7,6 +7,9 @@
  * ("2022 Bed system full assy"). All other figures are schematics, not to scale.
  */
 import Layout from '../layouts/Layout.astro';
+// Real seat side view (frame lines + cushion section) generated from the SolidWorks model
+// by docs/business-assets/installation/source/hc_seatsvg.py: heel at x=540, floor at y=360, 0.29 px/mm.
+import seatSide from '../data/install/seat-side.json';
 
 const ORANGE = '#f47d23';
 const DARK = '#1a1a1a';
@@ -116,31 +119,27 @@ const rightX = leftX + 1114 * sc;
           <line x1="600" y1="360" x2="600" y2="372" stroke={DARK} stroke-width="3" />
           <line x1="600" y1="372" x2="680" y2="372" stroke={DARK} stroke-width="3" />
           <!-- rear door with glass -->
-          <rect x="628" y="30" width="14" height="342" fill={LIGHT} stroke={DARK} stroke-width="2" />
-          <rect x="628" y="60" width="14" height="140" fill="#cfe8f7" stroke={DARK} stroke-width="2" />
-          <text x="652" y="135" font-size="13" fill={DARK}>Rear</text>
-          <text x="652" y="151" font-size="13" fill={DARK}>window</text>
+          <rect x="604" y="30" width="14" height="342" fill={LIGHT} stroke={DARK} stroke-width="2" />
+          <rect x="604" y="60" width="14" height="140" fill="#cfe8f7" stroke={DARK} stroke-width="2" />
+          <text x="628" y="135" font-size="13" fill={DARK}>Rear</text>
+          <text x="628" y="151" font-size="13" fill={DARK}>window</text>
           <!-- D pillar / header -->
-          <rect x="560" y="30" width="68" height="34" fill={GREY} stroke={DARK} stroke-width="2" />
+          <rect x="550" y="30" width="54" height="28" fill={GREY} stroke={DARK} stroke-width="2" />
           <text x="420" y="22" font-size="13" fill={DARK}>D pillar / rear header (varies by vehicle)</text>
-          <!-- seat ski -->
-          <rect x="330" y="344" width="210" height="16" fill={DARK} />
-          <!-- seat base and backrest -->
-          <polygon points="330,262 515,262 515,344 340,344" fill="#d1d5db" stroke={DARK} stroke-width="2" />
-          <rect x="320" y="236" width="200" height="26" rx="6" fill={ORANGE} />
-          <polygon points="515,262 540,344 548,344 560,250 600,70 584,64" fill="#d1d5db" stroke={DARK} stroke-width="2" />
-          <polygon points="505,240 566,70 584,74 524,244" fill={ORANGE} />
+          <!-- ROAM rear seat, drawn from the design model -->
+          {seatSide.cushions.map((d) => <path d={d} fill={ORANGE} stroke="#b45f02" stroke-width="0.8" />)}
+          <path d={seatSide.frame} fill="none" stroke={DARK} stroke-width="1" stroke-linejoin="round" stroke-linecap="round" />
           <!-- belt reel -->
-          <rect x="590" y="78" width="16" height="26" fill={DARK} />
+          <rect x="524" y="64" width="12" height="24" fill={DARK} />
           <text x="430" y="96" font-size="13" fill={DARK} text-anchor="end">Seat belt reel</text>
-          <line x1="434" y1="92" x2="588" y2="90" stroke={DARK} stroke-width="1" />
+          <line x1="434" y1="92" x2="522" y2="78" stroke={DARK} stroke-width="1" />
           <!-- reel gap -->
-          <line x1="606" y1="118" x2="628" y2="118" stroke={ORANGE} stroke-width="2" />
-          <line x1="606" y1="110" x2="606" y2="126" stroke={ORANGE} stroke-width="2" />
-          <line x1="628" y1="110" x2="628" y2="126" stroke={ORANGE} stroke-width="2" />
-          <line x1="617" y1="118" x2="650" y2="186" stroke={GREY} stroke-width="1" />
-          <text x="652" y="196" font-size="13" font-weight="700" fill={ORANGE}>at least 20mm,</text>
-          <text x="652" y="212" font-size="13" fill={DARK}>doors closed</text>
+          <line x1="537" y1="110" x2="604" y2="110" stroke={ORANGE} stroke-width="2" />
+          <line x1="537" y1="102" x2="537" y2="118" stroke={ORANGE} stroke-width="2" />
+          <line x1="604" y1="102" x2="604" y2="118" stroke={ORANGE} stroke-width="2" />
+          <line x1="580" y1="110" x2="626" y2="186" stroke={GREY} stroke-width="1" />
+          <text x="628" y="196" font-size="13" font-weight="700" fill={ORANGE}>at least 20mm,</text>
+          <text x="628" y="212" font-size="13" fill={DARK}>doors closed</text>
           <!-- straight edge and lip dimension -->
           <line x1="540" y1="300" x2="540" y2="400" stroke={DARK} stroke-width="1.5" stroke-dasharray="5 4" />
           <line x1="600" y1="372" x2="600" y2="400" stroke={DARK} stroke-width="1.5" stroke-dasharray="5 4" />
@@ -152,14 +151,14 @@ const rightX = leftX + 1114 * sc;
           <text x="508" y="406" font-size="13" fill={DARK} text-anchor="end">both ski heels</text>
           <text x="612" y="392" font-size="13" fill={DARK}>Van lip</text>
           <!-- forward arrow -->
-          <line x1="300" y1="300" x2="140" y2="300" stroke={DARK} stroke-width="2" />
+          <line x1="290" y1="300" x2="140" y2="300" stroke={DARK} stroke-width="2" />
           <polygon points="130,300 146,292 146,308" fill={DARK} />
           <text x="150" y="288" font-size="13" fill={DARK}>Seat further forward:</text>
           <text x="150" y="326" font-size="13" fill={DARK}>more head clearance,</text>
           <text x="150" y="342" font-size="13" fill={DARK}>fixings land elsewhere</text>
           <text x="60" y="60" font-size="14" font-weight="700" fill={DARK}>FRONT OF VAN</text>
         </svg>
-        <figcaption class="text-sm text-gray-500 mt-3">Figure 1. Measuring the seat position. Schematic, not to scale.</figcaption>
+        <figcaption class="text-sm text-gray-500 mt-3">Figure 1. Measuring the seat position. Seat drawn from the ROAM design model; van and dimensions schematic, not to scale.</figcaption>
       </figure>
     </section>
 

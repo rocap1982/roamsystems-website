@@ -38,7 +38,7 @@ for name,shape in groups.items():
     algo=HLRBRep_PolyAlgo(); algo.Load(shape); algo.Projector(proj); algo.Update()
     h=HLRBRep_PolyHLRToShape(); h.Update(algo)
     polys=[]
-    for getter in ('VCompound','OutLineVCompound'):
+    for getter in ('VCompound','OutLineVCompound','Rg1LineVCompound'):
         try: cs=getattr(h,getter)()
         except Exception as e: print(name,getter,'err',e); continue
         if cs.IsNull(): continue
