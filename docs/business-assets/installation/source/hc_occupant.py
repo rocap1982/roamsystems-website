@@ -6,7 +6,7 @@ Body dimensions, UK men 19-65, 50th percentile (Pheasant, Bodyspace, Table 10.1)
   buttock-popliteal 495, knee height 545, chest depth 250, abdominal depth 270, head length 195, foot length 265.
   Head height (vertex to chin) 232 is a general adult figure, not from the table. Shoes add 25mm.
 Posture and seat assumptions:
-  backrest face taken from the modelled backrest cushion (13 deg); cushion compressed 25mm under the occupant;
+  backrest face taken from the modelled backrest cushion (13 deg); cushion compressed 30mm under the occupant (owner measurement);
   torso against the backrest; head upright (eyes level); upper arm down the side, forearm resting on the thigh;
   lower legs near vertical, shoes flat on the floor.
 """
@@ -26,7 +26,7 @@ for y in ys:
     xs.append(seg.bounds[0])
 k, c0 = np.polyfit(ys, xs, 1)                                     # x = k*y + c0
 lean = math.degrees(math.atan(k))
-SEAT_TOP = base.bounds[3]; COMP = 25.0; YS = SEAT_TOP - COMP; SHOE = 25.0
+SEAT_TOP = base.bounds[3]; COMP = 30.0; YS = SEAT_TOP - COMP; SHOE = 25.0
 A = math.radians(lean)
 u = np.array([math.sin(A), math.cos(A)])                          # up the backrest
 n = np.array([-math.cos(A), math.sin(A)])                         # forward, normal to the backrest
@@ -102,7 +102,7 @@ def path(g):
     return ' '.join('M' + ' L'.join('%.1f %.1f' % c for c in list(p.exterior.coords)[:-1]) + ' Z' for p in gs)
 J['occupant'] = path(body); J['occupant_arm'] = path(arm)
 J['occupant_head_top'] = round(head.bounds[3]); J['occupant_head_centre_x'] = round(occ_x - 97)
-J['occupant_note'] = ('50th percentile UK adult male (Pheasant, Bodyspace): sitting height 910mm; cushion compressed 25mm; '
+J['occupant_note'] = ('50th percentile UK adult male (Pheasant, Bodyspace): sitting height 910mm; cushion compressed 30mm (measured); '
                       'backrest %.1f deg; head upright; shoes 25mm' % lean)
 json.dump(J, open(sys.argv[1], 'w'))
 print('backrest lean %.1f deg, seat top %.0f, compressed %.0f' % (lean, SEAT_TOP, YS))
