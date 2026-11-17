@@ -152,12 +152,12 @@ const neck = along(660);
             <path d={seat.detail} fill="none" stroke="#52525b" stroke-width="0.8" stroke-linecap="round" vector-effect="non-scaling-stroke" />
           </g>
           <!-- belt reel -->
-          <rect x={X1(-60) - 4} y={Y1(1010)} width="8" height="18" fill={DARK} />
-          <line x1="430" y1="150" x2={X1(-60) - 6} y2={Y1(1000)} stroke={GREY} stroke-width="1" />
-          <text x="426" y="154" font-size="13" fill={DARK} text-anchor="end">Seat belt reel</text>
+          <rect x={X1(-62)} y={Y1(1000)} width="9" height="18" fill={DARK} />
+          <line x1="430" y1="150" x2={X1(-62) - 2} y2={Y1(969)} stroke={GREY} stroke-width="1" />
+          <text x="426" y="154" font-size="13" fill={DARK} text-anchor="end">Seat belt reel (upper anchorage)</text>
           <!-- reel gap -->
-          <line x1={X1(-60) + 4} y1={Y1(960)} x2={X1(LIP)} y2={Y1(960)} stroke={ORANGE} stroke-width="2" />
-          <line x1={X1(LIP) + 6} y1={Y1(960)} x2="640" y2={Y1(760)} stroke={GREY} stroke-width="1" />
+          <line x1={X1(-62) + 9} y1={Y1(940)} x2={X1(LIP)} y2={Y1(940)} stroke={ORANGE} stroke-width="2" />
+          <line x1={X1(LIP) + 6} y1={Y1(940)} x2="640" y2={Y1(760)} stroke={GREY} stroke-width="1" />
           <text x="644" y={Y1(760) + 4} font-size="13" font-weight="700" fill={ORANGE}>at least 20mm,</text>
           <text x="644" y={Y1(760) + 20} font-size="13" fill={DARK}>doors closed</text>
           <!-- straight edge and lip dimension -->
