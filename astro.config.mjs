@@ -21,7 +21,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => !page.includes('/checkout/') && !page.includes('/basket/'),
+      filter: (page) => !page.includes('/checkout/') && !page.includes('/basket/') && !page.includes('/installation'),
     }),
   ],
   adapter: node({ mode: 'standalone' }),
