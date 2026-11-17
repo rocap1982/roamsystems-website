@@ -121,7 +121,14 @@ const neck = along(660);
     <section id="position" class="scroll-mt-28">
       <h2 class="font-heading text-3xl font-bold text-roam-dark mb-4">3. Seat position</h2>
       <ul class="list-disc pl-6 space-y-2 mb-6">
-        <li>Fit the seat central across the van, measuring from the van centreline to each ski.</li>
+        <li><strong>Centre the seat across the van.</strong> The two rows of fixing holes are 1114mm apart, so each row must be 557mm from the van centreline:
+          <ol class="list-decimal pl-6 mt-2 space-y-1">
+            <li>Mark the van centreline on the floor: find the midpoint across the rear door opening at floor level, then a second midpoint further forward (for example between the two wheel arches), and join them with a straight line.</li>
+            <li>Mark the seat centre: the midpoint between the two rows of fixing holes.</li>
+            <li>Set the seat so its centre mark sits on the van centreline at both the rear and the front of the skis.</li>
+            <li>Check from underneath before drilling: the distance from each row of holes to the nearest chassis member should be the same on both sides.</li>
+          </ol>
+        </li>
         <li>Measure from a straight edge across the two ski heels to the lip of the van.</li>
         <li>80mm is the furthest back the seat can go, and only if the seat belt reels are at least 20mm clear of the rear window with the doors or tailgate closed.</li>
         <li>Moving the seat forward gives more head clearance, but it changes what each fixing lands on underneath. Decide the position from the head clearance check (section 4) and the underbody survey (section 5) before you drill.</li>
@@ -303,13 +310,21 @@ const neck = along(660);
           <polygon points={`${rightX},${heelY + 24} ${rightX - 10},${heelY + 19} ${rightX - 10},${heelY + 29}`} fill={DARK} />
           <text x={(leftX + rightX) / 2} y={heelY + 44} font-size="13" fill={DARK} text-anchor="middle">1114mm between hole rows</text>
           <text x="360" y={heelY + 62} font-size="14" font-weight="700" fill={DARK} text-anchor="middle">REAR DOORS</text>
+          <!-- seat and van centreline -->
+          <line x1={(leftX + rightX) / 2} y1={yOf(skiLen) - 20} x2={(leftX + rightX) / 2} y2={heelY + 30} stroke={ORANGE} stroke-width="1.5" stroke-dasharray="8 4 2 4" />
+          <text x={(leftX + rightX) / 2 + 6} y={yOf(skiLen) - 26} font-size="12" font-weight="700" fill={ORANGE}>Van and seat centreline</text>
+          <line x1={leftX} y1={yOf(560)} x2={(leftX + rightX) / 2} y2={yOf(560)} stroke={ORANGE} stroke-width="1.2" />
+          <line x1={(leftX + rightX) / 2} y1={yOf(560)} x2={rightX} y2={yOf(560)} stroke={ORANGE} stroke-width="1.2" />
+          <text x={(leftX * 3 + rightX) / 4} y={yOf(560) - 6} font-size="12" fill={ORANGE} text-anchor="middle">557mm</text>
+          <text x={(leftX + rightX * 3) / 4} y={yOf(560) - 6} font-size="12" fill={ORANGE} text-anchor="middle">557mm</text>
           <!-- key -->
-          <circle cx="256" cy="160" r="6" fill={ORANGE} stroke={ORANGE} stroke-width="2" />
-          <text x="270" y="165" font-size="13" fill={DARK}>Rear 4 each side: must be fitted</text>
-          <circle cx="256" cy="188" r="6" fill="white" stroke={DARK} stroke-width="2" />
-          <text x="270" y="193" font-size="13" fill={DARK}>Front 2 each side: fit where reachable</text>
-          <text x="250" y="226" font-size="12" fill={DARK}>The rear two holes on each side are 36mm apart:</text>
-          <text x="250" y="242" font-size="12" fill={DARK}>one plate may need to cover both.</text>
+          <rect x="242" y="276" width="420" height="100" fill="white" />
+          <circle cx="256" cy="290" r="6" fill={ORANGE} stroke={ORANGE} stroke-width="2" />
+          <text x="270" y="295" font-size="13" fill={DARK}>Rear 4 each side: must be fitted</text>
+          <circle cx="256" cy="318" r="6" fill="white" stroke={DARK} stroke-width="2" />
+          <text x="270" y="323" font-size="13" fill={DARK}>Front 2 each side: fit where reachable</text>
+          <text x="250" y="352" font-size="12" fill={DARK}>The rear two holes on each side are 36mm apart:</text>
+          <text x="250" y="368" font-size="12" fill={DARK}>one plate may need to cover both.</text>
         </svg>
         <figcaption class="text-sm text-gray-500 mt-3">Figure 3. Fixing holes, plan view. Hole positions taken from the ROAM design model; check them against the seat you have.</figcaption>
       </figure>
