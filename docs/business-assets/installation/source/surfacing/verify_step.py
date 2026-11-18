@@ -16,8 +16,8 @@ from OCP.TopAbs import TopAbs_FACE
 from OCP.TopoDS import TopoDS
 
 step, new_p, old_p, out = sys.argv[2:6]
-fr = json.load(open(out + '_report.json'))['frame']
-shift = np.array([-fr['CX'], fr['Y0'], fr['Z0']])
+rep_ = json.load(open(out + '_report.json'))
+MF = np.array(rep_['frame']['M'])
 app = XCAFApp_Application.GetApplication_s()
 doc = TDocStd_Document(TCollection_ExtendedString('MDTV-XCAF')); app.InitDocument(doc)
 r = STEPCAFControl_Reader(); r.SetNameMode(True); r.SetColorMode(True)
@@ -33,7 +33,11 @@ for i in range(1, labs.Length() + 1):
     bodies[name] = st.GetShape_s(lab)
 print('bodies in file:', list(bodies))
 nm_ = trimesh.load(new_p); nm_.merge_vertices(); nm_.update_faces(nm_.area_faces > 1e-4); nm_.remove_unreferenced_vertices()
-meshes = {'Underside - new scan': trimesh.load(out + '_newscan_used.stl'), 'Underside - first scan (coarse)': trimesh.load(out + '_firstscan_used.stl')}
+meshes = {'Underside - new scan': out + '_newscan_used.stl', 'Underside - first scan (coarse)': out + '_firstscan_used.stl',
+          'Infill - mirrored from the other side': out + '_infill_mirrored_used.stl', 'Infill - continued across gap': out + '_infill_continued_used.stl',
+          'Infill - best guess (low confidence)': out + '_infill_bestguess_used.stl'}
+import os
+meshes = {k: trimesh.load(v) for k, v in meshes.items() if os.path.exists(v) and k in bodies}
 res = {}
 for name, src in meshes.items():
     shp = bodies[name]
@@ -44,7 +48,7 @@ for name, src in meshes.items():
         if not BRepCheck_Analyzer(TopoDS.Face_s(ex.Current())).IsValid():
             invalid += 1
         ex.Next()
-    src = src.copy(); src.apply_translation(shift)
+    src = src.copy(); src.vertices = src.vertices @ MF[:3, :3].T + MF[:3, 3]
     tm, bad = verify2.tessellate(shp)
     p, d1 = verify2.one_way(src, tm, 1500000, 21)
     q, d2 = verify2.one_way(tm, src, 1500000, 23)

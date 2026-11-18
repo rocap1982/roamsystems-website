@@ -29,9 +29,22 @@ from OCP.Interface import Interface_Static
 from OCP.IFSelect import IFSelect_RetDone
 
 new_p, old_p, out = sys.argv[2], sys.argv[3], sys.argv[4]
+MF = np.array(json.load(open(sys.argv[5]))['M'])          # scan frame -> corrected model frame (X = 0 on the mirror plane)
+INF = sys.argv[6]                                         # infill mesh prefix
 CX, Y0, Z0 = 120.0, 216.1, 166.0
-NAMES = {1: 'Underside - new scan', 2: 'Underside - first scan (coarse)'}
-COLS = {1: (0.62, 0.66, 0.72), 2: (0.90, 0.62, 0.30)}
+NAMES = {1: 'Underside - new scan', 2: 'Underside - first scan (coarse)', 3: 'Infill - mirrored from the other side',
+         4: 'Infill - continued across gap', 5: 'Infill - best guess (low confidence)'}
+COLS = {1: (0.62, 0.66, 0.72), 2: (0.90, 0.62, 0.30), 3: (0.30, 0.70, 0.40), 4: (0.30, 0.50, 0.90), 5: (0.95, 0.60, 0.15)}
+
+
+def xform_pt(p):
+    return MF[:3, :3] @ np.asarray(p) + MF[:3, 3]
+
+
+def model_trsf():
+    T = gp_Trsf()
+    T.SetValues(*[float(MF[i, j]) for i in range(3) for j in range(4)])
+    return T
 t0 = time.time()
 
 
@@ -63,7 +76,7 @@ print('first-scan triangles used %d (%.3f m2); new scan %d (%.3f m2)' % (len(old
 from OCP.STEPControl import STEPControl_Writer, STEPControl_Reader
 TMP = out + '_face_rt.step'
 B0 = BRep_Builder()
-tr0 = gp_Trsf(); tr0.SetTranslation(gp_Vec(-CX, Y0, Z0))
+tr0 = model_trsf()
 
 
 NUM = re.compile(r'(-?\d+\.\d{5})\d+')
@@ -92,7 +105,7 @@ def face_survives(f):
     if m0 is None or m1 is None:
         return False
     (a0, c0), (a1, c1) = m0, m1
-    return abs(a1 - a0) <= 0.005 * a0 + 0.1 and np.linalg.norm(c1 - (c0 + [-CX, Y0, Z0])) <= 0.1
+    return abs(a1 - a0) <= 0.005 * a0 + 0.1 and np.linalg.norm(c1 - xform_pt(c0)) <= 0.1
 
 
 def mesh_area_centre(f):
@@ -151,7 +164,14 @@ faces = {}
 stats = {}
 meta = {}
 surfacers = {}
-for s_, mesh_src, tol, ttol in ((1, new, 0.8, 1.2), (2, oldk, 0.8, 1.2)):
+srcs = [(1, new), (2, oldk)]
+for s_, nm in ((3, 'mirrored'), (4, 'continued'), (5, 'bestguess')):
+    mi = trimesh.load(INF + '_infill_%s_vanframe.stl' % nm); clean(mi)
+    if len(mi.faces):
+        srcs.append((s_, mi)); mi.export(out + '_infill_%s_used.stl' % nm)
+SRCS = [s_ for s_, _ in srcs]
+for s_, mesh_src in srcs:
+    tol, ttol = 0.8, 1.2
     rsurf.TOL, rsurf.TOL_TRI = tol, ttol
     S = rsurf.Surfacer(mesh_src.vertices, mesh_src.faces, mesh_src.face_normals, mesh_src.face_adjacency)
     for d in rsurf.DIRS:
@@ -197,7 +217,7 @@ for s_, mesh_src, tol, ttol in ((1, new, 0.8, 1.2), (2, oldk, 0.8, 1.2)):
     stats[s_] = dict(S.stats, surface_faces=len(main_faces) - nrep, roundtrip_replaced=nrep, total_faces=len(fl), relabelled=S.relabelled)
     print('src %d: %s  (%.0fs)' % (s_, stats[s_], time.time() - t0), flush=True)
 
-tr = gp_Trsf(); tr.SetTranslation(gp_Vec(-CX, Y0, Z0))
+tr = model_trsf()
 B = BRep_Builder()
 
 
@@ -212,8 +232,8 @@ def write(path):
     app = XCAFApp_Application.GetApplication_s()
     doc = TDocStd_Document(TCollection_ExtendedString('MDTV-XCAF')); app.InitDocument(doc)
     st = XCAFDoc_DocumentTool.ShapeTool_s(doc.Main()); ct = XCAFDoc_DocumentTool.ColorTool_s(doc.Main())
-    cl = BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, -460 + Z0), gp_Pnt(0, 0, 1080 + Z0)).Edge()
-    items = [(body(faces[1]), NAMES[1], COLS[1]), (body(faces[2]), NAMES[2], COLS[2]), (cl, 'Underbody centreline', (0.85, 0.1, 0.1))]
+    cl = BRepBuilderAPI_MakeEdge(gp_Pnt(0, 0, -320), gp_Pnt(0, 0, 1300)).Edge()
+    items = [(body(faces[s_]), NAMES[s_], COLS[s_]) for s_ in SRCS] + [(cl, 'Underbody centreline (mirror plane)', (0.85, 0.1, 0.1))]
     for shp, name, rgb in items:
         lab = st.AddShape(shp, False)
         TDataStd_Name.Set_s(lab, TCollection_ExtendedString(name))
@@ -264,7 +284,7 @@ def centre(f):
 step = out + '.step'
 history = []
 from scipy.spatial import cKDTree
-shift = np.array([-CX, Y0, Z0])
+
 
 
 def body_mesh_stats(shp):
@@ -281,7 +301,7 @@ for it in range(4):
     write(step)
     back = read_bodies(step)
     changed = 0
-    for s_ in (1, 2):
+    for s_ in SRCS:
         rb = body_mesh_stats(back[NAMES[s_]])
         nbad = sum(1 for ok, _ in rb if not ok)
         good = [(mc[0], mc[1]) for ok, mc in rb if ok]
@@ -292,7 +312,7 @@ for it in range(4):
         for i, w_ in enumerate(Wm):
             if w_ is None:
                 unmatched.append(i); continue
-            d_, j_ = tree.query(w_[1] + shift, k=3)
+            d_, j_ = tree.query(xform_pt(w_[1]), k=3)
             if not any(dd <= 0.1 and abs(A_r[jj] - w_[0]) <= 0.01 * w_[0] + 0.1 for dd, jj in zip(np.atleast_1d(d_), np.atleast_1d(j_))):
                 unmatched.append(i)
         print('iteration %d src %d: read-back faces %d, bad %d; written faces without a good match %d' % (it, s_, len(rb), nbad, len(unmatched)), flush=True)
@@ -336,5 +356,5 @@ for it in range(4):
 with zipfile.ZipFile(out + '.zip', 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as z:
     z.write(step, os.path.basename(step))
 print('step %.1f MB, zip %.1f MB' % (os.path.getsize(step) / 1e6, os.path.getsize(out + '.zip') / 1e6), flush=True)
-json.dump(dict(stats=stats, history=history, frame=dict(CX=CX, Y0=Y0, Z0=Z0)), open(out + '_report.json', 'w'), indent=1)
+json.dump(dict(stats=stats, history=history, frame=dict(M=MF.tolist()), bodies={s_: NAMES[s_] for s_ in SRCS}), open(out + '_report.json', 'w'), indent=1)
 print('done %.0fs' % (time.time() - t0))
