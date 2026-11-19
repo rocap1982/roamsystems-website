@@ -57,8 +57,9 @@ Every body has 0 invalid faces on read-back.
   - So the midline is X 0, the same line as the underbody mirror plane.
   - Each row is 182mm outboard of its member's inner wall.
 - Fore and aft, the heel is placed from the five seat bolt ends found in the scan (heel at Z 11.0).
-  - The front three bolt ends agree with the pattern within about 1mm fore and aft, and sit about 4mm outboard of the rows.
-  - The rear pair (301mm) sit about 1mm inboard of the rows. They were scanned 7mm behind the pattern on -X and 7mm ahead on +X, so the two sides are 14mm apart fore and aft. A tape check on the van settles it: from fixing 1 to fixing 4 the pattern gives 282mm; the scan gives 276mm on -X and 289mm on +X.
+  - The heel is the rear of the seat, so fixing 1 (19mm) is the rearmost.
+  - The three bolt ends at 19 and 55mm agree with the pattern within about 1mm fore and aft, and sit about 4mm outboard of the rows.
+  - The pair at 301mm (fixing 4) sit about 1mm inboard of the rows. They were scanned 7mm behind the pattern on -X and 7mm ahead on +X, so the two sides are 14mm apart fore and aft. A tape check on the van settles it: from fixing 1 to fixing 4 the pattern gives 282mm; the scan gives 276mm on -X and 289mm on +X.
   - The scanned bolt ends go in as separate markers, so the difference stays visible.
 - The fixings are built as a small STEP of their own and appended to the verified file as text. The surfaces stay byte-for-byte as delivered.
   - Reading the whole model in and writing it out again re-approximated about 45,000 edge curves and added about 49MB, so that route is not used.
